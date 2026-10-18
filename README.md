@@ -203,10 +203,8 @@
     <li>Abrir el simulador directamente en el navegador:
         <pre><code># En Windows
 start index.html
-
 # En macOS
 open index.html
-
 # En Linux
 xdg-open index.html</code></pre>
     </li>
