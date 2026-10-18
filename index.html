@@ -2073,20 +2073,12 @@
         function toggleOption(qIdx, optIdx) {
             if (submittedAnswers[qIdx] !== null) return; // Ya enviada
 
-            const q = questions[qIdx];
-            let current = userSelections[qIdx] || [];
-
-            if (q.type === 'single') {
-                // Comportamiento de Radio: selecciona solo la opción elegida
-                current = [optIdx];
+            const current = userSelections[qIdx] || [];
+            const pos = current.indexOf(optIdx);
+            if (pos > -1) {
+                current.splice(pos, 1);
             } else {
-                // Comportamiento de Checkbox: permite tildar/destildar múltiples
-                const pos = current.indexOf(optIdx);
-                if (pos > -1) {
-                    current.splice(pos, 1);
-                } else {
-                    current.push(optIdx);
-                }
+                current.push(optIdx);
             }
             userSelections[qIdx] = current;
 
@@ -2177,10 +2169,6 @@
                 statusBadge = '<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-rose-100 text-rose-800 border border-rose-300">✗ Incorrecta (0 pts)</span>';
             }
 
-            const typeBadge = q.type === 'single'
-                ? '<span class="inline-flex items-center px-2 py-0.5 rounded-md text-[11px] font-bold bg-sky-50 text-sky-700 border border-sky-200">🔘 Opción Única</span>'
-                : '<span class="inline-flex items-center px-2 py-0.5 rounded-md text-[11px] font-bold bg-purple-50 text-purple-700 border border-purple-200">☑️ Múltiples Opciones (Marcar todas las válidas)</span>';
-
             const axisBadge = `<span class="inline-flex items-center px-2 py-0.5 rounded-md text-[11px] font-bold bg-indigo-50 text-indigo-700 border border-indigo-200">${q.eje || 'ISW'}</span>`;
 
             // Opciones HTML
@@ -2192,22 +2180,15 @@
 
                 let rowClass = 'w-full text-left p-3.5 sm:p-4 rounded-xl border-2 font-medium text-xs sm:text-sm flex items-start gap-3 transition-all ';
                 let letterBadgeClass = 'w-7 h-7 rounded-lg text-xs font-bold border flex items-center justify-center shrink-0 ';
-                let indicatorHTML = '';
                 let tagHTML = '';
 
                 if (!isSubmitted) {
                     if (isSelected) {
                         rowClass += 'border-blue-600 bg-blue-50/70 text-slate-900 shadow-sm cursor-pointer';
                         letterBadgeClass += 'bg-blue-600 border-blue-600 text-white';
-                        indicatorHTML = q.type === 'single'
-                            ? '<span class="w-4 h-4 rounded-full border-2 border-blue-600 bg-blue-600 flex items-center justify-center shrink-0 mt-0.5"><span class="w-1.5 h-1.5 rounded-full bg-white"></span></span>'
-                            : '<span class="w-4 h-4 rounded border-2 border-blue-600 bg-blue-600 flex items-center justify-center shrink-0 mt-0.5 text-white text-[10px] leading-none font-black">✓</span>';
                     } else {
                         rowClass += 'border-slate-200 bg-white hover:border-blue-300 hover:bg-slate-50 text-slate-700 cursor-pointer';
                         letterBadgeClass += 'bg-slate-100 border-slate-300 text-slate-600';
-                        indicatorHTML = q.type === 'single'
-                            ? '<span class="w-4 h-4 rounded-full border-2 border-slate-300 shrink-0 mt-0.5"></span>'
-                            : '<span class="w-4 h-4 rounded border-2 border-slate-300 shrink-0 mt-0.5"></span>';
                     }
                 } else {
                     // Estados post-envío
@@ -2240,7 +2221,6 @@
                         <div class="flex-1 leading-snug pt-0.5">
                             ${optText}
                         </div>
-                        ${indicatorHTML}
                         ${tagHTML}
                     </div>
                 `;
@@ -2298,7 +2278,6 @@
                         <div class="flex flex-wrap items-center gap-1.5">
                             <span class="text-xs font-extrabold uppercase tracking-wider text-blue-600">Pregunta ${idx + 1} de ${questions.length}</span>
                             ${axisBadge}
-                            ${typeBadge}
                         </div>
                         ${statusBadge}
                     </div>
