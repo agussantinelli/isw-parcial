@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simulador de Examen - SIG (45 Preguntas)</title>
+    <title>Simulador de Examen - Ingeniería de Software (ISW) | UTN FRRO</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Inter', system-ui, -apple-system, sans-serif; background-color: #f8fafc; }
         .fade-in { animation: fadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1); }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
         .highlight-card { animation: cardGlow 1.8s ease-out; }
         @keyframes cardGlow {
-            0% { box-shadow: 0 0 0 4px #3b82f6, 0 10px 25px -5px rgba(59, 130, 246, 0.3); }
+            0% { box-shadow: 0 0 0 4px #2563eb, 0 10px 25px -5px rgba(37, 99, 235, 0.35); }
             100% { box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1); }
         }
         .option-btn { transition: all 0.18s ease-in-out; }
@@ -45,73 +45,49 @@
         }
         .mobile-fab:active { transform: scale(0.95); background: #1d4ed8; }
 
-        /* ========================================================
-           MEDIA QUERIES - RESPONSIVE DESIGN FOR ALL DEVICES
-           ======================================================== */
-
-        /* Extra Small Phones (max-width: 480px) */
+        /* Responsive Breakpoints */
         @media (max-width: 480px) {
             body header .max-w-7xl { padding-left: 0.75rem; padding-right: 0.75rem; padding-top: 0.5rem; padding-bottom: 0.5rem; }
-            body header .header-logo { width: 2rem; height: 2rem; font-size: 0.75rem; border-radius: 8px; }
+            body header .header-logo { width: 2.2rem; height: 2.2rem; font-size: 0.75rem; border-radius: 8px; }
             body header .header-title { font-size: 0.875rem; }
             body header .header-subtitle { display: none; }
             body header #header-stats { gap: 0.35rem; font-size: 0.7rem; }
             body header #header-stats > div { padding: 0.25rem 0.45rem; }
             body #quiz-screen .question-card { padding: 1rem; border-radius: 1rem; }
-            body #quiz-screen .question-title { font-size: 0.95rem; line-height: 1.35; }
-            body #quiz-screen .option-row { padding: 0.75rem; gap: 0.5rem; font-size: 0.8125rem; }
-            body #quiz-screen .option-badge { width: 1.5rem; height: 1.5rem; font-size: 0.7rem; }
-            body #quiz-screen .submit-btn { width: 100%; justify-content: center; }
             body .mobile-fab { display: flex; align-items: center; gap: 6px; }
             body #question-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0.35rem; }
             body #question-grid button { height: 2rem; font-size: 0.75rem; }
         }
 
-        /* Small to Medium Mobile (max-width: 640px) */
         @media (max-width: 640px) {
             body main { padding: 0.75rem; }
             body .mobile-fab { display: flex; align-items: center; gap: 6px; }
             body .filter-bar { overflow-x: auto; -webkit-overflow-scrolling: touch; padding-bottom: 4px; }
-            body .filter-bar button { white-space: nowrap; font-size: 0.75rem; }
             body #result-modal > div { padding: 1.5rem 1rem; border-radius: 1.25rem; }
             body #modal-final-score { font-size: 2.25rem; }
         }
 
-        /* Tablets (min-width: 641px) and (max-width: 1023px) */
         @media (min-width: 641px) and (max-width: 1023px) {
             body #question-grid { grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 0.45rem; }
             body #question-grid button { height: 2.25rem; }
-            body #quiz-screen .question-card { padding: 1.5rem; }
             body .sidebar-card { top: 5rem; }
         }
 
-        /* Large Tablets & Desktop (min-width: 1024px) */
         @media (min-width: 1024px) {
             body .mobile-fab { display: none; }
             body .sidebar-card { position: sticky; top: 5.5rem; }
             body #question-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); }
-            body #quiz-screen .option-row:hover:not(.submitted) { transform: translateX(4px); }
         }
 
-        /* Wide Screens (min-width: 1280px) */
-        @media (min-width: 1280px) {
-            body #quiz-screen .question-card { padding: 2rem; }
-            body #quiz-screen .question-title { font-size: 1.125rem; }
-        }
-
-        /* Touch Devices Optimization (hover: none) */
         @media (hover: none) {
-            body .option-btn:hover { transform: none; }
             button, .option-row { -webkit-tap-highlight-color: transparent; }
         }
 
-        /* Reduced Motion Accessibility */
         @media (prefers-reduced-motion: reduce) {
             *, *::before, *::after { animation-duration: 0.01ms; animation-iteration-count: 1; transition-duration: 0.01ms; }
             html { scroll-behavior: auto; }
         }
 
-        /* Print Media Stylesheet */
         @media print {
             body header, body .sidebar-card, body #header-actions, body .mobile-fab, body button { display: none; }
             body { background: #ffffff; color: #000000; }
@@ -126,12 +102,12 @@
     <header class="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-slate-200 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-3">
             <div class="flex items-center space-x-3">
-                <div class="header-logo w-10 h-10 rounded-xl bg-blue-600 text-white flex items-center justify-center font-bold shadow-md shadow-blue-500/20">
-                    SIG
+                <div class="header-logo w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-700 to-indigo-600 text-white flex items-center justify-center font-black shadow-md shadow-blue-500/20 text-sm">
+                    ISW
                 </div>
                 <div>
-                    <h1 class="header-title text-base sm:text-lg font-bold text-slate-900 leading-tight">Simulador de Examen</h1>
-                    <p class="header-subtitle text-xs text-slate-500">45 Preguntas · Modo Simultáneo y Libre</p>
+                    <h1 class="header-title text-base sm:text-lg font-extrabold text-slate-900 leading-tight">Simulador de Examen</h1>
+                    <p id="header-subtitle" class="header-subtitle text-xs text-slate-500 font-medium">95 Preguntas · Ingeniería de Software (UTN FRRO)</p>
                 </div>
             </div>
 
@@ -139,7 +115,7 @@
             <div id="header-stats" class="flex items-center gap-2 sm:gap-4 text-xs sm:text-sm font-semibold">
                 <div class="flex items-center gap-1.5 px-3 py-1.5 bg-slate-100 rounded-lg text-slate-700">
                     <span>Respondidas:</span>
-                    <span id="stat-answered" class="text-blue-600 font-bold">0/45</span>
+                    <span id="stat-answered" class="text-blue-600 font-bold">0/95</span>
                 </div>
                 <div class="flex items-center gap-1.5 px-3 py-1.5 bg-emerald-50 rounded-lg text-emerald-700">
                     <span>Perfectas:</span>
@@ -157,7 +133,7 @@
 
             <!-- Action Buttons -->
             <div id="header-actions" class="flex items-center gap-2">
-                <button onclick="showResults()" class="bg-blue-600 hover:bg-blue-700 text-white text-xs sm:text-sm font-bold py-1.5 px-3 sm:px-4 rounded-lg shadow-sm transition-all flex items-center gap-1.5">
+                <button onclick="showResults()" class="bg-blue-600 hover:bg-blue-700 text-white text-xs sm:text-sm font-bold py-1.5 px-3.5 sm:px-4 rounded-lg shadow-sm transition-all flex items-center gap-1.5">
                     <span>Finalizar</span>
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                 </button>
@@ -179,40 +155,58 @@
                 <!-- Columna Principal: Preguntas -->
                 <div class="lg:col-span-8 space-y-6">
                     
-                    <!-- Barra de Filtros y Navegación Rápida -->
-                    <div class="bg-white p-3.5 rounded-xl border border-slate-200/80 shadow-sm flex flex-wrap items-center justify-between gap-3">
-                        <div class="flex items-center gap-1.5 text-xs font-semibold overflow-x-auto pb-1 sm:pb-0">
-                            <span class="text-slate-500 mr-1">Filtrar:</span>
-                            <button id="filter-all" onclick="setFilter('all')" class="px-2.5 py-1.5 rounded-lg bg-blue-100 text-blue-700 font-bold transition-all">
-                                Todas (45)
-                            </button>
-                            <button id="filter-pending" onclick="setFilter('pending')" class="px-2.5 py-1.5 rounded-lg bg-slate-100 text-slate-600 hover:bg-slate-200 transition-all">
-                                Pendientes (<span id="count-pending">45</span>)
-                            </button>
-                            <button id="filter-correct" onclick="setFilter('correct')" class="px-2.5 py-1.5 rounded-lg bg-emerald-50 text-emerald-700 hover:bg-emerald-100 transition-all">
-                                Correctas (<span id="count-correct">0</span>)
-                            </button>
-                            <button id="filter-incorrect" onclick="setFilter('incorrect')" class="px-2.5 py-1.5 rounded-lg bg-rose-50 text-rose-700 hover:bg-rose-100 transition-all">
-                                Incorrectas (<span id="count-incorrect">0</span>)
+                    <!-- Barra de Filtros por Estado y por Eje -->
+                    <div class="bg-white p-3.5 sm:p-4 rounded-2xl border border-slate-200/80 shadow-sm space-y-3">
+                        <div class="flex flex-wrap items-center justify-between gap-2.5">
+                            <div class="flex items-center gap-1.5 text-xs font-semibold overflow-x-auto pb-1 sm:pb-0 filter-bar">
+                                <span class="text-slate-500 mr-1 shrink-0">Estado:</span>
+                                <button id="filter-all" onclick="setFilter('all')" class="px-2.5 py-1.5 rounded-lg bg-blue-600 text-white font-bold transition-all shadow-sm">
+                                    Todas (<span id="count-all">95</span>)
+                                </button>
+                                <button id="filter-pending" onclick="setFilter('pending')" class="px-2.5 py-1.5 rounded-lg bg-slate-100 text-slate-600 hover:bg-slate-200 transition-all font-medium">
+                                    Pendientes (<span id="count-pending">95</span>)
+                                </button>
+                                <button id="filter-correct" onclick="setFilter('correct')" class="px-2.5 py-1.5 rounded-lg bg-emerald-50 text-emerald-700 hover:bg-emerald-100 transition-all font-medium">
+                                    Correctas (<span id="count-correct">0</span>)
+                                </button>
+                                <button id="filter-incorrect" onclick="setFilter('incorrect')" class="px-2.5 py-1.5 rounded-lg bg-rose-50 text-rose-700 hover:bg-rose-100 transition-all font-medium">
+                                    Incorrectas (<span id="count-incorrect">0</span>)
+                                </button>
+                            </div>
+
+                            <button onclick="jumpToNextPending()" class="text-xs font-bold text-blue-600 hover:text-blue-800 flex items-center gap-1 ml-auto shrink-0 bg-blue-50 px-2.5 py-1.5 rounded-lg border border-blue-200">
+                                <span>Siguiente pendiente</span>
+                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
                             </button>
                         </div>
 
-                        <button onclick="jumpToNextPending()" class="text-xs font-semibold text-blue-600 hover:text-blue-800 flex items-center gap-1 ml-auto">
-                            <span>Siguiente pendiente</span>
-                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
-                        </button>
+                        <!-- Filtro por Eje Temático -->
+                        <div class="pt-2 border-t border-slate-100 flex flex-wrap items-center gap-2">
+                            <span class="text-xs font-semibold text-slate-500 shrink-0">Filtrar por Eje:</span>
+                            <select id="axis-select" onchange="setAxisFilter(this.value)" class="text-xs font-semibold bg-slate-50 border border-slate-200 text-slate-700 rounded-lg px-2.5 py-1.5 focus:ring-2 focus:ring-blue-500 focus:outline-none flex-1 max-w-md">
+                                <option value="all">📚 Todos los Ejes (95 preguntas)</option>
+                                <option value="Eje 1: Arquitectura CMMI">🏛️ Eje 1: Arquitectura CMMI y Niveles de Madurez</option>
+                                <option value="Eje 2: Aseguramiento de Calidad (PPQA)">🔍 Eje 2: Aseguramiento de Calidad (PPQA) y Auditorías</option>
+                                <option value="Eje 3: Medición y Análisis (MA)">📊 Eje 3: Medición y Análisis (MA) y Método PSM</option>
+                                <option value="Eje 4: Requisitos (RD / REQM)">📋 Eje 4: Requisitos (RD y REQM)</option>
+                                <option value="Eje 5: Configuración (SCM) y Versiones">📦 Eje 5: Gestión de Configuración (SCM) y Versiones</option>
+                                <option value="Eje 6: Planificación y Estimación (PP/PMC)">⏱️ Eje 6: Planificación (PP), Estimación y Control (PMC)</option>
+                                <option value="Eje 7: Verificación y Validación (VER/VAL)">🧪 Eje 7: Verificación (VER), Validación (VAL) y Revisiones</option>
+                                <option value="Eje 8: Testing de Caja Negra">🎯 Eje 8: Testing de Caja Negra (Particiones y Tablas)</option>
+                            </select>
+                        </div>
                     </div>
 
-                    <!-- Modo 1: Lista con Todas las Preguntas Simultáneas -->
+                    <!-- Lista con Todas las Preguntas -->
                     <div id="questions-all-container" class="space-y-6">
                         <!-- Generado dinámicamente -->
                     </div>
 
                 </div>
 
-                <!-- Columna Lateral Sticky: Matriz de 45 Preguntas -->
+                <!-- Columna Lateral Sticky: Matriz de Preguntas -->
                 <div class="lg:col-span-4 sticky top-20 space-y-4">
-                    <div class="bg-white rounded-2xl border border-slate-200/80 shadow-sm p-5">
+                    <div class="bg-white rounded-2xl border border-slate-200/80 shadow-sm p-5 sidebar-card">
                         
                         <div class="flex items-center justify-between mb-4">
                             <h3 class="font-bold text-slate-900 text-sm flex items-center gap-2">
@@ -220,13 +214,13 @@
                                 <span>Mapa de Preguntas</span>
                             </h3>
                             <span id="score-badge" class="text-xs font-bold px-2 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">
-                                0 / 45 pts
+                                0 / 95 pts
                             </span>
                         </div>
 
-                        <!-- Grid 1 a 45 -->
+                        <!-- Grid 1 a N -->
                         <div id="question-grid" class="grid grid-cols-5 sm:grid-cols-7 lg:grid-cols-5 gap-1.5 mb-4 max-h-[380px] overflow-y-auto custom-scroll pr-1">
-                            <!-- 45 botones generados por JS -->
+                            <!-- Botones generados por JS -->
                         </div>
 
                         <!-- Referencia de colores -->
@@ -241,7 +235,7 @@
                             </div>
                             <div class="flex items-center gap-1.5">
                                 <span class="w-2.5 h-2.5 rounded-full bg-amber-400 border border-amber-500"></span>
-                                <span>Incompleta (0 pts)</span>
+                                <span>Parcial (0 pts)</span>
                             </div>
                             <div class="flex items-center gap-1.5">
                                 <span class="w-2.5 h-2.5 rounded-full bg-rose-500"></span>
@@ -270,21 +264,26 @@
             </div>
         </div>
 
+        <!-- Botón flotante móvil para mapa -->
+        <button onclick="scrollToMap()" class="mobile-fab">
+            <span>🗺️ Mapa (<span id="fab-answered">0</span>/95)</span>
+        </button>
+
         <!-- Modal de Resultados Finales -->
         <div id="result-modal" class="hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
             <div class="bg-white rounded-3xl shadow-2xl max-w-lg w-full p-8 text-center fade-in border border-slate-100">
                 <div id="modal-result-icon" class="mb-4"></div>
-                <h3 class="text-2xl font-extrabold text-slate-900 mb-1">Examen Finalizado</h3>
-                <p class="text-sm text-slate-500 mb-6">Resumen general de tu desempeño</p>
+                <h3 class="text-2xl font-black text-slate-900 mb-1">Simulación Finalizada</h3>
+                <p class="text-xs text-slate-500 font-medium mb-6">Ingeniería de Software · UTN Facultad Regional Rosario</p>
 
                 <div class="bg-slate-50 border border-slate-200/80 rounded-2xl p-5 mb-6">
-                    <div class="text-4xl font-black text-blue-600 mb-1" id="modal-final-score">0 / 45</div>
-                    <div class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-4" id="modal-percentage">0% de aciertos</div>
+                    <div class="text-4xl font-black text-blue-600 mb-1" id="modal-final-score">0 / 95</div>
+                    <div class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-4" id="modal-percentage">0% de aciertos</div>
                     
                     <div class="grid grid-cols-3 gap-2 pt-3 border-t border-slate-200 text-xs">
                         <div>
                             <div class="text-emerald-600 font-bold text-lg" id="modal-correct-count">0</div>
-                            <div class="text-slate-500">Correctas</div>
+                            <div class="text-slate-500">Perfectas</div>
                         </div>
                         <div>
                             <div class="text-rose-600 font-bold text-lg" id="modal-incorrect-count">0</div>
@@ -292,7 +291,7 @@
                         </div>
                         <div>
                             <div class="text-amber-600 font-bold text-lg" id="modal-unanswered-count">0</div>
-                            <div class="text-slate-500">Sin responder</div>
+                            <div class="text-slate-500">Pendientes</div>
                         </div>
                     </div>
                 </div>
@@ -301,7 +300,7 @@
 
                 <div class="flex flex-col sm:flex-row gap-2.5">
                     <button onclick="closeResultModal()" class="flex-1 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold py-2.5 px-4 rounded-xl text-sm transition-all">
-                        Revisar Respuestas
+                        Revisar Examen
                     </button>
                     <button onclick="resetQuiz()" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2.5 px-4 rounded-xl text-sm transition-all shadow-sm">
                         Intentar de Nuevo
@@ -313,658 +312,695 @@
     </main>
 
     <script>
-        const questions = [
+        // Banco de Preguntas Oficial de Ingeniería de Software (UTN FRRO)
+        const rawQuestions = [
     {
-        "q": "Sobre la definición y características de los SIG",
-        "type": "multi",
-        "options": [
-            "Los SIG combinan información cartográfica digital con información atributiva organizada mediante tablas.",
-            "La diferencia radical entre un SIG y otros paquetes gráficos reside en que el SIG es esencialmente una base de datos espaciales.",
-            "El SIG solo almacena información cartográfica digital y permite dibujarla, pero no cuenta con análisis espacial.",
-            "Permiten a los usuarios crear consultas interactivas, generar mapas y presentar los resultados de las operaciones."
-        ],
-        "correctAnswers": [
-            0,
-            1,
-            3
-        ],
-        "exp": "La opción C es una trampa típica; los SIG no solo dibujan, sino que vinculan la geometría con datos alfanuméricos permitiendo análisis espacial complejo."
-    },
-    {
-        "q": "Componentes fundamentales para que un SIG funcione",
-        "type": "multi",
-        "options": [
-            "Bases de datos espaciales, donde la realidad territorial se codifica mediante geometrías.",
-            "Bases de datos temáticas, que contienen la información descriptiva de los elementos.",
-            "Administradores del sistema, encargados de resolver los requerimientos de usuarios y mantener el sistema.",
-            "Exclusivamente software libre, ya que los SIG no pueden operar en entornos comerciales."
-        ],
-        "correctAnswers": [
-            0,
-            1,
-            2
-        ],
-        "exp": "La opción D es falsa porque el mercado de software SIG está dominado tanto por distribuidores comerciales (ej. ESRI) como por desarrolladores de software libre (QGIS)."
-    },
-    {
-        "q": "En el contexto de la representación cartográfica, ¿qué función cumple el Elipsoide de referencia?",
+        "id": 1,
+        "eje": "Eje 1: Arquitectura CMMI",
+        "q": "¿Cuál es el nivel de madurez en CMMI que se centra específicamente en la predictibilidad cuantitativa de los procesos?",
         "type": "single",
         "options": [
-            "Representar con exactitud todas las montañas y valles del terreno.",
-            "Almacenar los atributos descriptivos de las parcelas.",
-            "Simplificar matemáticamente la forma de la Tierra para poder asignar coordenadas y realizar cálculos.",
-            "Conectar sistemas informáticos a través de la red."
+            "Nivel 2 (Gestionado)",
+            "Nivel 3 (Definido)",
+            "Nivel 4 (Gestionado cuantitativamente)",
+            "Nivel 5 (En optimización)",
+            "Ninguno de los mencionados"
         ],
         "correctAnswers": [
             2
         ],
-        "exp": "Debido a la irregularidad del geoide, se utiliza un elipsoide (cuerpo matemático regular) como modelo para facilitar los cálculos de posicionamiento."
+        "exp": "En el Nivel 4 (Gestionado cuantitativamente), la organización establece objetivos cuantitativos de calidad y rendimiento de procesos y los controla usando técnicas estadísticas y matemáticas, logrando predictibilidad cuantitativa (a diferencia del Nivel 3, donde la predictibilidad es cualitativa)."
     },
     {
-        "q": "Fuentes de datos en los Sistemas de Información Geográfica",
+        "id": 2,
+        "eje": "Eje 1: Arquitectura CMMI",
+        "q": "¿Cuáles de los siguientes son componentes REQUERIDOS de un Área de Proceso en CMMI?",
         "type": "multi",
         "options": [
-            "La única fuente válida y confiable de datos en un SIG son las imágenes satelitales obtenidas por teledetección.",
-            "Los datos pueden ser generados mediante el relevamiento de campo usando receptores GPS/GNSS.",
-            "La Información Geográfica Voluntaria (ej. OpenStreetMap) es una fuente válida aportada por usuarios.",
-            "Las bases de datos estadísticas y la cartografía tradicional digitalizada también alimentan el SIG."
+            "Herramientas",
+            "Sub-prácticas genéricas",
+            "Metas específicas (SG)",
+            "Metas genéricas (GG)",
+            "Productos típicos de trabajo"
         ],
         "correctAnswers": [
-            1,
             2,
             3
         ],
-        "exp": "La opción A es la clásica trampa del parcial; los datos de un SIG provienen de múltiples fuentes, no solo de satélites."
+        "exp": "En la arquitectura CMMI los únicos componentes 'Requeridos' (obligatorios para certificar) son las Metas Específicas y Metas Genéricas. Las prácticas son componentes 'Esperados', y las subprácticas, productos de trabajo y notas son 'Informativos'."
     },
     {
-        "q": "Evolución histórica de los SIG",
-        "type": "multi",
-        "options": [
-            "En los años 70, los SIG se expandieron por universidades y organismos estatales, coincidiendo con hitos como el lanzamiento del satélite LANDSAT 1.",
-            "En la década de 1980, el auge de la computadora personal permitió que esta tecnología saliera del dominio exclusivo de grandes gobiernos y militares.",
-            "El webmapping (mapas dinámicos interactivos) y el software libre irrumpieron de manera masiva en el siglo XXI.",
-            "Desde sus inicios teóricos en los años 50, los SIG siempre fueron concebidos como plataformas exclusivas de código abierto para usuarios domésticos."
-        ],
-        "correctAnswers": [
-            0,
-            1,
-            2
-        ],
-        "exp": "La opción D es falsa, ya que históricamente el desarrollo inicial estuvo ligado a proyectos militares cerrados, la carrera aeroespacial y el uso corporativo, no al software libre doméstico, el cual se popularizó recién en el siglo XXI."
-    },
-    {
-        "q": "Sobre el formato Vectorial de información geográfica",
-        "type": "multi",
-        "options": [
-            "Representa la realidad mediante tres expresiones geométricas básicas: puntos, líneas y polígonos.",
-            "La realidad deberá ser representada por una malla regular formada por píxeles o celdas.",
-            "Cada entidad vectorial (como un polígono) suele tener atributos asociados almacenados en una tabla.",
-            "El formato Shapefile (.shp) y el GeoPackage (.gpkg) son extensiones propias de este modelo."
-        ],
-        "correctAnswers": [
-            0,
-            2,
-            3
-        ],
-        "exp": "La opción B describe exactamente al formato Ráster, no al Vectorial."
-    },
-    {
-        "q": "Sobre el formato Ráster",
-        "type": "multi",
-        "options": [
-            "Es el formato ideal para almacenar datos que varían de forma continua en el territorio, como la altimetría o la temperatura.",
-            "Su estructura básica es una rejilla regular dividida en filas y columnas donde cada celda registra un valor numérico.",
-            "En este formato no se emplean puntos, líneas y áreas para definir la geometría.",
-            "El formato GeoTIFF es el estándar más utilizado y permite incrustar información de georreferenciación."
-        ],
-        "correctAnswers": [
-            0,
-            1,
-            2,
-            3
-        ],
-        "exp": "Todas las afirmaciones corresponden a las propiedades fundamentales, usos y formatos del modelo matricial/ráster vistos en la teoría."
-    },
-    {
-        "q": "Modelos de la Tierra: Geoide y Elipsoide",
-        "type": "multi",
-        "options": [
-            "El geoide es la forma física real e irregular de la Tierra, coincidente con los mares en calma prolongados bajo los continentes.",
-            "El geoide y el elipsoide son figuras idénticas que coinciden perfectamente en todos los puntos del planeta.",
-            "El elipsoide es un modelo matemático tridimensional y regular utilizado para simplificar la forma terrestre y realizar cálculos.",
-            "La Geodesia es la ciencia que define y estudia estos modelos de la superficie terrestre."
-        ],
-        "correctAnswers": [
-            0,
-            2,
-            3
-        ],
-        "exp": "La opción B es falsa; el geoide es irregular y el elipsoide es una simplificación matemática, por lo que nunca coinciden perfectamente en todas partes."
-    },
-    {
-        "q": "Sobre Datum y Sistemas de Referencia",
-        "type": "multi",
-        "options": [
-            "El Datum es un sistema de referencia espacial que describe la forma y tamaño de la Tierra estableciendo el origen de coordenadas.",
-            "El Datum global más destacado es el WGS 84, cuyo centro coincide con el centro de masas terrestre y es usado por el GPS.",
-            "El objetivo de un Datum local es hacer que el elipsoide se ajuste de la mejor manera al geoide en una región geográfica específica.",
-            "El Datum es exactamente lo mismo que una proyección cartográfica."
-        ],
-        "correctAnswers": [
-            0,
-            1,
-            2
-        ],
-        "exp": "La opción D es falsa. El Datum define la referencia tridimensional de la Tierra, mientras que la proyección es el método para pasar de esa figura curva a un plano bidimensional."
-    },
-    {
-        "q": "Geometría y física de los rayos de proyección",
-        "type": "multi",
-        "options": [
-            "En las proyecciones ortogonales, los rayos de proyección son paralelos entre sí y perpendiculares al plano de proyección.",
-            "En las proyecciones oblicuas, los rayos divergen aleatoriamente desde el centro de la Tierra en múltiples direcciones no relacionadas.",
-            "Matemáticamente, todo proceso de proyección se basa en trasladar puntos tridimensionales significativos hacia un plano bidimensional mediante estos rayos.",
-            "En las proyecciones paralelas oblicuas, los rayos mantienen el paralelismo entre sí pero inciden de manera inclinada sobre la superficie del plano."
-        ],
-        "correctAnswers": [
-            0,
-            2,
-            3
-        ],
-        "exp": "La opción B es falsa, dado que en las proyecciones paralelas oblicuas los rayos no divergen aleatoriamente, sino que son paralelos entre ellos incidiendo en un ángulo oblicuo."
-    },
-    {
-        "q": "Sistemas de localización y Coordenadas",
-        "type": "multi",
-        "options": [
-            "Las coordenadas geográficas utilizan magnitudes angulares: latitud y longitud.",
-            "La latitud indica qué tan al Norte o al Sur del Ecuador se encuentra un punto, variando de 0° a 90°.",
-            "Las coordenadas geográficas son ideales para realizar cálculos planimétricos exactos de áreas en metros.",
-            "Las coordenadas cartesianas o proyectadas se expresan en unidades lineales (generalmente metros) usando ejes ortogonales X e Y."
-        ],
-        "correctAnswers": [
-            0,
-            1,
-            3
-        ],
-        "exp": "La opción C es falsa. Las coordenadas angulares (geográficas) sufren convergencia en los polos, por lo que no son prácticas ni precisas para medir distancias métricas o áreas cartesianas."
-    },
-    {
-        "q": "¿Cómo mitiga el sistema Gauss-Krüger argentino las grandes distorsiones que se generarían al proyectar todo el país?",
+        "id": 3,
+        "eje": "Eje 1: Arquitectura CMMI",
+        "q": "CMMI considera como elemento obligatorio (requerido) las prácticas específicas en las áreas de proceso.",
         "type": "single",
         "options": [
-            "Divide el territorio nacional en 7 fajas meridianas estrechas de 3° de ancho de longitud.",
-            "Utiliza 60 husos de 6 grados de ancho, al igual que el sistema global UTM.",
-            "Elimina la representación de la Patagonia.",
-            "Proyecta todo el territorio sobre un cono tangente."
+            "Sí / Verdadero (Son componentes obligatorios)",
+            "No / Falso (Son componentes esperados)"
+        ],
+        "correctAnswers": [
+            1
+        ],
+        "exp": "Falso. En CMMI las prácticas específicas (SP) y genéricas (GP) son componentes 'Esperados' (expected), no requeridos. Indican lo que típicamente se hace para lograr las metas, pero la organización puede implementar prácticas alternativas aceptables si cumplen la meta."
+    },
+    {
+        "id": 4,
+        "eje": "Eje 1: Arquitectura CMMI",
+        "q": "¿Cuáles de los siguientes elementos forman parte de los componentes INFORMATIVOS dentro de CMMI?",
+        "type": "multi",
+        "options": [
+            "Sub-prácticas (específicas y genéricas)",
+            "Metas genéricas (GG)",
+            "Declaraciones de propósito de las áreas de proceso",
+            "Productos de trabajo típicos",
+            "Prácticas específicas (SP)"
+        ],
+        "correctAnswers": [
+            0,
+            2,
+            3
+        ],
+        "exp": "Son componentes informativos: Sub-prácticas, Declaraciones de propósito, Notas explicativas, Referencias y Productos típicos de trabajo. Las metas son requeridas y las prácticas son esperadas."
+    },
+    {
+        "id": 5,
+        "eje": "Eje 1: Arquitectura CMMI",
+        "q": "Determine los elementos que tratan en CMMI la institucionalización de un proceso en la organización:",
+        "type": "multi",
+        "options": [
+            "Metas genéricas (GG)",
+            "Metas específicas (SG)",
+            "Prácticas genéricas (GP)",
+            "Prácticas específicas (SP)",
+            "Ninguna de las mencionadas"
+        ],
+        "correctAnswers": [
+            0,
+            2
+        ],
+        "exp": "La institucionalización de los procesos se logra a través de las Metas Genéricas (GG) y las Prácticas Genéricas (GP). Aseguran que los procesos se ejecuten como una práctica arraigada, repetible y soportada por la cultura organizacional."
+    },
+    {
+        "id": 6,
+        "eje": "Eje 1: Arquitectura CMMI",
+        "q": "Un gerente afirma que al haber alcanzado el Nivel 3 ya no es necesario cumplir con la meta de 'Establecer estimaciones' (del área Planificación de Proyecto de Nivel 2) y dejan de realizar estimaciones formales. ¿En qué nivel de madurez se encuentra actualmente la Software Factory?",
+        "type": "single",
+        "options": [
+            "Nivel 3 (Definido)",
+            "Nivel 2 (Gestionado)",
+            "Nivel 1 (Inicial)",
+            "Nivel 0 (Incompleto)"
+        ],
+        "correctAnswers": [
+            2
+        ],
+        "exp": "En la representación por etapas de CMMI, los niveles de madurez son estrictamente acumulativos. Para estar en Nivel 3 deben satisfacerse TODAS las metas de Nivel 2 y Nivel 3. Al abandonar una meta de Nivel 2 (como estimaciones en PP), se derrumba la base y la organización retrocede de inmediato al Nivel 1."
+    },
+    {
+        "id": 7,
+        "eje": "Eje 1: Arquitectura CMMI",
+        "q": "¿Cuál es el área de proceso de CMMI que se encarga fundamentalmente de establecer los recursos necesarios para un proyecto?",
+        "type": "single",
+        "options": [
+            "PMC (Monitorización y Control del Proyecto)",
+            "OPD (Definición de Procesos de la Organización)",
+            "PP (Planificación del Proyecto)",
+            "OPF (Enfoque de Procesos de la Organización)"
+        ],
+        "correctAnswers": [
+            2
+        ],
+        "exp": "El propósito del área PP (Project Planning) es establecer y mantener planes que definan las actividades del proyecto, determinando los recursos, estimaciones de esfuerzo, costo, cronograma y compromisos necesarios."
+    },
+    {
+        "id": 8,
+        "eje": "Eje 1: Arquitectura CMMI",
+        "q": "¿Cuál es el área de CMMI cuyo propósito se basa en la comprensión de las fortalezas y debilidades actuales de los procesos de la organización y se encarga de evaluarlos contra otras organizaciones (benchmarking)?",
+        "type": "single",
+        "options": [
+            "OPD (Definición de Procesos de la Organización)",
+            "OPF (Enfoque de Procesos de la Organización)",
+            "PP (Planificación de Proyecto)",
+            "OT (Formación Organizativa)",
+            "MA (Medición y Análisis)"
+        ],
+        "correctAnswers": [
+            1
+        ],
+        "exp": "OPF (Organizational Process Focus) planifica, implementa y despliega mejoras en los procesos de la organización basadas en la comprensión de las fortalezas y debilidades de los procesos actuales y activos de proceso, realizando evaluaciones comparativas (benchmarking)."
+    },
+    {
+        "id": 9,
+        "eje": "Eje 1: Arquitectura CMMI",
+        "q": "¿Cuál es el área de CMMI que se encarga de establecer y mantener el repositorio de medidas de producto y proceso relacionadas con el conjunto de procesos estándar de la organización?",
+        "type": "single",
+        "options": [
+            "MA (Medición y Análisis)",
+            "OPF (Enfoque de Procesos de la Organización)",
+            "OPD (Definición de Procesos de la Organización)",
+            "PP (Planificación de Proyecto)"
+        ],
+        "correctAnswers": [
+            2
+        ],
+        "exp": "OPD (Organizational Process Definition) tiene la práctica específica SP 1.4: 'Establecer y mantener el repositorio de medición de la organización'. MA recopila y analiza medidas dentro de los proyectos, pero el repositorio organizacional lo define y mantiene OPD."
+    },
+    {
+        "id": 10,
+        "eje": "Eje 1: Arquitectura CMMI",
+        "q": "¿Cuál es el área de CMMI cuyo propósito es desarrollar las competencias y habilidades del personal para que puedan realizar sus roles de manera eficaz y eficiente?",
+        "type": "single",
+        "options": [
+            "OPD (Definición de Procesos de la Organización)",
+            "OPF (Enfoque de Procesos de la Organización)",
+            "OT (Formación Organizativa / Organizational Training)",
+            "RD (Desarrollo de Requisitos)"
+        ],
+        "correctAnswers": [
+            2
+        ],
+        "exp": "OT (Organizational Training) tiene como propósito desarrollar las habilidades y los conocimientos del personal para que puedan realizar sus roles de manera eficaz y eficiente en apoyo de los objetivos de la organización."
+    },
+    {
+        "id": 11,
+        "eje": "Eje 1: Arquitectura CMMI",
+        "q": "¿Cuáles de las siguientes áreas de proceso corresponden al Nivel de Madurez 3 (Definido) en CMMI?",
+        "type": "multi",
+        "options": [
+            "Validación (VAL)",
+            "Monitorización y control del proyecto (PMC)",
+            "Verificación (VER)",
+            "Planificación de proyecto (PP)",
+            "Enfoque de procesos de la organización (OPF)"
+        ],
+        "correctAnswers": [
+            0,
+            2,
+            4
+        ],
+        "exp": "VAL, VER y OPF son áreas de Nivel 3. En cambio, PP y PMC pertenecen al Nivel 2 (Gestionado)."
+    },
+    {
+        "id": 12,
+        "eje": "Eje 1: Arquitectura CMMI",
+        "q": "¿Cuáles de las siguientes son prácticas específicas pertenecientes al área OPF (Enfoque de Procesos de la Organización)?",
+        "type": "multi",
+        "options": [
+            "Establecer planes de acción de procesos",
+            "Establecer el repositorio de medición de la organización",
+            "Incorporar experiencias relativas al proceso (lecciones aprendidas)",
+            "Establecer descripciones de modelos de ciclo de vida"
+        ],
+        "correctAnswers": [
+            0,
+            2
+        ],
+        "exp": "En OPF se encuentran: SP 2.1 'Establecer planes de acción de procesos' y SP 2.4 'Incorporar experiencias relativas al proceso'. Las prácticas de establecer el repositorio de medición (SP 1.4) y modelos de ciclo de vida (SP 1.2) pertenecen a OPD."
+    },
+    {
+        "id": 13,
+        "eje": "Eje 1: Arquitectura CMMI",
+        "q": "¿Cuáles de los siguientes elementos constituyen ACTIVOS DE PROCESO (reutilizables a nivel organizacional) de la Software Factory según CMMI?",
+        "type": "multi",
+        "options": [
+            "Plantilla estándar de Casos de Uso",
+            "Directrices para conformar el Equipo de Proyecto",
+            "Plantilla de Manual de Instalación",
+            "Descripción de flujo de negocio relevado al Cliente X",
+            "Manual de Usuario desarrollado para el Cliente Y"
+        ],
+        "correctAnswers": [
+            0,
+            1,
+            2
+        ],
+        "exp": "Los Activos de Proceso son artefactos genéricos y reutilizables de la Software Factory (plantillas, guías, directrices, estándares). La descripción del flujo de un cliente específico o un manual particular son Productos de Trabajo de proyecto."
+    },
+    {
+        "id": 14,
+        "eje": "Eje 1: Arquitectura CMMI",
+        "q": "¿Cuáles de los siguientes elementos corresponden a PRODUCTOS DE TRABAJO (entregables o artefactos específicos de un proyecto)?",
+        "type": "multi",
+        "options": [
+            "Descripción del flujo de negocio del cliente",
+            "Regla de negocio específica del cliente",
+            "Manual de instalación desarrollado para el producto entregado al cliente",
+            "Guía general de la Software Factory para confeccionar Manuales de Usuario",
+            "Plantilla institucional para Reunión de Lanzamiento"
+        ],
+        "correctAnswers": [
+            0,
+            1,
+            2
+        ],
+        "exp": "Los Productos de Trabajo son los entregables y documentos específicos generados para un proyecto o cliente concreto. Las guías generales y plantillas institucionales son Activos de Proceso de la Factory."
+    },
+    {
+        "id": 15,
+        "eje": "Eje 1: Arquitectura CMMI",
+        "q": "En la plantilla del Plan de Proyecto está indicado que al describir el equipo del proyecto, solo deben incluirse roles y responsabilidades de la software factory (incluyendo OT, OPF y OPD), sin incluir roles del cliente. ¿Podría generar problemas de calidad?",
+        "type": "single",
+        "options": [
+            "No genera problemas, es una implementación correcta y completa de PP.",
+            "No genera problemas, es buena práctica definir áreas OPD, OPF y OT.",
+            "Sí podría generar problemas de calidad, porque no contempla que los miembros del proyecto por parte del cliente conozcan bien lo que deben hacer en el proyecto [deberían definirse roles y responsabilidades del cliente].",
+            "Sí podría generar problemas de calidad, porque la validación incluye solo a roles técnicos.",
+            "Ninguna de las otras opciones."
+        ],
+        "correctAnswers": [
+            2
+        ],
+        "exp": "En CMMI PP, el plan de proyecto debe involucrar a todas las partes interesadas relevantes (stakeholders). Excluir las responsabilidades y compromisos del cliente genera desalineación, falta de disponibilidad en reuniones clave y bloqueos en aprobaciones y validaciones."
+    },
+    {
+        "id": 16,
+        "eje": "Eje 1: Arquitectura CMMI",
+        "q": "En las reuniones de avance el PM presenta un resumen, destaca puntos de atención, estado de riesgos, menciona explícitamente si algún usuario clave no está cumpliendo con su participación y da una visión de alto nivel del cronograma. ¿Genera problemas de calidad?",
+        "type": "single",
+        "options": [
+            "Sí podría generar problemas, no es correcto mencionar problemas con usuarios clave explícitamente.",
+            "No genera problemas de calidad, porque lo descripto es una implementación correcta de las reuniones de avance según lo indicado por el área de PMC.",
+            "Sí podría generar problemas, porque el cronograma debe presentarse con máximo detalle.",
+            "Sí podría generar problemas, la reunión debe ser solo interna de la Software Factory."
+        ],
+        "correctAnswers": [
+            1
+        ],
+        "exp": "No genera problemas. PMC promueve la visibilidad objetiva y el seguimiento del proyecto. Monitorear riesgos, hitos y el compromiso de los stakeholders clave (incluso del cliente) es fundamental para gestionar desvíos a tiempo."
+    },
+    {
+        "id": 17,
+        "eje": "Eje 1: Arquitectura CMMI",
+        "q": "El PM arma una EDT y estima esfuerzo basándose únicamente en el repositorio de métricas históricas de la empresa, por lo que no necesita consultarlo con nadie más en la Software Factory, y luego acuerda las fechas con el Sponsor del cliente. ¿Genera problemas de calidad?",
+        "type": "single",
+        "options": [
+            "No genera problemas, basarse en datos históricos sin consultar a otros agiliza la gestión.",
+            "Sí podría generar problemas de calidad, porque las estimaciones deberían revisarse y consensuarse con el personal técnico de la software factory.",
+            "No genera problemas, lo prioritario es el acuerdo comercial con el Sponsor.",
+            "Sí podría generar problemas, nunca deben mostrarse estimaciones al cliente."
+        ],
+        "correctAnswers": [
+            1
+        ],
+        "exp": "CMMI PP (SP 1.4 y SP 3.2) exige obtener el compromiso con el plan y validar las estimaciones con el equipo técnico que ejecutará las tareas, asegurando que las estimaciones sean viables y técnicamente sustentables."
+    },
+    {
+        "id": 18,
+        "eje": "Eje 2: Aseguramiento de Calidad (PPQA)",
+        "q": "Una auditoría en Aseguramiento de la Calidad del Proceso y del Producto (PPQA) termina cuando:",
+        "type": "single",
+        "options": [
+            "Se lleva a cabo la auditoría en las oficinas del proyecto.",
+            "Se presenta formalmente el informe de resultados al Líder de Proyecto.",
+            "Se realiza el registro de la auditoría en la base de datos.",
+            "Se resuelven las no conformidades detectadas."
+        ],
+        "correctAnswers": [
+            3
+        ],
+        "exp": "En PPQA (SP 2.1), la auditoría no termina con la emisión o presentación del informe, sino únicamente cuando se verifica el seguimiento y la resolución efectiva de las no conformidades encontradas."
+    },
+    {
+        "id": 19,
+        "eje": "Eje 2: Aseguramiento de Calidad (PPQA)",
+        "q": "¿Cuáles de las siguientes afirmaciones sobre auditorías de calidad (PPQA) son VERDADERAS?",
+        "type": "multi",
+        "options": [
+            "Las no conformidades se intentan resolver en primer lugar a nivel de proyecto con el responsable.",
+            "El trabajo de auditoría termina en el instante en que se presentan las no conformidades.",
+            "El escalamiento es un aviso que certifica que no hay no conformidades en el proyecto.",
+            "Las no conformidades recurrentes podrían motivar cambios en la descripción o definición de un proceso estándar de la organización."
+        ],
+        "correctAnswers": [
+            0,
+            3
+        ],
+        "exp": "Las no conformidades se resuelven primero a nivel de proyecto (con el PM); si persisten, se escalan a niveles superiores. Además, fallas sistemáticas retroalimentan la mejora de procesos (OPF/OPD). La auditoría NO termina al presentar el informe ni el escalamiento significa ausencia de fallas."
+    },
+    {
+        "id": 20,
+        "eje": "Eje 2: Aseguramiento de Calidad (PPQA)",
+        "q": "El área SQA emite un informe de no conformidades. Es responsabilidad exclusiva del líder subsanarlas, y el área SQA ya no vuelve a intervenir en ningún aspecto sobre dicho proyecto. ¿Genera problemas de calidad?",
+        "type": "single",
+        "options": [
+            "No genera problemas, es la implementación completa del área SQA.",
+            "Sí podría generar problemas de calidad, porque no contempla un mecanismo para controlar, por parte de un grupo externo al desarrollo, que se resuelvan las no conformidades.",
+            "No genera problemas, el PM es quien tiene el control operativo.",
+            "Sí podría generar problemas, SQA debe hacer la corrección técnica del código directamente."
+        ],
+        "correctAnswers": [
+            1
+        ],
+        "exp": "PPQA SP 2.1 ('Comunicar y asegurar la resolución de las no conformidades') exige que el grupo de aseguramiento de calidad realice un seguimiento activo hasta comprobar que los desvíos fueron resueltos."
+    },
+    {
+        "id": 21,
+        "eje": "Eje 2: Aseguramiento de Calidad (PPQA)",
+        "q": "El área SQA inspecciona a los 15 y 30 días. Si la no conformidad sigue pendiente, el informe de SQA se archiva en 'proyectos incumplidores' y queda asentada una sanción en el legajo del Líder de Proyecto. ¿Genera problemas de calidad?",
+        "type": "single",
+        "options": [
+            "No genera problemas, sancionar al líder en su legajo garantiza que no vuelva a ocurrir.",
+            "No genera problemas, se cumple con auditar a los 15 y 30 días.",
+            "Sí podría generar problemas de calidad, porque no contempla un mecanismo para controlar, por parte de un grupo externo al desarrollo, que se resuelvan las no conformidades hasta su fin escalándolas si fuera necesario.",
+            "Sí podría generar problemas, SQA solo puede realizar controles a nivel de requisitos."
+        ],
+        "correctAnswers": [
+            2
+        ],
+        "exp": "Archivar la no conformidad y castigar administrativamente al PM no soluciona el defecto del producto. PPQA exige que si a nivel de proyecto no se resuelve, se escale a niveles jerárquicos superiores (Gerencia General) hasta lograr la corrección real."
+    },
+    {
+        "id": 22,
+        "eje": "Eje 2: Aseguramiento de Calidad (PPQA)",
+        "q": "SQA inspecciona a los 15 y 30 días. Si no se corrigen las no conformidades, SQA reporta el problema al Gerente de Desarrollo con quien tiene excelente comunicación, ya que tanto los PMs como los auditores de SQA dependen jerárquicamente de esa misma gerencia. ¿Genera problemas de calidad?",
+        "type": "single",
+        "options": [
+            "No genera problemas, depender de la misma gerencia mejora la fluidez de la comunicación.",
+            "Sí podría generar problemas de calidad, porque el área de SQA debería depender de otra gerencia para evitar conflicto de intereses al escalar.",
+            "No genera problemas, el Gerente de Desarrollo es la máxima autoridad técnica.",
+            "Sí podría generar problemas, SQA nunca debe escalar informes a ninguna gerencia."
+        ],
+        "correctAnswers": [
+            1
+        ],
+        "exp": "CMMI PPQA exige independencia objetiva para el aseguramiento de la calidad. Si SQA depende de la misma Gerencia de Desarrollo que los PMs auditados, existe un claro conflicto de intereses donde los plazos de entrega subordinan a la calidad."
+    },
+    {
+        "id": 23,
+        "eje": "Eje 2: Aseguramiento de Calidad (PPQA)",
+        "q": "En el proyecto 'Despacho automatizado de Combustible' se introdujeron cambios sin ejecutar el workflow formal de requisitos. Tras tres informes de SQA observando la práctica sin cambios por parte del equipo, se eleva un informe al Gerente General. ¿A qué área y práctica específica de CMMI corresponde?",
+        "type": "single",
+        "options": [
+            "REQM / SP 1.3 Gestionar los cambios de los requerimientos",
+            "PPQA / SP 2.1 Comunicar y asegurar la resolución de las no conformidades",
+            "PMC / SP 1.7 Realizar revisiones de hitos",
+            "CM / SP 2.2 Realizar auditorías de configuración"
+        ],
+        "correctAnswers": [
+            1
+        ],
+        "exp": "Elevar una no conformidad no resuelta a niveles directivos superiores fuera del proyecto para forzar su resolución es exactamente la práctica PPQA SP 2.1 ('Comunicar y asegurar la resolución de las no conformidades')."
+    },
+    {
+        "id": 24,
+        "eje": "Eje 2: Aseguramiento de Calidad (PPQA)",
+        "q": "Personal de la Software Factory externo al equipo de proyecto realiza un control para verificar si el contenido de los Casos de Uso (o Casos de Prueba) cumple con las directrices definidas en el estándar de la organización. ¿A qué práctica de CMMI corresponde?",
+        "type": "single",
+        "options": [
+            "PPQA / SP 1.2 Evaluar objetivamente los productos de trabajo y los servicios",
+            "VER / SP 2.2 Llevar a cabo las revisiones entre pares",
+            "VAL / SP 1.2 Seleccionar productos para validación",
+            "RD / SP 3.5 Validar los requisitos"
         ],
         "correctAnswers": [
             0
         ],
-        "exp": "A diferencia de UTM, el IGN divide a la Argentina en 7 fajas (numeradas del 1 al 7) para minimizar las deformaciones cartográficas."
+        "exp": "PPQA SP 1.2 ('Evaluar objetivamente los productos de trabajo y los servicios') consiste en que evaluadores independientes al proyecto revisen artefactos contra las descripciones y estándares organizacionales de proceso aplicables."
     },
     {
-        "q": "En una escala numérica (ej: 1:50.000), ¿qué ocurre si el denominador es más grande (ej: 1:1.000.000)?",
+        "id": 25,
+        "eje": "Eje 2: Aseguramiento de Calidad (PPQA)",
+        "q": "Personal externo al proyecto controla si los Casos de Uso cumplen con directrices de escritura. En la lista de opciones del examen aparecen escritas: 'PPQA / SP 1.2 Evaluar objetivamente la verificación', 'REQM / SP 1.1', 'CM / SP 1.1' y 'Ninguna de las otras opciones'. ¿Cuál es la respuesta correcta?",
         "type": "single",
         "options": [
-            "El mapa muestra un área menor con muchísimo más nivel de detalle.",
-            "La escala se considera 'mayor' y representa lotes urbanos.",
-            "La reducción del terreno es mayor, por lo tanto, la escala es 'menor' y muestra menos detalle.",
-            "El mapa deja de estar georreferenciado."
+            "PPQA / SP 1.2 Evaluar objetivamente la verificación",
+            "REQM / SP 1.1 Comprender los requerimientos",
+            "CM / SP 1.1 Identificar elementos de configuración",
+            "Ninguna de las otras opciones"
         ],
         "correctAnswers": [
-            2
-        ],
-        "exp": "Cuanto mayor es el denominador, más veces se ha achicado la realidad para entrar en el papel. Por ende, muestra áreas más extensas pero con menor detalle (escala menor)."
-    },
-    {
-        "q": "Tipos y distorsiones de Proyecciones Cartográficas",
-        "type": "multi",
-        "options": [
-            "Toda proyección cartográfica genera algún tipo de distorsión porque es imposible pasar una superficie esférica a un plano de forma perfecta.",
-            "Las proyecciones pueden clasificarse geométricamente en cilíndricas, cónicas y acimutales.",
-            "La famosa proyección de Mercator es un claro ejemplo de proyección cónica.",
-            "Las proyecciones acimutales se realizan sobre un plano tangente a la esfera terrestre."
-        ],
-        "correctAnswers": [
-            0,
-            1,
             3
         ],
-        "exp": "La opción C es falsa. Mercator es históricamente una proyección de tipo cilíndrica."
+        "exp": "¡Clásica trampa de examen en UTN FRRO! El nombre oficial de CMMI es 'Evaluar objetivamente los productos de trabajo y los servicios'. Como en las opciones alteraron deliberadamente el nombre escribiendo 'la verificación' (práctica inexistente), la opción correcta a marcar es 'Ninguna de las otras opciones'."
     },
     {
-        "q": "Detalles y arquitectura de los formatos Vectoriales",
-        "type": "multi",
-        "options": [
-            "El popular formato Shapefile (.shp) requiere obligatoriamente de un conjunto de archivos vinculados guardados en el mismo directorio (ej. .shp, .shx, .dbf) para funcionar correctamente.",
-            "Dentro de la estructura del Shapefile, el archivo con extensión .dbf es el encargado exclusivo de almacenar la tabla de atributos alfanuméricos.",
-            "Formatos como KML y su versión comprimida KMZ fueron desarrollados orientados a la visualización y el intercambio rápido en plataformas como Google Earth.",
-            "El formato moderno GeoPackage tiene la estricta limitación de almacenar únicamente capas vectoriales, siendo incompatible con modelos de malla continua."
-        ],
-        "correctAnswers": [
-            0,
-            1,
-            2
-        ],
-        "exp": "La opción D es falsa; una de las principales ventajas del GeoPackage moderno es su versatilidad como contenedor de bases de datos para almacenar múltiples capas, tanto vectoriales como ráster, en un mismo archivo."
-    },
-    {
-        "q": "Proyección Gauss-Krüger",
-        "type": "multi",
-        "options": [
-            "Es un modelo de proyección cilíndrica transversa conforme utilizado como sistema oficial en Argentina por el IGN.",
-            "Divide el territorio argentino en 7 fajas meridianas de 3 grados de ancho de longitud.",
-            "Para evitar trabajar con coordenadas cartesianas negativas, al eje Y (meridiano central) se le suma un Falso Este de 500.000 metros.",
-            "Divide todo el globo terrestre en 60 husos de 6 grados, al igual que el sistema global UTM."
-        ],
-        "correctAnswers": [
-            0,
-            1,
-            2
-        ],
-        "exp": "La opción D describe al sistema global UTM, no a la variante argentina Gauss-Krüger que usa fajas de 3 grados."
-    },
-    {
-        "q": "¿Hacia dónde apuntan las agujas de las brújulas en cualquier lugar de la Tierra?",
+        "id": 26,
+        "eje": "Eje 2: Aseguramiento de Calidad (PPQA)",
+        "q": "Se auditan 30 Casos de Uso (CU). Regla organizacional: si no hay caminos alternativos se escribe '<vacío>'. El historial tiene formato: 1{nro-version + fecha + responsable + descripción}. El checklist contiene: 1.1 ¿Se ha expresado la meta? [Si|No], 1.2 ¿La sección camino alternativo tiene contenido? [Si|No], 2.1 ¿El historial posee descripción en cada línea? [Si|No], 2.2 ¿El historial indica responsable? [Si|No]. ¿Cuál de los siguientes indicadores PUEDE obtenerse con este checklist?",
         "type": "single",
         "options": [
-            "Hacia el Norte Geográfico, determinado por el eje de rotación de la Tierra.",
-            "Hacia el Norte de Cuadrícula definido por el meridiano central de la proyección.",
-            "Hacia el Norte Magnético, el cual cambia de posición continuamente.",
-            "Hacia el Ecuador."
-        ],
-        "correctAnswers": [
-            2
-        ],
-        "exp": "Las brújulas señalan el Norte Magnético, generado por el núcleo de la Tierra. Este no coincide con el Norte Geográfico y está en constante desplazamiento."
-    },
-    {
-        "q": "¿Qué es la 'Declinación Magnética'?",
-        "type": "single",
-        "options": [
-            "La pérdida de señal GPS cuando hay nubes densas.",
-            "El ángulo formado entre la recta del Norte Geográfico y la recta del Norte Magnético.",
-            "La distorsión que sufren las formas en los polos usando Mercator.",
-            "El ángulo de convergencia entre meridianos paralelos."
+            "Cantidad de CU sin caminos alternativos",
+            "Cantidad de CU sin metas",
+            "Cantidad de CU sin historial de versiones",
+            "Cantidad de CU aprobados por el cliente"
         ],
         "correctAnswers": [
             1
         ],
-        "exp": "Se denomina declinación magnética al ángulo que separa el norte verdadero o geográfico del norte magnético indicado por la brújula en un punto dado."
+        "exp": "Solo 'Cantidad de CU sin metas' puede obtenerse (contando las respuestas 'No' de la pregunta 1.1). La pregunta 1.2 no permite saber si faltan caminos alternativos reales porque la etiqueta '<vacío>' cuenta como contenido. Y las preguntas 2.1 y 2.2 auditan campos internos de las filas existentes, no la ausencia total de la tabla de historial."
     },
     {
-        "q": "Infraestructura de Datos Espaciales (IDE)",
-        "type": "multi",
-        "options": [
-            "Es un conjunto articulado de políticas, acuerdos, estándares, recursos humanos y tecnologías.",
-            "Es un Entorno de Desarrollo Integrado, o sea un software que facilita la programación y prueba de aplicaciones informáticas.",
-            "Su objetivo es facilitar el acceso, la gestión y el intercambio de la información espacial evitando la duplicación de esfuerzos.",
-            "Sus principios incluyen la cooperación institucional, la interoperabilidad y la normalización."
-        ],
-        "correctAnswers": [
-            0,
-            2,
-            3
-        ],
-        "exp": "La opción B es la clásica trampa que cruza las siglas de la informática (IDE de programación) con la geomática; en SIG, es una infraestructura territorial."
-    },
-    {
-        "q": "Formatos orientados a Web y Webmapping",
-        "type": "multi",
-        "options": [
-            "El Webmapping consiste en la creación tecnológica de mapas dinámicos publicados en internet para que el usuario visualice e interactúe directamente desde la red.",
-            "El formato GML es el estándar acordado (basado en XML) para intercambiar geometrías y almacenar topologías vectoriales.",
-            "Formatos ligeros como GeoJSON y TopoJSON son altamente explotados en el desarrollo y la programación web moderna.",
-            "Para lograr un correcto despliegue webmapping, es un requisito obligatorio comprimir todas las capas vectoriales en el estándar gráfico JPEG 2000."
-        ],
-        "correctAnswers": [
-            0,
-            1,
-            2
-        ],
-        "exp": "La opción D es incorrecta; JPEG 2000 es un formato utilizado para imágenes y coberturas (ráster), no se aplica para comprimir datos vectoriales, los cuales utilizan GeoJSON, GML o WKT."
-    },
-    {
-        "q": "Un archivo con extensión .SHP (Shapefile) desarrollado por ESRI se compone obligatoriamente de:",
+        "id": 27,
+        "eje": "Eje 3: Medición y Análisis (MA)",
+        "q": "Una empresa analiza 4 afirmaciones sobre medición: 1) Alinear métricas con objetivos de negocio. 2) Recopilar datos inmediatamente sin definir procedimientos formales. 3) Documentar cómo, cuándo y quién tomará los datos. 4) Obtener evidencia objetiva para tomar decisiones. ¿Cuáles afirmaciones son coherentes con el área MA?",
         "type": "single",
         "options": [
-            "Un único archivo que guarda la geometría y los atributos a la vez.",
-            "Varios archivos vinculados (como .shp, .shx, .dbf) que deben guardarse en la misma carpeta.",
-            "Una imagen de mapa de bits (como un JPEG) más un archivo de texto.",
-            "Celdas rectangulares que contienen valores de altitud."
+            "Solo las afirmaciones 1, 3 y 4 son coherentes con MA.",
+            "Todas las afirmaciones (1, 2, 3 y 4) son coherentes.",
+            "Solo las afirmaciones 2 y 4 son coherentes.",
+            "Solo la afirmación 1 es coherente."
+        ],
+        "correctAnswers": [
+            0
+        ],
+        "exp": "La afirmación 2 viola directamente MA SP 1.3 ('Especificar los procedimientos de recogida y almacenamiento de datos'). CMMI prohíbe recolectar métricas 'en crudo' sin procedimientos documentados que garanticen su validez y consistencia."
+    },
+    {
+        "id": 28,
+        "eje": "Eje 3: Medición y Análisis (MA)",
+        "q": "Clasifique las siguientes métricas: 1) % Cumplimiento de plazos por fase, 2) Nº de Defectos identificados por fase, 3) Horas planificadas vs horas reales, 4) % Tareas completadas a tiempo en cada iteración, 5) Tiempo promedio de aprobación en revisiones de código.",
+        "type": "single",
+        "options": [
+            "Métricas de proceso: 1, 3, 5; Métricas de proyecto: 2, 4",
+            "Métricas de proceso: 2, 5; Métricas de proyecto: 1, 3, 4",
+            "Métricas de proceso: 3, 4; Métricas de proyecto: 1, 2, 5",
+            "Todas corresponden a métricas de proyecto"
         ],
         "correctAnswers": [
             1
         ],
-        "exp": "El estándar Shapefile no es un solo archivo. Requiere como mínimo el .shp (geometría), .shx (índice espacial) y .dbf (tabla de atributos)."
+        "exp": "Las métricas 1, 3 y 4 controlan el avance táctico de cronograma y costo de un proyecto específico (PMC). Las métricas 2 (densidad de defectos por fase) y 5 (eficiencia de revisiones) evalúan el rendimiento del proceso de ingeniería general."
     },
     {
-        "q": "Si en un sistema Gauss-Krüger observamos que a las ordenadas (Eje Y) se les suma un Falso Este de 500.000 metros, ¿cuál es la finalidad?",
-        "type": "single",
-        "options": [
-            "Ubicar el mapa exactamente en el Ecuador.",
-            "Aumentar el nivel de detalle (escala) de la cartografía.",
-            "Impedir que al trabajar al oeste del meridiano central se produzcan coordenadas cartesianas con valores negativos.",
-            "Corregir la desviación del norte magnético."
-        ],
-        "correctAnswers": [
-            2
-        ],
-        "exp": "Para facilitar los cálculos matemáticos, se desplaza el origen 500.000 metros al Oeste, asegurando que todos los valores X dentro de la faja sean positivos."
-    },
-    {
-        "q": "Los tres Nortes en cartografía",
+        "id": 29,
+        "eje": "Eje 3: Medición y Análisis (MA)",
+        "q": "¿Cuáles de las siguientes afirmaciones sobre la teoría de métricas de software son VERDADERAS?",
         "type": "multi",
         "options": [
-            "El Norte Magnético es aquel hacia el cual apuntan las agujas de las brújulas y cambia su posición continuamente.",
-            "El Norte Geográfico es fijo y está determinado por el eje de rotación de la Tierra.",
-            "La convergencia de meridianos es el ángulo formado entre el Norte Geográfico y el Norte Magnético.",
-            "El Norte de Cuadrícula es la dirección paralela al meridiano central del sistema de proyección utilizado."
+            "No se obsesione con una sola métrica ni excluya otras métricas importantes.",
+            "Se deben usar las métricas para valorar, premiar o castigar a los individuos del equipo.",
+            "Las medidas de proyecto son tácticas, mientras que las métricas de proceso de software son estratégicas.",
+            "Si un dato se puede medir en el sistema, necesariamente debe implementarse y recopilarse."
         ],
         "correctAnswers": [
             0,
-            1,
-            3
-        ],
-        "exp": "La opción C es falsa. El ángulo entre el Norte Geográfico y el Magnético se llama Declinación Magnética. La Convergencia de Meridianos involucra al Norte de Cuadrícula."
-    },
-    {
-        "q": "¿Qué estándar o sistema global (Datum) es utilizado por defecto por los dispositivos de Posicionamiento Global (GPS)?",
-        "type": "single",
-        "options": [
-            "POSGAR 2007",
-            "Campo Inchauspe 1969",
-            "WGS 84 (World Geodetic System 1984)",
-            "Gauss-Krüger"
-        ],
-        "correctAnswers": [
             2
         ],
-        "exp": "El WGS 84 es el Datum geocéntrico estándar global sobre el cual operan los satélites GPS."
+        "exp": "Las métricas miden productos y procesos, jamás individuos (B es falsa). Solo se mide aquello que aporta valor a los objetivos de negocio (D es falsa). Es fundamental usar un cuadro balanceado de métricas (A es verdadera) y entender que las de proyecto son tácticas y las de proceso estratégicas (C es verdadera)."
     },
     {
-        "q": "Características del Sistema Internacional de Referencia Terrestre (ITRS/CTRS)",
-        "type": "multi",
-        "options": [
-            "Su punto de origen exacto coincide directamente con el centro de masas tridimensional de la Tierra.",
-            "Plantea una materialización práctica estructurada sobre una terna global de ejes cartesianos ortogonales (X, Y, Z).",
-            "En su diseño, el eje 'Z' se asocia y alinea de manera coincidente con el eje de rotación de la Tierra.",
-            "Debido a su alcance planetario, el CTRS entrega sus coordenadas finales expresadas únicamente en latitud y longitud geográficas."
-        ],
-        "correctAnswers": [
-            0,
-            1,
-            2
-        ],
-        "exp": "La opción D es la trampa; las coordenadas geográficas usan grados, pero el CTRS utiliza los ejes tridimensionales con coordenadas cartesianas globales (valores X, Y y Z medidos métricamente desde el centro del planeta)."
-    },
-    {
-        "q": "Dentro de las proyecciones cartográficas, ¿cuál es la característica de las proyecciones Acimutales (o Planas)?",
+        "id": 30,
+        "eje": "Eje 3: Medición y Análisis (MA)",
+        "q": "En el marco del método PSM (Practical Software Measurement), relacione cada actividad con su fase correspondiente (Planificar, Ejecutar, Evaluar la medición):",
         "type": "single",
         "options": [
-            "Utilizan un cilindro como figura auxiliar envolviendo la Tierra por el Ecuador.",
-            "Se construyen mediante un plano tangente que toca la esfera en un único punto.",
-            "Dividen la Tierra en 60 husos transversales.",
-            "Los meridianos son líneas rectas concurrentes y los paralelos círculos concéntricos."
+            "Seleccionar medidas (Planificar), Comprar software de apoyo (Planificar), Informar resultados (Ejecutar), Identificar puntos débiles a mejorar (Evaluar), Construir histograma con resultados (Ejecutar).",
+            "Seleccionar medidas (Ejecutar), Comprar software de apoyo (Planificar), Informar resultados (Evaluar).",
+            "Construir histogramas (Planificar), Informar resultados (Evaluar), Comprar software de apoyo (Ejecutar).",
+            "Todas las actividades pertenecen a la fase de Planificación de PSM."
+        ],
+        "correctAnswers": [
+            0
+        ],
+        "exp": "En PSM: Planificar incluye definir objetivos, seleccionar medidas y adquirir software de soporte; Ejecutar incluye recolectar datos, elaborar gráficos/histogramas y comunicar informes; Evaluar comprende revisar periódicamente el proceso de medición para optimizarlo."
+    },
+    {
+        "id": 31,
+        "eje": "Eje 3: Medición y Análisis (MA)",
+        "q": "En los atributos de calidad de software (ISO 25010 / McCall), ¿cómo se denominan respectivamente: 1) El esfuerzo requerido para aprender, operar y usar un programa? y 2) La facilidad con la que un software puede modificarse o corregirse ante un fallo?",
+        "type": "single",
+        "options": [
+            "1: Eficiencia, 2: Portabilidad",
+            "1: Usabilidad, 2: Mantenibilidad",
+            "1: Fiabilidad, 2: Reusabilidad",
+            "1: Funcionalidad, 2: Flexibilidad"
         ],
         "correctAnswers": [
             1
         ],
-        "exp": "Las proyecciones acimutales proyectan la Tierra sobre un plano tangente a un punto, preservando fielmente los acimuts (direcciones) desde dicho centro."
+        "exp": "Usabilidad (Usability) mide la facilidad de aprendizaje y operación por parte del usuario. Mantenibilidad (Maintainability) mide el esfuerzo necesario para diagnosticar y corregir errores o introducir cambios en el software."
     },
     {
-        "q": "Metadatos",
-        "type": "multi",
-        "options": [
-            "Se definen analíticamente como los 'datos sobre los datos', aportando contexto, origen y calidad a la capa geográfica.",
-            "Resultan indispensables para que un analista evalúe la confiabilidad técnica antes de utilizarlos en proyectos.",
-            "Su función principal es almacenar las geometrías de los polígonos que no entran en un shapefile.",
-            "Deben documentar características como el organismo responsable, fecha, sistema de coordenadas y escala."
-        ],
-        "correctAnswers": [
-            0,
-            1,
-            3
-        ],
-        "exp": "La opción C es falsa. Los metadatos no guardan geometrías, sino descripciones documentales y parámetros de calidad."
-    },
-    {
-        "q": "¿Qué permite hacer la 'Calculadora de Campos' en el software QGIS?",
+        "id": 32,
+        "eje": "Eje 4: Requisitos (RD / REQM)",
+        "q": "Dado un diagrama de Venn donde el conjunto A representa 'Expectativas y necesidades reales del cliente' y el conjunto B representa 'Requerimientos documentados del sistema', ¿qué representa la región (B - A)?",
         "type": "single",
         "options": [
-            "Descargar imágenes satelitales de alta resolución de Google Earth.",
-            "Generar nuevas columnas en la tabla de atributos ejecutando funciones espaciales o matemáticas (como $length o $area).",
-            "Convertir el Norte Magnético a Norte Geográfico.",
-            "Publicar automáticamente mapas en un servidor WMS."
+            "Requerimientos faltantes que el cliente necesita pero desarrollo olvidó relevar.",
+            "Requerimientos documentados o construidos en el sistema que no responden a ninguna necesidad real del cliente (sobre-ingeniería, gold-plating o mal relevamiento).",
+            "Requisitos validados y aprobados por ambas partes en la línea base.",
+            "Defectos de programación encontrados durante las pruebas unitarias."
         ],
         "correctAnswers": [
             1
         ],
-        "exp": "La calculadora de campos es la herramienta analítica para manipular la tabla de atributos, calculando áreas, longitudes o concatenando cadenas de texto."
+        "exp": "(B - A) corresponde a lo que el equipo especificó o desarrolló pero que el cliente jamás necesitó ni solicitó (gold plating / desperdicio). La región (A - B) representa necesidades insatisfechas del cliente."
     },
     {
-        "q": "Si un archivo CSV solo contiene tablas de datos poblacionales sin ninguna columna referida a coordenadas (como Latitud/Longitud o WKT), en QGIS:",
+        "id": 33,
+        "eje": "Eje 4: Requisitos (RD / REQM)",
+        "q": "En el mismo diagrama de Venn, ¿cómo se puede evidenciar y asegurar que se ha conseguido la intersección (A ∩ B), es decir, que los requisitos del sistema coinciden con las necesidades del cliente?",
         "type": "single",
         "options": [
-            "Se generará automáticamente una capa vectorial de polígonos.",
-            "Dará error y cerrará el programa inmediatamente.",
-            "Se incorporará exclusivamente como una tabla de atributos alfanumérica sin renderizar geometría en el mapa.",
-            "El programa adivinará la ubicación basándose en los nombres de las ciudades."
-        ],
-        "correctAnswers": [
-            2
-        ],
-        "exp": "Sin coordenadas explícitas, el SIG no puede geolocalizar los registros, por lo que el CSV entra simplemente como una tabla relacional no espacial."
-    },
-    {
-        "q": "Dimensiones y componentes estructurales de una IDE",
-        "type": "multi",
-        "options": [
-            "La Dimensión Tecnológica es la infraestructura 'dura' e incluye datos espaciales, metadatos, estándares técnicos y los servidores/servicios web.",
-            "La Dimensión de Gestión u Organización se encarga de articular el marco legal, los convenios y los acuerdos de cooperación entre los distintos ministerios y direcciones.",
-            "La Dimensión Humana contempla a los técnicos productores, los analistas usuarios y la voluntad política que impulsa todo el proyecto.",
-            "La Dimensión Satelital es el bloque enfocado de manera exclusiva en el control telemétrico y calibración de órbitas de los satélites en el espacio."
-        ],
-        "correctAnswers": [
-            0,
-            1,
-            2
-        ],
-        "exp": "La opción D es falsa y un elemento distractor; la teoría no enumera ninguna 'dimensión satelital' como componente intrínseco para el funcionamiento de una IDE."
-    },
-    {
-        "q": "Estándares OGC e Interoperabilidad",
-        "type": "multi",
-        "options": [
-            "La interoperabilidad permite que sistemas informáticos heterogéneos se comuniquen e intercambien procesos sin trabas.",
-            "El OGC (Open Geospatial Consortium) es la entidad que elabora los estándares técnicos para garantizar dicha comunicación.",
-            "El OGC define los vocabularios y protocolos (como WMS o WFS) para que un cliente y servidor hablen un lenguaje común.",
-            "La interoperabilidad obliga a todos los organismos públicos a comprar exactamente la misma marca comercial de software SIG."
-        ],
-        "correctAnswers": [
-            0,
-            1,
-            2
-        ],
-        "exp": "La opción D es lo contrario al concepto: la interoperabilidad busca precisamente que diferentes plataformas y marcas puedan entenderse sin requerir homogeneidad comercial."
-    },
-    {
-        "q": "¿Qué rol juega la Información Geográfica Voluntaria (ej. OpenStreetMap) en los SIG modernos?",
-        "type": "single",
-        "options": [
-            "Es un archivo histórico obsoleto que ya no se utiliza.",
-            "Representa un pilar importante alimentado por las aportaciones libres de los usuarios en línea para nutrir políticas de Datos Abiertos.",
-            "Es la única fuente autorizada por el IGN para digitalizar rutas.",
-            "Es un formato de archivo cerrado y privativo similar al KML."
+            "Realizando compilación continua del código fuente y pruebas de caja blanca.",
+            "Mediante actividades formales de Validación (UAT, pruebas piloto, prototipos y walkthroughs con stakeholders firmando la línea base).",
+            "Duplicando el número de analistas funcionales en la Software Factory.",
+            "Eliminando los caminos alternativos de los casos de uso."
         ],
         "correctAnswers": [
             1
         ],
-        "exp": "La IGV (VGI en inglés) ha cobrado vital importancia gracias al aporte colaborativo y funciona como una enorme base de Datos Abiertos."
+        "exp": "La coincidencia entre lo especificado y lo que el cliente realmente necesita se valida mediante Validación (VAL y RD SP 3.5): pruebas de aceptación con usuarios (UAT), prototipos navegables y revisiones de alcance con firma de Línea Base."
     },
     {
-        "q": "La conocida Proyección de Mercator se clasifica como:",
+        "id": 34,
+        "eje": "Eje 4: Requisitos (RD / REQM)",
+        "q": "¿Cuál de los siguientes elementos corresponde fundamentalmente al propósito de RD (Desarrollo de Requisitos) en CMMI?",
         "type": "single",
         "options": [
-            "Acimutal Polar.",
-            "Cónica Conforme.",
-            "Cilíndrica.",
-            "Ninguna de las anteriores, es un Datum."
+            "Validar que la edad ingresada en un formulario esté entre 0 y 120 años.",
+            "Definir que existe una empresa comercializadora de turnos médicos.",
+            "Identificar que los usuarios necesitan solicitar turnos con diferentes tipos de consulta.",
+            "Verificar que todos los valores ingresados en la base de datos sean requeridos."
         ],
         "correctAnswers": [
             2
         ],
-        "exp": "Diseñada por Gerardus Mercator, es la proyección cilíndrica más famosa, manteniendo los ángulos rectos entre paralelos y meridianos (conforme) pero distorsionando fuertemente las áreas hacia los polos."
+        "exp": "RD (SP 1.1 y 1.2) se enfoca en elicitar y transformar las necesidades de los interesados en requisitos del cliente y del producto. Validar rangos o constraints de campos son controles de diseño o implementación."
     },
     {
-        "q": "Diferencias entre servicios WMS y WFS",
-        "type": "multi",
-        "options": [
-            "El WMS (Web Map Service) devuelve la cartografía renderizada en un formato de imagen estándar (ej. PNG, JPEG).",
-            "El WFS (Web Feature Service) permite acceder a los datos vectoriales subyacentes junto a todos sus atributos.",
-            "El WFS, en sus versiones transaccionales, permite crear, editar y eliminar geometrías a través de la red.",
-            "El WMS permite al usuario descargar directamente el shapefile original para modificar su topología."
-        ],
-        "correctAnswers": [
-            0,
-            1,
-            2
-        ],
-        "exp": "La opción D es la trampa clásica. El WMS solo muestra 'fotos' (visualización); para interactuar o extraer vectores reales se utiliza el WFS."
-    },
-    {
-        "q": "Estándares visuales y desafíos de adopción de una IDE",
-        "type": "multi",
-        "options": [
-            "A pesar del despliegue necesario, en la implementación real de una IDE los desafíos netamente tecnológicos son menores frente a los severos obstáculos culturales e institucionales.",
-            "El éxito de toda la estrategia depende críticamente de contar con un sólido apoyo y patrocinio político gubernamental.",
-            "El estándar OGC denominado SLD (Style Layer Descriptor) es la herramienta normativa utilizada para aplicar estilos o simbología gráfica personalizada a las capas en la red.",
-            "El principal impedimento para formar una IDE hoy en día es que los componentes de hardware comercial son incapaces de soportar peticiones cliente-servidor."
-        ],
-        "correctAnswers": [
-            0,
-            1,
-            2
-        ],
-        "exp": "La opción D no tiene base en los textos y contradice el hecho de que el obstáculo principal es institucional/humano, no la supuesta falta de capacidad del hardware comercial moderno."
-    },
-    {
-        "q": "¿Qué significa que los sistemas SIG modernos promuevan la 'Interoperabilidad'?",
+        "id": 35,
+        "eje": "Eje 4: Requisitos (RD / REQM)",
+        "q": "Como los gerentes rechazaban aprobaciones en el 70% de las ocasiones, se decidió que a partir de ahora solo los gerentes formarán parte de las reuniones de relevamiento de requerimientos, sin consultar jamás a usuarios operativos. ¿Podría generar problemas de calidad?",
         "type": "single",
         "options": [
-            "Que todos los usuarios deben usar obligatoriamente el mismo software comercial.",
-            "Que solo se pueden usar bases de datos físicas (locales) sin conexión a internet.",
-            "Que sistemas informáticos heterogéneos pueden comunicarse, ejecutar y compartir datos sin que el usuario conozca las características internas del otro sistema.",
-            "Que los vectores se transforman automáticamente en imágenes raster al acercar el zoom."
+            "No genera problemas, los gerentes son los únicos responsables de las decisiones.",
+            "No genera problemas, agiliza los tiempos y cumple con los objetivos de REQM.",
+            "Sí podría generar problemas de calidad, fundamentalmente porque se requiere también la visión de los usuarios operativos para el surgimiento y relevamiento de los nuevos requerimientos.",
+            "Sí podría generar problemas, solo porque los usuarios operativos deben programar el sistema."
         ],
         "correctAnswers": [
             2
         ],
-        "exp": "La interoperabilidad, facilitada por estándares del OGC, permite que QGIS, ArcGIS y servicios web 'hablen el mismo idioma' de forma transparente."
+        "exp": "RD SP 1.1 exige obtener las necesidades de todas las partes interesadas relevantes. Excluir a los usuarios finales operativos provoca que el sistema omita escenarios reales del trabajo diario y sea rechazado en la operación real."
     },
     {
-        "q": "Respecto a los formatos espaciales, el GeoPackage (.gpkg) se destaca porque:",
+        "id": 36,
+        "eje": "Eje 4: Requisitos (RD / REQM)",
+        "q": "El cliente solicita que la plataforma permita acceso desde dispositivos móviles, pero no especifica cuáles dispositivos, pantallas o sistemas operativos deben ser compatibles. Según mejores prácticas de RD, ¿cómo debe proceder el equipo?",
         "type": "single",
         "options": [
-            "Solo puede almacenar un archivo KML a la vez.",
-            "Está quedando obsoleto y fue reemplazado por el Shapefile.",
-            "Es un formato moderno basado en bases de datos que permite guardar múltiples capas vectoriales y raster en un único archivo.",
-            "No soporta proyecciones cartográficas ni tablas de atributos."
+            "Implementar en cualquier tecnología y ajustar según reclamos en producción.",
+            "Definir una lista de dispositivos y sistemas operativos estándar y confirmar esta lista con el cliente para asegurar que el requisito sea claro y específico.",
+            "Ignorar el requisito y hacer un diseño web convencional para PC.",
+            "Permitir que cada programador elija la resolución según su teléfono personal."
         ],
         "correctAnswers": [
-            2
+            1
         ],
-        "exp": "GeoPackage es el formato abierto moderno por excelencia, actuando como un contenedor SQLite capaz de albergar toda la estructura de un proyecto (vectores y raster) en un solo fichero."
+        "exp": "En RD SP 3.1 / 3.3, los requisitos ambiguos o incompletos deben clarificarse definiendo alternativas concretas y validándolas con el cliente antes del diseño para establecer un alcance técnico verificable."
     },
     {
-        "q": "Otros Geoservicios (WCS y CSW)",
+        "id": 37,
+        "eje": "Eje 4: Requisitos (RD / REQM)",
+        "q": "En un sistema de educación en línea se detecta que los requisitos de usabilidad son vagos, sin métricas sobre tiempos de carga ni facilidad de navegación. Según RD, ¿cuál es el siguiente paso correcto?",
+        "type": "single",
+        "options": [
+            "Continuar el desarrollo y medir la usabilidad cuando el software esté en producción.",
+            "Solicitar una reunión con el cliente para definir métricas específicas y verificables de usabilidad y actualizar la documentación de requisitos.",
+            "Asumir valores arbitrarios de diseño sin consultar al cliente.",
+            "Eliminar los requisitos no funcionales del plan del proyecto."
+        ],
+        "correctAnswers": [
+            1
+        ],
+        "exp": "Los atributos no funcionales de calidad deben ser cuantitativos y comprobables. RD exige consensuar con el cliente métricas objetivas (ej: tiempo máximo de respuesta < 2s) y plasmarlas en la especificación de requisitos."
+    },
+    {
+        "id": 38,
+        "eje": "Eje 4: Requisitos (RD / REQM)",
+        "q": "En la fase de pruebas de un e-commerce, el cliente pide registrar automáticamente la navegación de los usuarios, lo cual implica normativas legales de privacidad de datos. Según REQM, ¿cuál es el primer paso a seguir?",
+        "type": "single",
+        "options": [
+            "Implementar el código inmediatamente y después notificar en los términos y condiciones.",
+            "Consultar con el equipo de legal y privacidad sobre el cumplimiento normativo y actualizar la matriz de trazabilidad para reflejar los impactos del cambio.",
+            "Rechazar la solicitud de forma automática por encontrarse en fase de pruebas.",
+            "Implementar la base de datos sin registrar el cambio en la matriz de trazabilidad."
+        ],
+        "correctAnswers": [
+            1
+        ],
+        "exp": "REQM SP 1.3 exige evaluar el impacto integral de los cambios antes de aceptarlos (incluyendo restricciones legales) y mantener actualizada la trazabilidad bidireccional (REQM SP 1.4)."
+    },
+    {
+        "id": 39,
+        "eje": "Eje 4: Requisitos (RD / REQM)",
+        "q": "Durante la implementación de un sistema de control de acceso, el cliente necesita añadir restricciones horarias para personal externo que impactan en varios subsistemas. ¿Qué proceso debe seguirse según REQM?",
+        "type": "single",
+        "options": [
+            "Realizar un análisis exhaustivo de cómo las restricciones horarias afectarán otros subsistemas y actualizar la matriz de trazabilidad para reflejar estos impactos antes de proceder.",
+            "Comenzar a codificar el cambio en los subsistemas sin modificar la matriz de trazabilidad.",
+            "Ajustar los requerimientos de forma informal sin análisis de impacto.",
+            "Pedir al cliente que postergue todas las restricciones para la siguiente versión anual."
+        ],
+        "correctAnswers": [
+            0
+        ],
+        "exp": "El análisis de impacto y la actualización de la trazabilidad bidireccional son obligatorios en REQM (SP 1.3 y 1.4) antes de autorizar cualquier modificación que afecte múltiples componentes del sistema."
+    },
+    {
+        "id": 40,
+        "eje": "Eje 4: Requisitos (RD / REQM)",
+        "q": "Se detecta en las pruebas con el usuario que el sistema valida de manera errónea la cantidad de consultas mensuales permitidas. ¿Qué área de CMMI brinda la información para rastrear el origen de la falla y gestionar la discrepancia?",
+        "type": "single",
+        "options": [
+            "REQM (a través de la trazabilidad bidireccional SP 1.4 e inconsistencias SP 1.5)",
+            "OPD (a través del repositorio de procesos)",
+            "OT (a través del plan de capacitación)",
+            "PP (a través de la EDT)"
+        ],
+        "correctAnswers": [
+            0
+        ],
+        "exp": "REQM SP 1.4 mantiene la trazabilidad bidireccional entre casos de prueba, código y requisitos. REQM SP 1.5 identifica y gestiona las inconsistencias entre el producto de trabajo y los requisitos aprobados."
+    },
+    {
+        "id": 41,
+        "eje": "Eje 4: Requisitos (RD / REQM)",
+        "q": "¿Cuáles de los siguientes aspectos del proyecto se pueden gestionar y optimizar mediante una correcta PRIORIZACIÓN de requerimientos?",
         "type": "multi",
         "options": [
-            "El WCS (Web Coverage Service) sirve para acceder a coberturas continuas, como variables raster e imágenes.",
-            "El CSW (Catalog Service for Web) es el protocolo estándar para buscar y localizar información mediante catálogos de metadatos.",
-            "El CSW es el servicio encargado de transformar las coordenadas geográficas de WGS84 a Gauss-Krüger.",
-            "Estos geoservicios utilizan peticiones vía web, siendo una alternativa eficiente a la descarga de pesados discos duros."
+            "Recursos limitados del proyecto",
+            "Altas expectativas de los clientes o usuarios",
+            "La marca del hardware utilizado en la Software Factory",
+            "El sistema operativo de los servidores de la AFIP"
         ],
         "correctAnswers": [
             0,
-            1,
-            3
+            1
         ],
-        "exp": "La opción C es falsa; el CSW es estrictamente un buscador de metadatos, no un motor de conversión o transformación de sistemas de coordenadas."
+        "exp": "La priorización de requisitos optimiza la asignación de recursos limitados (tiempo y presupuesto) y permite gestionar las altas expectativas del cliente asegurando que lo de mayor valor de negocio se entregue primero."
     },
     {
-        "q": "Escala y resoluciones cartográficas",
+        "id": 42,
+        "eje": "Eje 4: Requisitos (RD / REQM)",
+        "q": "¿Cuáles de los siguientes factores ayudan formalmente a PRIORIZAR los requisitos en un proyecto de software?",
         "type": "multi",
         "options": [
-            "La escala cartográfica es una razón de proporcionalidad entre una medida en el mapa y la realidad.",
-            "Una escala numérica 1:1.000.000 se considera 'mayor escala' (y por ende de mayor detalle) que un mapa 1:1.500.000.",
-            "Cuanto mayor es el denominador de la escala, mayor es la reducción que sufre el terreno.",
-            "La escala gráfica pierde su utilidad si el mapa es escaneado o fotocopiado y cambia de tamaño físico."
-        ],
-        "correctAnswers": [
-            0,
-            1,
-            2
-        ],
-        "exp": "La opción D es un error conceptual: justamente la ventaja de la escala gráfica (la barrita dibujada) es que si fotocopias/amplías el mapa, la barra crece en proporción, manteniendo su validez."
-    },
-    {
-        "q": "Diseño métrico y Falso Origen en la Proyección Gauss-Krüger (Argentina)",
-        "type": "multi",
-        "options": [
-            "Para la planimetría nacional, el origen métrico del Eje X (Ordenadas) se ancla al Polo Sur, creciendo hacia valores positivos en dirección al Norte.",
-            "El origen del Eje Y (Abscisas) corresponde matemáticamente al meridiano central particular de cada una de las 7 fajas.",
-            "Al valor final coordenado del Eje Y se le suele anteponer directamente como prefijo el dígito que identifica el número de su faja.",
-            "Para impedir tener coordenadas negativas hacia el Oeste, al meridiano central (Eje Y) se le resta sistemáticamente la constante de 500.000 metros."
-        ],
-        "correctAnswers": [
-            0,
-            1,
-            2
-        ],
-        "exp": "La opción D es falsa, ya que para que todos los números queden en rango positivo el Falso Este de 500.000 metros debe sumarse al meridiano central, no restarse."
-    },
-    {
-        "q": "Geoportal vs Visualizador",
-        "type": "multi",
-        "options": [
-            "Ambos son interfaces web diseñadas para interactuar con datos en el marco de una IDE.",
-            "Un Visualizador web permite navegar, hacer paneos y ver el mapa, pero no permite la descarga de los datos crudos.",
-            "El Geoportal es más avanzado porque, además de visualizar, incluye catálogos, enlaces WFS y habilita la descarga de capas en formatos nativos.",
-            "El Visualizador del IGN es funcionalmente idéntico a un Geoportal porque ambos permiten extraer .shp y .csv libremente."
-        ],
-        "correctAnswers": [
-            0,
-            1,
-            2
-        ],
-        "exp": "La opción D es falsa, ya que el texto distingue explícitamente al visualizador (que restringe descargas) del geoportal (que permite el acceso completo)."
-    },
-    {
-        "q": "Operaciones en herramientas SIG (QGIS)",
-        "type": "multi",
-        "options": [
-            "En QGIS, si un proyecto usa proyecciones geográficas puras (EPSG 4326), se verán fuertes achatamientos horizontales al acercarse a los polos.",
-            "La 'Calculadora de Campos' es fundamental para generar nuevas columnas alfanuméricas o calcular áreas directas ($area) sobre polígonos.",
-            "Es posible conectar directamente mapas base comerciales usando complementos como Quick Map Services sin sobrecargar el disco duro.",
-            "Al cargar un archivo CSV de texto, es imposible georreferenciarlo si no está convertido previamente a formato Shapefile en otro programa."
-        ],
-        "correctAnswers": [
-            0,
-            1,
-            2
-        ],
-        "exp": "La opción D es falsa; QGIS es perfectamente capaz de leer un CSV puro y, si este tiene columnas 'X' e 'Y' o formato WKT, lo dibuja como una capa de puntos espaciales al instante."
-    },
-    {
-        "q": "Áreas de aplicación de la Tecnología SIG",
-        "type": "multi",
-        "options": [
-            "Gestión Pública: modernización catastral, planificación urbana e impacto de grandes obras de infraestructura.",
-            "Geomarketing: optimización logística, mapas de distribución y localización óptima basada en el perfil territorial de los clientes.",
-            "Utilities: administración topológica de redes de conducción críticas, como tendidos eléctricos, gasoductos o fibra óptica.",
-            "Seguridad ciudadana: creación de mapas de calor para analizar la incidencia de homicidios por zonas barriales."
+            "Coste y tiempo necesario para la implementación",
+            "Valor percibido para el cliente y objetivos del negocio",
+            "Facilidad de implementación tecnológica y organizacional",
+            "Restricciones legales y normativas aplicables"
         ],
         "correctAnswers": [
             0,
@@ -972,41 +1008,897 @@
             2,
             3
         ],
-        "exp": "Todas las afirmaciones corresponden textualmente a los ejemplos empíricos listados de las aplicaciones transversales de los sistemas."
+        "exp": "Todos los factores mencionados intervienen formalmente en la priorización: costo, valor, tiempo, factibilidad técnica/organizacional, alineación estratégica con el negocio y restricciones regulatorias."
     },
     {
-        "q": "Análisis de casos prácticos y aplicaciones de los SIG",
+        "id": 43,
+        "eje": "Eje 4: Requisitos (RD / REQM)",
+        "q": "¿Cuáles de los siguientes roles participan formalmente en las decisiones y comités de Gestión de Cambios a los requisitos (CCB)?",
         "type": "multi",
         "options": [
-            "En Medio Ambiente, un caso de análisis de vulnerabilidad territorial fue el estudio del impacto del desborde del Río Salado e inundaciones en Santa Fe en el año 2003.",
-            "En el ámbito de Seguridad Urbana, se han elaborado modelos cartográficos de calor (densidad) para identificar focos de homicidios y heridos de arma de fuego en Rosario.",
-            "En Gestión Pública, destacan herramientas para la modernización de los catastros municipales y la zonificación de recursos.",
-            "En Utilities, la aplicación central consiste en utilizar Geomarketing para enviar propaganda política dirigida a los residentes cercanos a las oficinas de agua potable."
+            "Jefe de Proyecto (PM)",
+            "Arquitecto de Software",
+            "Equipo / Responsable de Control de Configuración (CM)",
+            "Personal de maestranza del edificio"
         ],
         "correctAnswers": [
             0,
             1,
             2
         ],
-        "exp": "La opción D mezcla los conceptos de forma disparatada; las aplicaciones 'Utilities' son para gestionar infraestructuras y redes de suministro (gas, agua, cloacas, cables), no para lanzar campañas de geomarketing electoral."
+        "exp": "El control de cambios convoca al Jefe de Proyecto, al Arquitecto de Software y a los responsables de Control de Configuración (CM) y Calidad, evaluando viabilidad técnica, cronograma e impacto."
     },
     {
-        "q": "Interpretación aritmética de Escalas Cartográficas",
+        "id": 44,
+        "eje": "Eje 5: Configuración (SCM) y Versiones",
+        "q": "Una Software Factory guarda los artefactos en el repositorio. Solo cuando el último cliente que usa una versión migra a una nueva, se eliminan del repositorio los artefactos y líneas base de la versión vieja para ahorrar espacio. ¿Genera problemas de calidad?",
+        "type": "single",
+        "options": [
+            "No genera problemas, optimizar el almacenamiento del servidor es una buena práctica.",
+            "Sí podría generar problemas de calidad, porque en caso de ser necesario volver a una versión anterior (o realizar una auditoría) no se dispondrán de los ítems de configuración necesarios.",
+            "No genera problemas, si ningún cliente la usa carece de valor histórico.",
+            "Sí genera problemas, únicamente si la base de datos se corrompe."
+        ],
+        "correctAnswers": [
+            1
+        ],
+        "exp": "En CMMI CM SP 1.2 y 1.3, las líneas base históricas deben preservarse íntegras. Borrar versiones antiguas impide reconstruir el entorno ante incidentes de soporte, reproducir errores heredados o auditar la evolución del software."
+    },
+    {
+        "id": 45,
+        "eje": "Eje 5: Configuración (SCM) y Versiones",
+        "q": "Cada artefacto de la Software Factory tiene un número de versión independiente, y no se guarda ninguna relación entre las versiones de los diferentes artefactos. No se borra nada del repositorio. ¿Genera problemas de calidad?",
+        "type": "single",
+        "options": [
+            "No genera problemas, cada archivo tiene su propio historial independiente.",
+            "Sí podría generar problemas de calidad, porque en caso de ser necesario volver a una versión anterior no hay información sobre la relación de versiones entre artefactos (ausencia de Línea Base).",
+            "No genera problemas, porque el repositorio organizacional almacena todo.",
+            "Sí genera problemas, porque los números de versión deben ser siempre letras."
+        ],
+        "correctAnswers": [
+            1
+        ],
+        "exp": "Tener artefactos versionados sin una Línea Base (Baseline) que defina qué versión de requerimiento corresponde a qué versión de diseño, código y pruebas impide ensamblar y verificar un sistema consistente y reproducible."
+    },
+    {
+        "id": 46,
+        "eje": "Eje 5: Configuración (SCM) y Versiones",
+        "q": "Tenemos el producto SUN. Ha pasado por las versiones: 1.0 (Release) -> 1.1 (Release) -> 1.2 (Versión Beta) -> 1.3 (Release). Recientemente se implementó la versión 1.3 y surgieron fallas críticas que impiden continuar en línea. ¿Qué versión debe ser repuesta en el cliente para garantizar continuidad operacional?",
+        "type": "single",
+        "options": [
+            "1.0 (Release)",
+            "1.1 (Release)",
+            "1.2 (Versión Beta)",
+            "Ninguna, debe mantenerse la 1.3 hasta corregir el error"
+        ],
+        "correctAnswers": [
+            1
+        ],
+        "exp": "Se debe realizar rollback a la versión 1.1. No se puede desplegar la versión 1.2 en el cliente porque fue una versión Beta (de prueba interna e inestable). La 1.1 es la última versión Release formalmente estable previa a la falla."
+    },
+    {
+        "id": 47,
+        "eje": "Eje 5: Configuración (SCM) y Versiones",
+        "q": "Se encuentran dos carpetas de versiones de un producto con formato <cambio-menor>.<cambio-mayor>: Carpeta A = {Altas 1.1, Bajas 0.1, Compras 0.1, Pagos 1.2}; Carpeta B = {Compras 0.1, Altas 1.1, Bajas 1.1, Cheques 0.1, Efectivo 2.1}. Regla: cambio menor incrementa 1 sin alterar mayor; cambio mayor incrementa 1 y menor reinicia a 0. ¿Cuál corresponde a la última versión?",
+        "type": "single",
+        "options": [
+            "La Carpeta A",
+            "La Carpeta B",
+            "Son exactamente equivalentes",
+            "No es posible determinarlo"
+        ],
+        "correctAnswers": [
+            1
+        ],
+        "exp": "La Carpeta B es la más reciente. Analizando el componente común 'Bajas': pasó de 0.1 (en A) a 1.1 (en B), evidenciando un avance evolutivo con un cambio menor acumulado sobre el mismo cambio mayor."
+    },
+    {
+        "id": 48,
+        "eje": "Eje 5: Configuración (SCM) y Versiones",
+        "q": "Estructura de versión <x>.<y>, donde <x> es cambio trimestral de funcionalidad (2 dígitos numéricos, primera versión 01) e <y> correcciones quincenales de error (2 dígitos, inicia en 00 y se reinicia al cambiar <x>). ¿Cuál es el plazo aproximado de supervivencia de esta nomenclatura en años?",
+        "type": "single",
+        "options": [
+            "6 años",
+            "16 años",
+            "20 años",
+            "24 años",
+            "50 años"
+        ],
+        "correctAnswers": [
+            3
+        ],
+        "exp": "Los errores quincenales suman 6 por trimestre y se reinician a 00 con cada nueva funcionalidad, por lo que <y> nunca se desborda. El límite lo marca <x> (2 dígitos = de 01 a 99 trimestres). Con 4 trimestres por año: 96 / 4 = 24 años de vida útil."
+    },
+    {
+        "id": 49,
+        "eje": "Eje 5: Configuración (SCM) y Versiones",
+        "q": "Considerando que una versión 'Release' es una versión de lanzamiento público del software al cliente: ¿Cuántos releases mínimos se generan en un proyecto basado en Ciclo Incremental (con 4 incrementos) y en un Ciclo en Cascada?",
+        "type": "single",
+        "options": [
+            "Ciclo incremental: 4 releases; Ciclo en cascada: 1 release",
+            "Ciclo incremental: 1 release; Ciclo en cascada: 4 releases",
+            "Ciclo incremental: 4 releases; Ciclo en cascada: 0 releases",
+            "Ambos generan exactamente 4 releases"
+        ],
+        "correctAnswers": [
+            0
+        ],
+        "exp": "En el modelo incremental, cada incremento produce una versión operativa y entregable al usuario (4 incrementos = 4 releases). En el modelo en cascada, el software se desarrolla secuencialmente y se lanza al finalizar todo el proyecto (1 release)."
+    },
+    {
+        "id": 50,
+        "eje": "Eje 5: Configuración (SCM) y Versiones",
+        "q": "Ubicados en el año 2002: la empresa usaba el Lenguaje A para desarrollo de escritorio y manuales creados con MS-Word 2002. En 2010 aplicó estándar de interfaces, en 2014 manuales on-line y en 2022 apps móviles con Lenguaje B. En el 2002, ¿cuáles elementos debían estar formalmente bajo SCM?",
         "type": "multi",
         "options": [
-            "En el formato de fracción o escala numérica, el número del numerador define la distancia impresa en el mapa y el denominador la contraparte en la realidad física.",
-            "Para que la interpretación numérica sea matemáticamente válida, ambos componentes de la escala deben expresarse forzosamente en la misma unidad de medida.",
-            "Al comparar hojas, una zona urbana diagramada a escala 1:25.000 posee muchísimo mayor nivel de detalle cartográfico que todo el país graficado a escala 1:1.000.000.",
-            "Si conocemos la medida del plano (d) y la Escala (E), la Distancia Real (D) del terreno se calcula dividiendo la medida en el papel por la escala (D = d / E)."
+            "Código fuente y Aplicación de escritorio",
+            "Herramienta de desarrollo: Lenguaje A",
+            "Herramienta de documentación: MS-Word 2002",
+            "Manuales en archivos .doc/.pdf y Documentación del sistema",
+            "Lenguaje B y aplicación móvil",
+            "Estándar de interfaces gráficas del 2010"
+        ],
+        "correctAnswers": [
+            0,
+            1,
+            2,
+            3
+        ],
+        "exp": "Bajo SCM deben incluirse tanto los artefactos (código, manuales, documentación) como las herramientas del entorno de compilación y edición vigentes en el 2002 (Lenguaje A, Word 2002). Las tecnologías surgidas en 2010, 2014 y 2022 son cronológicamente posteriores."
+    },
+    {
+        "id": 51,
+        "eje": "Eje 5: Configuración (SCM) y Versiones",
+        "q": "En el repositorio, la carpeta de Definiciones tiene: AltaCli (1.0, 1.1, 2.0), NuevoCli (1.0, 1.1, 1.2, 1.3), AltaZona (1.0, 1.1) y AsignZonaCli (1.0, 1.1, 1.2). En la carpeta de Casos de Prueba están: AltaCli-D2.0, NuevoCli-D1.2 y AltaZona-D1.1. ¿Para cuáles definiciones vigentes faltan diseñar casos de prueba?",
+        "type": "single",
+        "options": [
+            "NuevoCli-1.3 y AsignZonaCli-1.2",
+            "AltaCli-1.0 y AltaCli-1.1",
+            "AltaZona-1.0 y AsignZonaCli-1.0",
+            "NuevoCli-1.0 y NuevoCli-1.1"
+        ],
+        "correctAnswers": [
+            0
+        ],
+        "exp": "Los casos de prueba deben cubrir la última versión vigente de cada definición. AltaCli-2.0 ya tiene D2.0 y AltaZona-1.1 tiene D1.1. Pero NuevoCli avanzó a la 1.3 (solo hay pruebas hasta la 1.2) y AsignZonaCli-1.2 carece totalmente de casos de prueba."
+    },
+    {
+        "id": 52,
+        "eje": "Eje 6: Planificación y Estimación (PP/PMC)",
+        "q": "Indique qué unidad de estimación utiliza principalmente cada uno de los siguientes métodos: Planning Poker, Método Delphi, y Estimación por Tres Puntos (Valor Esperado PERT):",
+        "type": "single",
+        "options": [
+            "Planning Poker: Puntos de Historia (PH); Delphi: Horas/Esfuerzo; Valor Esperado: Horas/Tiempo.",
+            "Planning Poker: Horas; Delphi: Puntos de Función; Valor Esperado: Puntos de Historia.",
+            "Planning Poker: Puntos de Función; Delphi: Días; Valor Esperado: Puntos de Historia.",
+            "Todos utilizan exclusivamente Puntos de Función (PF)."
+        ],
+        "correctAnswers": [
+            0
+        ],
+        "exp": "Planning Poker estima tamaño relativo en Puntos de Historia (secuencia Fibonacci); el Método Delphi recopila estimaciones anónimas de expertos en Horas o Días de esfuerzo; y el Valor Esperado PERT pondera duraciones o esfuerzo en Horas/Días."
+    },
+    {
+        "id": 53,
+        "eje": "Eje 6: Planificación y Estimación (PP/PMC)",
+        "q": "Si un equipo de desarrollo tiene una capacidad de entrega de 12 Puntos de Función (PF) al mes y la gerencia duplica el número de personas en el equipo, ¿la capacidad resultante pasará a ser de 24 PF al mes?",
+        "type": "single",
+        "options": [
+            "Sí, la productividad es estrictamente lineal con la cantidad de programadores.",
+            "No, según la Ley de Brooks, el aumento de personal genera una sobrecarga de comunicación, coordinación e inducción que impide duplicar linealmente la productividad.",
+            "Sí, siempre que se utilice la metodología Scrum.",
+            "Depende exclusivamente del lenguaje de programación utilizado."
+        ],
+        "correctAnswers": [
+            1
+        ],
+        "exp": "Ley de Brooks: Las personas y el tiempo no son intercambiables. Agregar personal duplica canales de comunicación (n*(n-1)/2) y genera overhead de inducción e integración, rindiendo sustancialmente menos del doble."
+    },
+    {
+        "id": 54,
+        "eje": "Eje 6: Planificación y Estimación (PP/PMC)",
+        "q": "¿Qué postula la regla clásica 40-20-40 de distribución del esfuerzo en proyectos de desarrollo de software?",
+        "type": "single",
+        "options": [
+            "40% Análisis y Diseño, 20% Codificación, 40% Pruebas y depuración.",
+            "40% Codificación, 20% Pruebas, 40% Mantenimiento evolutivo.",
+            "40% Gestión de Proyecto, 20% Arquitectura, 40% Despliegue.",
+            "40% Infraestructura, 20% Requerimientos, 40% Capacitación."
+        ],
+        "correctAnswers": [
+            0
+        ],
+        "exp": "La regla empírica clásica 40-20-40 distribuye el esfuerzo total en: 40% para las fases iniciales de Análisis y Diseño, 20% para la Codificación propiamente dicha, y 40% para Verificación, Testing y Corrección de fallos."
+    },
+    {
+        "id": 55,
+        "eje": "Eje 6: Planificación y Estimación (PP/PMC)",
+        "q": "¿Cuáles de las siguientes afirmaciones representan principios genuinos de la buena práctica en Ingeniería de Software?",
+        "type": "multi",
+        "options": [
+            "Haz de la calidad la razón de trabajar desde el inicio.",
+            "Probar, probar y probar en todas las fases del ciclo de vida.",
+            "Primero hazlo rápido y a cualquier costo, luego ya habrá tiempo para corregirlo.",
+            "Las personas y el tiempo son recursos intercambiables linealmente."
+        ],
+        "correctAnswers": [
+            0,
+            1
+        ],
+        "exp": "La calidad no se 'agrega' al final, se diseña desde el inicio, y las pruebas deben ser continuas. Hacerlo rápido y mal acumula deuda técnica destructiva, y personas y tiempo no son intercambiables."
+    },
+    {
+        "id": 56,
+        "eje": "Eje 6: Planificación y Estimación (PP/PMC)",
+        "q": "¿Cuáles de las siguientes actividades forman parte central del alcance del área Planificación del Proyecto (PP) en CMMI?",
+        "type": "multi",
+        "options": [
+            "Estimación de las tareas del proyecto",
+            "Determinación de los recursos necesarios",
+            "Identificación y evaluación de riesgos del proyecto",
+            "Liquidación del pago de sueldos al personal",
+            "Especificación detallada de los algoritmos de la base de datos"
         ],
         "correctAnswers": [
             0,
             1,
             2
         ],
-        "exp": "La opción D está invertida aritméticamente; la distancia del terreno en la realidad es producto de multiplicar el tamaño en papel por el valor escalar, es decir, D = E * d."
+        "exp": "PP abarca estimar parámetros del proyecto (esfuerzo, tamaño, costo), determinar recursos, confeccionar el cronograma, planificar la gestión de datos y recursos, e identificar riesgos del proyecto."
+    },
+    {
+        "id": 57,
+        "eje": "Eje 6: Planificación y Estimación (PP/PMC)",
+        "q": "¿Cuáles de las siguientes afirmaciones sobre la EDT (Estructura de Desglose de Trabajo / WBS) son VERDADERAS?",
+        "type": "multi",
+        "options": [
+            "Para armar un cronograma se necesita haber elaborado previamente una EDT.",
+            "El orden de los nodos en la EDT define estrictamente la secuencia temporal de las tareas.",
+            "El ciclo de vida de desarrollo elegido afecta la estructura de la EDT.",
+            "Un diagrama de Gantt es exactamente lo mismo que una EDT.",
+            "El esfuerzo estimado de una tarea es parte inherente de la definición inicial del nodo en la EDT."
+        ],
+        "correctAnswers": [
+            0,
+            2
+        ],
+        "exp": "La EDT es una descomposición jerárquica de entregables, base indispensable para el cronograma (A y C son verdaderas). NO define orden cronológico (B es falsa), NO es un Gantt (D es falsa) y el esfuerzo se calcula en una etapa posterior (E es falsa)."
+    },
+    {
+        "id": 58,
+        "eje": "Eje 6: Planificación y Estimación (PP/PMC)",
+        "q": "¿En qué momento del ciclo de vida de una tarea de desarrollo se tiene certeza absoluta de que el costo incurrido es el costo real?",
+        "type": "single",
+        "options": [
+            "Al firmar el contrato con el cliente",
+            "Al alcanzar el 80% de avance según el desarrollador",
+            "Al terminar completamente la tarea",
+            "En la reunión de kick-off del proyecto"
+        ],
+        "correctAnswers": [
+            2
+        ],
+        "exp": "Toda cifra previa a la finalización es una estimación sujeta a variabilidad. Solo cuando la tarea ha concluido totalmente se tiene certeza real del costo exacto y horas insumidas."
+    },
+    {
+        "id": 59,
+        "eje": "Eje 6: Planificación y Estimación (PP/PMC)",
+        "q": "El esfuerzo consumido de una tarea como único parámetro no permite establecer su avance real. ¿Cuáles parámetros, junto con el esfuerzo consumido, permiten determinar el avance objetivo?",
+        "type": "multi",
+        "options": [
+            "Estado y completitud de los productos de trabajo generados en la tarea",
+            "Esfuerzo restante (horas estimadas necesarias para finalizar)",
+            "Cantidad de correos electrónicos intercambiados en la semana",
+            "Porcentaje de café consumido por el equipo"
+        ],
+        "correctAnswers": [
+            0,
+            1
+        ],
+        "exp": "Para calcular el valor ganado (Earned Value) y conocer el avance real se requiere constatar el estado concreto de los productos entregables y la estimación del esfuerzo que aún falta por realizar para completarla."
+    },
+    {
+        "id": 60,
+        "eje": "Eje 6: Planificación y Estimación (PP/PMC)",
+        "q": "Una organización nos solicita presupuesto para desarrollar un software cuyos requerimientos son iniciales y no están estabilizados. ¿Cuál proceso genérico de desarrollo es el que más se ajusta?",
+        "type": "single",
+        "options": [
+            "Ciclo en Cascada (Waterfall puro)",
+            "Ciclo Iterativo / Incremental",
+            "Desarrollo Lineal Secuencial estricto",
+            "No iniciar el proyecto bajo ninguna circunstancia"
+        ],
+        "correctAnswers": [
+            1
+        ],
+        "exp": "Cuando los requerimientos tienen alta incertidumbre o inestabilidad, los ciclos iterativos e incrementales son los adecuados, permitiendo refinar y adaptar el alcance a través de entregas sucesivas y retroalimentación."
+    },
+    {
+        "id": 61,
+        "eje": "Eje 6: Planificación y Estimación (PP/PMC)",
+        "q": "Análisis módulos A, B y C estimados para 1 recurso en 20h, 30h y 50h. En C trabajarán 2 recursos repartiéndose el análisis en paralelo (suma ~10% de coordinación = 55h). En B se hará Pair Programming (2 analistas juntos = 30h × 2 = 60h). Determine el rango de esfuerzo total:",
+        "type": "single",
+        "options": [
+            "<= 50 horas",
+            "> 50 y <= 70 horas",
+            "> 70 y <= 90 horas",
+            "> 90 y <= 120 horas",
+            "Ninguno de los rangos enunciados"
+        ],
+        "correctAnswers": [
+            4
+        ],
+        "exp": "Esfuerzo total: Módulo A = 20 hs. Módulo B en Pair Programming = 30 × 2 = 60 hs persona. Módulo C en paralelo = 50 + 5 (10% overhead) = 55 hs. Total = 20 + 60 + 55 = 135 horas-persona. Al superar el tope de 120 hs, la respuesta es 'Ninguno de los rangos enunciados'."
+    },
+    {
+        "id": 62,
+        "eje": "Eje 6: Planificación y Estimación (PP/PMC)",
+        "q": "Jornada de 8 hs. Tarea Cod A: 6 días con 1 recurso full time. Tarea Cod B: 10 días con 1 recurso a medio tiempo (4 hs/día). Tarea C: 20 días con dos recursos full time, pero la mitad del tiempo 1 y la otra mitad el otro (equivale a 1 recurso full time por 20 días). Determine el esfuerzo total:",
+        "type": "single",
+        "options": [
+            "235 horas",
+            "240 horas",
+            "248 horas",
+            "280 horas",
+            "288 horas"
+        ],
+        "correctAnswers": [
+            2
+        ],
+        "exp": "Cod A: 6 días × 8 hs = 48 hs. Cod B: 10 días × 4 hs = 40 hs. Tarea C: (10 días × 8 hs) + (10 días × 8 hs) = 160 hs. Total = 48 + 40 + 160 = 248 horas-persona."
+    },
+    {
+        "id": 63,
+        "eje": "Eje 6: Planificación y Estimación (PP/PMC)",
+        "q": "Tareas A (30 hs), B (20 hs) y C (15 hs). A y B son independientes entre sí. C tiene como predecesora a B (B -> C). A las tareas A y B se asignó el Recurso 1 (no puede hacer ambas a la vez). A la tarea C se asignó el Recurso 2. Determine la duración viable y menor del proyecto:",
+        "type": "single",
+        "options": [
+            "35 horas",
+            "45 horas",
+            "50 horas",
+            "65 horas"
+        ],
+        "correctAnswers": [
+            2
+        ],
+        "exp": "El Recurso 1 debe hacer B y luego A (o viceversa) demorando 20 + 30 = 50 hs en total. Para minimizar la espera, hace primero B (termina en la hora 20) y luego A (termina en la hora 50). El Recurso 2 arranca C en la hora 20 y termina en la 35. Pero el proyecto finaliza cuando concluyen todas las tareas, es decir, a las 50 horas."
+    },
+    {
+        "id": 64,
+        "eje": "Eje 6: Planificación y Estimación (PP/PMC)",
+        "q": "¿Cuál es la fecha de fin de una tarea que comienza el jueves 05/09/2024, tiene una duración de 10 días laborales (no se trabaja fines de semana) y los días 20/09 y 21/09 son no laborales?",
+        "type": "single",
+        "options": [
+            "16/09/2024",
+            "17/09/2024",
+            "18/09/2024",
+            "20/09/2024",
+            "21/09/2024"
+        ],
+        "correctAnswers": [
+            2
+        ],
+        "exp": "Contando 10 días hábiles desde el jueves 05/09 inclusive: Jue 05 (1), Vie 06 (2), [Salta Sáb 07 y Dom 08], Lun 09 (3), Mar 10 (4), Mié 11 (5), Jue 12 (6), Vie 13 (7), [Salta Sáb 14 y Dom 15], Lun 16 (8), Mar 17 (9), Mié 18/09 (Día 10). Los días no laborales 20 y 21 son distractores porque ocurren después de concluida la tarea."
+    },
+    {
+        "id": 65,
+        "eje": "Eje 6: Planificación y Estimación (PP/PMC)",
+        "q": "En el desglose de tareas de un sistema modular compuesto por análisis, diseño y codificación, ¿cuál representa la tarea PREDECESORA DIRECTA obligatoria para la tarea 'Codificar Módulo C'?",
+        "type": "single",
+        "options": [
+            "Analizar Módulo C",
+            "Diseñar Módulo C",
+            "Codificar Módulo A",
+            "Realizar pruebas de aceptación del sistema"
+        ],
+        "correctAnswers": [
+            1
+        ],
+        "exp": "La predecesora directa de codificar un módulo específico es 'Diseñar Módulo C'. La tarea 'Analizar Módulo C' precede a Diseñar, por lo que respecto a la codificación es una predecesora indirecta."
+    },
+    {
+        "id": 66,
+        "eje": "Eje 6: Planificación y Estimación (PP/PMC)",
+        "q": "'Cualquier desvío encontrado dentro del control y monitoreo de un proyecto (PMC) debe ser resuelto adoptando de inmediato una acción correctiva formal.'",
+        "type": "single",
+        "options": [
+            "Sí / Verdadero (Todo desvío debe corregirse sin excepción)",
+            "No / Falso (Solo se aplican acciones correctivas ante desvíos significativos que superan los umbrales de tolerancia predefinidos)"
+        ],
+        "correctAnswers": [
+            1
+        ],
+        "exp": "Falso. En CMMI PMC SP 2.1 ('Analizar las cuestiones de gestión'), solo se adoptan acciones correctivas cuando los desvíos superan los umbrales de tolerancia preestablecidos y amenazan los objetivos del plan."
+    },
+    {
+        "id": 67,
+        "eje": "Eje 6: Planificación y Estimación (PP/PMC)",
+        "q": "Un proyecto en cascada sufre retrasos en Análisis y Diseño (estamos a fin de semana 6). La gerencia autoriza contratar recursos solo si la tarea no comenzó o tiene < 20% de avance. Contratar demora 2 semanas. Codificación inicia semana 12 y Pruebas en semana 16. ¿Cuáles acciones correctivas son viables?",
+        "type": "multi",
+        "options": [
+            "Contratar más analistas",
+            "Contratar más diseñadores",
+            "Contratar más codificadores (programadores)",
+            "Contratar más probadores (testers)"
+        ],
+        "correctAnswers": [
+            2,
+            3
+        ],
+        "exp": "Análisis ya concluyó y Diseño ya comenzó (con las 2 semanas de demora de contratación ingresarían en la semana 8, superando el 20% de Diseño). En cambio, Codificación (semana 12) y Pruebas (semana 16) aún no iniciaron, permitiendo contratar y capacitar a tiempo."
+    },
+    {
+        "id": 68,
+        "eje": "Eje 6: Planificación y Estimación (PP/PMC)",
+        "q": "En el ciclo de vida del software, ¿qué caracteriza fundamentalmente al Mantenimiento Evolutivo (o Perfectivo)?",
+        "type": "single",
+        "options": [
+            "Incorporaciones, modificaciones y eliminaciones de funciones para responder a nuevos requisitos y cambios en las necesidades del usuario y negocio.",
+            "Corregir únicamente errores de código que detienen el sistema en producción.",
+            "Reemplazar el hardware donde se ejecuta la aplicación sin tocar el software.",
+            "Descartar por completo el sistema y comenzar a programar de cero."
+        ],
+        "correctAnswers": [
+            0
+        ],
+        "exp": "El Mantenimiento Evolutivo adapta el software a lo largo del tiempo agregando nuevas capacidades, modificando funcionalidades o retirando opciones en desuso para satisfacer la evolución de las necesidades del negocio."
+    },
+    {
+        "id": 69,
+        "eje": "Eje 7: Verificación y Validación (VER/VAL)",
+        "q": "Según los estándares de Ingeniería de Software (CMMI e IEEE), ¿cuál es la diferencia fundamental entre Verificación (VER) y Validación (VAL)?",
+        "type": "single",
+        "options": [
+            "VER asegura que el producto cumple con lo especificado (requisitos técnicos); VAL asegura que el producto satisface la necesidad real del usuario en su entorno operacional previsto.",
+            "VAL asegura que el código no tenga errores de sintaxis; VER se realiza con el cliente en producción.",
+            "VER se enfoca en la velocidad de la base de datos; VAL en la interfaz gráfica.",
+            "VER y VAL son términos sinónimos e intercambiables en CMMI."
+        ],
+        "correctAnswers": [
+            0
+        ],
+        "exp": "Distinción clásica de Boehm: Verificación responde a '¿Estamos construyendo el producto correctamente?' (contra especificación técnica). Validación responde a '¿Estamos construyendo el producto correcto?' (contra las necesidades reales del usuario en su entorno operacional)."
+    },
+    {
+        "id": 70,
+        "eje": "Eje 7: Verificación y Validación (VER/VAL)",
+        "q": "Considerando los conjuntos S (Especificación), P (Producto implementado) y Test (Pruebas ejecutadas): Si el conjunto Test está contenido estrictamente dentro de S (evaluando contra la especificación documentada), ¿a qué proceso corresponde? Y si Test se ejecuta sobre P evaluando el comportamiento en un entorno operacional / edificio piloto, ¿a qué corresponde?",
+        "type": "single",
+        "options": [
+            "Test contenido en S: Verificación (VER); Test sobre P en entorno operacional: Validación (VAL).",
+            "Test contenido en S: Validación (VAL); Test sobre P en entorno operacional: Verificación (VER).",
+            "Ambos planteos representan exclusivamente Verificación.",
+            "Ambos planteos representan Gestión de Configuración."
+        ],
+        "correctAnswers": [
+            0
+        ],
+        "exp": "Probar contra la especificación (S) es Verificación (VER). Probar el producto implementado (P) en el entorno operacional del cliente para verificar que satisface su necesidad de uso es Validación (VAL)."
+    },
+    {
+        "id": 71,
+        "eje": "Eje 7: Verificación y Validación (VER/VAL)",
+        "q": "Indique cuáles de los siguientes elementos o artefactos deben ser objeto de evaluación tanto en VERIFICACIÓN como en VALIDACIÓN:",
+        "type": "multi",
+        "options": [
+            "El software desarrollado",
+            "La lista inicial de requerimientos no funcionales",
+            "La mantenibilidad del software (impacto en costos del cliente) [solo VER]",
+            "Pruebas unitarias de compilador [solo VER]"
+        ],
+        "correctAnswers": [
+            0,
+            1
+        ],
+        "exp": "Tanto el software desarrollado como los requerimientos no funcionales se verifican (contra estándares y especificaciones) y se validan (contra el entorno real y el propósito del cliente)."
+    },
+    {
+        "id": 72,
+        "eje": "Eje 7: Verificación y Validación (VER/VAL)",
+        "q": "En un proyecto se realizan revisiones de pares obligatorias para todos los artefactos y una prueba de aceptación al final de cada iteración con el cliente. Con esto consideran cumplidos los objetivos de calidad y prescinden de pruebas funcionales internas de sistema en la Factory. ¿Podría generar problemas de calidad?",
+        "type": "single",
+        "options": [
+            "No genera problemas, las revisiones de pares y la aceptación del cliente cubren todo.",
+            "Sí podría generar problemas de calidad, porque faltan las pruebas funcionales internas en la Software Factory con lo cual no se cumple con los objetivos de Verificación.",
+            "No genera problemas, la prueba de aceptación es la única obligatoria según CMMI.",
+            "Sí podría generar problemas, únicamente si la iteración dura más de un año."
+        ],
+        "correctAnswers": [
+            1
+        ],
+        "exp": "La Software Factory no puede delegar la detección de defectos funcionales en la prueba de aceptación del cliente (Validación). La factory debe verificar internamente (VER) que el software ensamblado cumple con las especificaciones antes de entregarlo."
+    },
+    {
+        "id": 73,
+        "eje": "Eje 7: Verificación y Validación (VER/VAL)",
+        "q": "¿En cuáles etapas del ciclo de vida del proyecto es apropiado y recomendable realizar Revisiones Estáticas de calidad (inspecciones / walkthroughs)?",
+        "type": "multi",
+        "options": [
+            "En la etapa de Análisis (revisando minutas y documentos de requerimientos)",
+            "En la etapa de Diseño (revisando modelos de arquitectura y diagramas)",
+            "Al estar cerca de terminar la etapa de Programación (revisando código fuente)",
+            "En la primera entrevista con el cliente antes de haber escrito ningún documento"
+        ],
+        "correctAnswers": [
+            0,
+            1,
+            2
+        ],
+        "exp": "Las revisiones estáticas se realizan sobre artefactos ya elaborados: especificaciones de requisitos (Análisis), diagramas arquitectónicos (Diseño) y código fuente (Programación). En la primera entrevista aún no existe ningún documento para revisar."
+    },
+    {
+        "id": 74,
+        "eje": "Eje 7: Verificación y Validación (VER/VAL)",
+        "q": "Dado un bucle de código: `while (N > 10) { ... M[K] = J / N; ... N = 1 - N; }` que contiene un potencial error lógico de división por cero cuando N toma valor 0. ¿Qué técnica es la más efectiva para descubrir este defecto antes de llegar a producción?",
+        "type": "single",
+        "options": [
+            "Compilación del código fuente",
+            "Revisiones (inspección de código por pares / análisis estático)",
+            "Pruebas Beta con usuarios reales",
+            "Pruebas de estrés de base de datos"
+        ],
+        "correctAnswers": [
+            1
+        ],
+        "exp": "¡Atención a la trampa de examen! El compilador solo revisa la sintaxis del lenguaje y no detecta divisiones por cero dinámicas en variables. Una revisión estática de código (o inspección entre pares) identifica inmediatamente la trayectoria que lleva a N=0 en el denominador."
+    },
+    {
+        "id": 75,
+        "eje": "Eje 7: Verificación y Validación (VER/VAL)",
+        "q": "Dos programadores elegidos para la reunión chequean la última clase de código fuente recién terminada por otro par, planteando las observaciones pertinentes. En las opciones de examen aparecen: 'VER / SP 2.1 Preparar revisiones', 'VER / SP 2.3 Analizar datos', 'REQM / SP 1.1' y 'NINGUNA de las otras opciones'. ¿Cuál debe marcarse?",
+        "type": "single",
+        "options": [
+            "VER / SP 2.1 Preparar las revisiones entre pares",
+            "VER / SP 2.3 Analizar los datos de las revisiones entre pares",
+            "REQM / SP 1.1 Comprender los requerimientos",
+            "NINGUNA de las otras opciones"
+        ],
+        "correctAnswers": [
+            3
+        ],
+        "exp": "¡Trampa de examen recurrente en UTN FRRO! La práctica que describe realizar la revisión es VER / SP 2.2 'Llevar a cabo las revisiones entre pares'. Como la cátedra omitió intencionalmente la SP 2.2 de la lista de opciones, la respuesta correcta es 'NINGUNA de las otras opciones'."
+    },
+    {
+        "id": 76,
+        "eje": "Eje 7: Verificación y Validación (VER/VAL)",
+        "q": "¿Cuáles de las siguientes afirmaciones sobre principios de pruebas de software son VERDADERAS?",
+        "type": "multi",
+        "options": [
+            "Cada proyecto de software debe contar con un plan de pruebas.",
+            "Un producto de software se debe probar primariamente en el entorno de producción en vivo.",
+            "Una compañía puede decidir lanzar al mercado un software antes de estar plenamente probado por razones estratégicas comerciales.",
+            "Algunas pruebas funcionales pueden realizarse sin conocimiento de cómo funciona internamente el programa (caja negra).",
+            "Para probar si un requerimiento complejo se cumple alcanza con armar un único caso de prueba.",
+            "El objetivo final de los procesos de V&V es establecer confianza de que el sistema de software es adecuado para su uso previsto."
+        ],
+        "correctAnswers": [
+            0,
+            2,
+            3,
+            5
+        ],
+        "exp": "Son verdaderas: A, C, D y F. B es falsa (probar en producción pone en riesgo crítico al negocio; se prueba en entornos controlados). E es falsa (se requieren múltiples casos para probar flujos válidos, alternativos e inválidos)."
+    },
+    {
+        "id": 77,
+        "eje": "Eje 7: Verificación y Validación (VER/VAL)",
+        "q": "Doble variante de examen: 'El objetivo final de los procesos de V&V es establecer confianza de que el sistema de software realiza las funciones correctamente'. ¿Es Verdadero o Falso según Myers?",
+        "type": "single",
+        "options": [
+            "Verdadero",
+            "Falso (Definición incorrecta según Glenford Myers; el objetivo es encontrar defectos y establecer confianza de que es adecuado para su uso previsto)"
+        ],
+        "correctAnswers": [
+            1
+        ],
+        "exp": "Falso. En exámenes de la cátedra: si la afirmación dice 'establecer confianza de que es adecuado' es VERDADERO; pero si dice 'establecer confianza de que realiza las funciones correctamente' se considera FALSO según la psicología del test de Myers (probar para encontrar defectos, no para demostrar que anda bien)."
+    },
+    {
+        "id": 78,
+        "eje": "Eje 7: Verificación y Validación (VER/VAL)",
+        "q": "¿En cuáles circunstancias es imprescindible planificar y ejecutar Pruebas de Regresión?",
+        "type": "multi",
+        "options": [
+            "Después de que el software haya sido modificado (para corregir defectos o incorporar mejoras)",
+            "Cuando el entorno operativo, base de datos o sistema operativo haya cambiado",
+            "Únicamente el día anterior a que venza el contrato del proyecto",
+            "Cada vez que se realiza una reunión de inicio de iteración"
+        ],
+        "correctAnswers": [
+            0,
+            1
+        ],
+        "exp": "Las pruebas de regresión se ejecutan tras cualquier modificación en el software o cuando cambia el entorno operativo/plataforma, para garantizar que los cambios no introdujeron efectos colaterales ni rompieron funcionalidades preexistentes."
+    },
+    {
+        "id": 79,
+        "eje": "Eje 7: Verificación y Validación (VER/VAL)",
+        "q": "Para validar (VAL) un sistema de facturación y comandas que operará en sucursales físicas, ¿cuáles de las siguientes condiciones deben reproducirse en el entorno de validación?",
+        "type": "multi",
+        "options": [
+            "Terminales con la misma versión de sistema operativo que las sucursales",
+            "Impresoras térmicas de tickets y periféricos equivalentes a los reales",
+            "Condiciones de red y latencia similares a las conexiones reales de las sucursales",
+            "Base de datos con volumen de información y usuarios con perfiles de acceso representativos",
+            "Probar únicamente en la notebook del programador con base vacía"
+        ],
+        "correctAnswers": [
+            0,
+            1,
+            2,
+            3
+        ],
+        "exp": "La Validación evalúa el software en su entorno operacional real o simulado fielmente (hardware, periféricos, latencia de red, volumen de datos y perfiles de usuarios reales)."
+    },
+    {
+        "id": 80,
+        "eje": "Eje 8: Testing de Caja Negra",
+        "q": "Al definir los casos de prueba a partir de particiones de equivalencia ya identificadas, ¿cuáles de los siguientes aspectos se deben tener en cuenta obligatoriamente?",
+        "type": "multi",
+        "options": [
+            "Las restricciones y reglas del negocio",
+            "El comportamiento esperado y salidas del sistema",
+            "Las entradas al sistema",
+            "La técnica concreta a emplear (valores representativos de partición vs valores límite / frontera)",
+            "Si la prueba es Alfa o Beta",
+            "Si la prueba la realiza desarrollo o un tercero"
+        ],
+        "correctAnswers": [
+            0,
+            1,
+            2,
+            3
+        ],
+        "exp": "Se consideran entradas, salidas, restricciones del negocio y la técnica a emplear (partición o valores límite para elegir los valores concretos). Si es alfa/beta o quién ejecuta la prueba es irrelevante para el diseño de la prueba."
+    },
+    {
+        "id": 81,
+        "eje": "Eje 8: Testing de Caja Negra",
+        "q": "En el ejercicio 'Archivo Alumnos': La nota final se calcula si la Teoría (rango 0 a 10) es mayor que 4; si es <= 4 la nota es 0. ¿Cuáles de las siguientes particiones propuestas son INCORRECTAS (mal formuladas)?",
+        "type": "multi",
+        "options": [
+            "0 <= Teoria <= 10 (P. Válida)",
+            "Teoria > 4 (P. Válida)",
+            "Teoria < 0 (P. Inválida)",
+            "0 <= Pract.1 <= 2 (P. Válida)"
+        ],
+        "correctAnswers": [
+            0,
+            1
+        ],
+        "exp": "Ambas son incorrectas: 1) '0 <= Teoria <= 10' agrupa valores tratados de forma distinta por el negocio (de 0 a 4 da 0, y de >4 a 10 calcula fórmula; deben ser 2 particiones separadas). 2) 'Teoria > 4' no tiene cota superior e incluiría números absurdos como 50 o 100 (debe ser 4 < Teoria <= 10)."
+    },
+    {
+        "id": 82,
+        "eje": "Eje 8: Testing de Caja Negra",
+        "q": "Un sistema de alquiler fija tarifa según Edad (< 25, 25 a 65, > 65) y Días (1 a 3, 4 a 7, 8 a 15, > 15). Ya se definieron: CP1 (Edad 22, Días 2), CP2 (Edad 40, Días 10) y CP3 (Edad 23, Días 3). ¿Cuál es el mínimo de casos de prueba adicionales para cubrir todas las particiones válidas restantes?",
+        "type": "single",
+        "options": [
+            "1 caso adicional",
+            "2 casos adicionales",
+            "4 casos adicionales",
+            "6 casos adicionales"
+        ],
+        "correctAnswers": [
+            1
+        ],
+        "exp": "Están cubiertas: Edad < 25 (CP1, CP3), Edad 25-65 (CP2), Días 1-3 (CP1, CP3) y Días 8-15 (CP2). Faltan: Edad > 65, Días 4-7 y Días > 15. Diseñando CP4 (Edad 70, Días 5) y CP5 (Edad 30, Días 20), con solo 2 casos adicionales se cubren todas las particiones restantes."
+    },
+    {
+        "id": 83,
+        "eje": "Eje 8: Testing de Caja Negra",
+        "q": "Una aplicación de pedidos evalúa combinaciones de plazo de pago (<= 30 días o > 30 días), stock suficiente (Sí / No) y condición de cliente nuevo o recurrente, determinando descuentos y envíos parciales. ¿Qué técnica de diseño de pruebas de caja negra es la más adecuada?",
+        "type": "single",
+        "options": [
+            "Pruebas Heurísticas",
+            "Valores Límites simples",
+            "Tabla de Decisión",
+            "Pruebas de Carga"
+        ],
+        "correctAnswers": [
+            2
+        ],
+        "exp": "Las Tablas de Decisión son la técnica ideal para modelar y probar combinaciones complejas de condiciones y reglas de negocio interdependientes que disparan diferentes acciones del sistema."
+    },
+    {
+        "id": 84,
+        "eje": "Eje 8: Testing de Caja Negra",
+        "q": "Sistema de Préstamos: 1) Estudiante: no recibe préstamo, tenga deudas o no. 2) Trabajador registrado: recibe préstamo, tenga deudas o no. 3) Jubilado: recibe préstamo solo si NO tiene deudas. ¿Cuántas condiciones y columnas tiene la tabla extendida, y cuántos casos de prueba resultan en la tabla simplificada?",
+        "type": "single",
+        "options": [
+            "2 condiciones, 6 columnas extendidas, y 4 casos de prueba en la tabla final simplificada",
+            "3 condiciones, 8 columnas extendidas, y 8 casos de prueba simplificados",
+            "2 condiciones, 4 columnas extendidas, y 2 casos de prueba simplificados",
+            "4 condiciones, 16 columnas extendidas, y 6 casos de prueba simplificados"
+        ],
+        "correctAnswers": [
+            0
+        ],
+        "exp": "Condiciones: 2 (C1: Tipo solicitante [Estudiante / Trabajador / Jubilado - 3 estados]; C2: Tiene deudas [Sí / No - 2 estados]). Tabla extendida: 3 × 2 = 6 columnas. Tabla simplificada: 4 casos (Estudiante con deuda '-', Trabajador con deuda '-', Jubilado con deuda Sí, Jubilado con deuda No)."
+    },
+    {
+        "id": 85,
+        "eje": "Eje 8: Testing de Caja Negra",
+        "q": "En el ejercicio 'La Farmacia X21', se evalúan 4 condiciones binarias: 1) Presenta carnet de Obra Social, 2) O.S. en Lista de Descuentos, 3) Descuento de lista > 30%, 4) Cliente en Lista de Inhabilitados. ¿Cuántas combinaciones posibles genera la tabla de decisión extendida completa?",
+        "type": "single",
+        "options": [
+            "8 combinaciones",
+            "12 combinaciones",
+            "16 combinaciones",
+            "32 combinaciones"
+        ],
+        "correctAnswers": [
+            2
+        ],
+        "exp": "Con 4 condiciones binarias (Verdadero / Falso), la cantidad total de columnas o combinaciones de la tabla extendida es 2^4 = 16 combinaciones."
+    },
+    {
+        "id": 86,
+        "eje": "Eje 8: Testing de Caja Negra",
+        "q": "En un sistema de turnos médicos que valida la Edad del paciente como un entero entre 0 y 120 años, ¿cuáles de las siguientes representan PARTICIONES INVÁLIDAS de entrada?",
+        "type": "multi",
+        "options": [
+            "Edad < 0 (números negativos)",
+            "Edad > 120 (supera el límite máximo de edad)",
+            "Valores no enteros (números con decimales)",
+            "Caracteres alfabéticos, símbolos o campo vacío",
+            "Entero entre 0 y 120 años inclusive"
+        ],
+        "correctAnswers": [
+            0,
+            1,
+            2,
+            3
+        ],
+        "exp": "La única partición válida es el rango entero [0, 120]. Números negativos, mayores a 120, valores decimales, letras, símbolos y campo vacío son todas particiones de equivalencia inválidas."
+    },
+    {
+        "id": 87,
+        "eje": "Eje 8: Testing de Caja Negra",
+        "q": "En un sitio de compras web la regla es: 'Edad >= 18 y Residencia = Argentina pueden comprar'. ¿Cómo debe formularse la condición de edad en la tabla de decisión para permitir una reducción y consolidación óptima?",
+        "type": "single",
+        "options": [
+            "Modelar la condición como 'Edad < 18' (si es verdadero, se rechaza la compra de inmediato consolidando los países)",
+            "Modelar una columna independiente por cada una de las 24 provincias argentinas",
+            "Descartar la condición de residencia",
+            "Permitir la compra a cualquier persona sin validar la edad"
+        ],
+        "correctAnswers": [
+            0
+        ],
+        "exp": "Al formular la condición como 'Edad < 18 [V/F]', cuando es Verdadero la acción es 'Rechazar compra' independientemente del país de residencia, permitiendo consolidar inmediatamente los casos en la tabla simplificada."
+    },
+    {
+        "id": 88,
+        "eje": "Eje 8: Testing de Caja Negra",
+        "q": "Termómetro Digital: Rango operacional de 0 a 53 °C. Regla: Si temperatura < 20 se apaga el ventilador; si está entre 20 y 25 se mantiene; si es > 25 se enciende el enfriamiento. ¿Cuál es la selección óptima de 3 valores para cubrir todas las particiones válidas?",
+        "type": "single",
+        "options": [
+            "3, 23, 33",
+            "0, 10, 15",
+            "20, 25, 53",
+            "19, 20, 21"
+        ],
+        "correctAnswers": [
+            0
+        ],
+        "exp": "Las 3 particiones válidas son: [0, 20) (apaga), [20, 25] (mantiene) y (25, 53] (enfría). Los valores 3 (cae en la primera), 23 (cae en la segunda) y 33 (cae en la tercera) prueban de forma representativa las tres particiones válidas."
+    },
+    {
+        "id": 89,
+        "eje": "Eje 8: Testing de Caja Negra",
+        "q": "Para un campo 'Año de Nacimiento' que acepta valores entre 1900 y 2004 inclusive, ¿cuál es el conjunto de valores frontera a testear según la técnica de Análisis de Valores Límite?",
+        "type": "single",
+        "options": [
+            "1899, 1900, 2004, 2005",
+            "1900, 1950, 2000, 2004",
+            "1899 y 2005 únicamente",
+            "1901, 1950, 2003"
+        ],
+        "correctAnswers": [
+            0
+        ],
+        "exp": "El análisis de valores límite (2 valores por frontera) prueba el valor inmediatamente exterior e interior de cada límite: para 1900 -> 1899 (inválido) y 1900 (válido); para 2004 -> 2004 (válido) y 2005 (inválido)."
+    },
+    {
+        "id": 90,
+        "eje": "Eje 8: Testing de Caja Negra",
+        "q": "En un sistema de aseguradora, personas con edad entre 18 y 30 años inclusive reciben un 20% de descuento. ¿Cuáles de los siguientes grupos de edades pertenecen estrictamente a la MISMA partición de equivalencia válida?",
+        "type": "single",
+        "options": [
+            "18, 29, 30",
+            "17, 18, 19",
+            "30, 31, 32",
+            "10, 25, 40"
+        ],
+        "correctAnswers": [
+            0
+        ],
+        "exp": "Los valores 18, 29 y 30 caen todos dentro del rango cerrado [18, 30] donde aplica la misma regla de negocio (20% de descuento), por lo que pertenecen a la misma clase de equivalencia."
+    },
+    {
+        "id": 91,
+        "eje": "Eje 8: Testing de Caja Negra",
+        "q": "Para un campo de 'Código de Operación' que solo acepta números enteros entre 200 y 900 inclusive, ¿cuál es el conjunto mínimo de casos de prueba según Valores Límite?",
+        "type": "single",
+        "options": [
+            "199 (Error), 200 (OK), 900 (OK), 901 (Error)",
+            "200 y 900 únicamente",
+            "0, 500 y 1000",
+            "201, 550 y 899"
+        ],
+        "correctAnswers": [
+            0
+        ],
+        "exp": "Se prueban los límites inferiores (199 inválido y 200 válido) y superiores (900 válido y 901 inválido) para verificar la robustez de los operadores relacionales en el código."
+    },
+    {
+        "id": 92,
+        "eje": "Eje 8: Testing de Caja Negra",
+        "q": "Relacione cada necesidad de prueba con la técnica de diseño de caja negra que mejor aplica: 1) Validar un campo legajo numérico de 8 dígitos; 2) Matriz de reglas lógicas complejas para calificar un examen; 3) Ciclo de vida de una inscripción que avanza por estados sucesivos.",
+        "type": "single",
+        "options": [
+            "1: Valores Límite; 2: Tablas de Decisión; 3: Transición de Estados.",
+            "1: Tablas de Decisión; 2: Valores Límite; 3: Particiones de Equivalencia.",
+            "1: Transición de Estados; 2: Particiones de Equivalencia; 3: Valores Límite.",
+            "Todas se prueban exclusivamente con Pruebas de Humo."
+        ],
+        "correctAnswers": [
+            0
+        ],
+        "exp": "Campos acotados numéricos se prueban con Valores Límite; combinatorias booleanas de reglas de negocio con Tablas de Decisión; y entidades con ciclo de vida y eventos con Transición de Estados."
+    },
+    {
+        "id": 93,
+        "eje": "Eje 8: Testing de Caja Negra",
+        "q": "Un gimnasio tiene 3 categorías de membresía mutuamente excluyentes (Coulson, IronMan, Hulk) y el estado de Cuota al día (Sí / No). ¿Cuántas columnas y casos de prueba válidos genera la tabla de decisión extendida?",
+        "type": "single",
+        "options": [
+            "6 columnas y 6 casos de prueba válidos",
+            "3 columnas y 3 casos de prueba",
+            "8 columnas y 4 casos de prueba",
+            "12 columnas y 6 casos de prueba"
+        ],
+        "correctAnswers": [
+            0
+        ],
+        "exp": "La condición Categoría tiene 3 valores excluyentes y la condición Cuota al día tiene 2 valores (Sí / No). La combinatoria total es 3 × 2 = 6 columnas y 6 casos de prueba válidos."
+    },
+    {
+        "id": 94,
+        "eje": "Eje 8: Testing de Caja Negra",
+        "q": "En el cálculo de un adicional salarial por antigüedad, se contemplan 4 tramos de años trabajados, y el enunciado menciona como datos distractores que la jubilación es a los 65 años y el periodo de prueba dura 6 meses. ¿Cuántos casos de prueba son necesarios para cubrir los tramos de antigüedad?",
+        "type": "single",
+        "options": [
+            "4 casos de prueba (1 por cada tramo de antigüedad)",
+            "6 casos de prueba (sumando los datos distractores)",
+            "12 casos de prueba",
+            "2 casos de prueba"
+        ],
+        "correctAnswers": [
+            0
+        ],
+        "exp": "Los datos sobre jubilación (65 años) y periodo de prueba (6 meses) son distractores contextuales que no alteran la tabla de antigüedad. Se requiere un caso representativo por cada uno de los 4 tramos válidos de antigüedad."
+    },
+    {
+        "id": 95,
+        "eje": "Eje 8: Testing de Caja Negra",
+        "q": "En el ejercicio de la consola de turnos médicos, si un paciente solicita 'ESPECIALISTA' y su cobertura es 'OBRA_SOCIAL' o 'PREPAGA', el sistema emite la advertencia 'Recuerde traer la derivación médica autorizada'. En cualquier otro caso procesa sin advertencia. ¿Cuál es el caso de prueba que valida la emisión de la advertencia?",
+        "type": "single",
+        "options": [
+            "Edad = 30, Asignación = 'OBRA_SOCIAL', Consulta = 'ESPECIALISTA' -> Comprobante OK + Advertencia de derivación",
+            "Edad = 45, Asignación = 'PARTICULAR', Consulta = 'ESPECIALISTA' -> Comprobante OK sin advertencia",
+            "Edad = 8, Asignación = 'PREPAGA', Consulta = 'PEDIATRIA' -> Comprobante OK sin advertencia",
+            "Edad = 125, Asignación = 'OBRA_SOCIAL', Consulta = 'CLINICO' -> Rechazo por edad inválida"
+        ],
+        "correctAnswers": [
+            0
+        ],
+        "exp": "La regla de negocio estipula que la advertencia solo se dispara con la combinación de Consulta = ESPECIALISTA junto con Asignación = OBRA_SOCIAL (o PREPAGA)."
     }
 ];
+
+        let questions = [...rawQuestions];
 
         // Generador de enteros aleatorios seguro mediante Web Crypto API (cumple SonarCloud S2245)
         function getSecureRandomInt(max) {
@@ -1026,8 +1918,13 @@
         // Mezclar aleatoriamente las preguntas al cargar la página
         shuffleQuestions();
 
+        // Estado de la aplicación
+        let userSelections = new Array(questions.length).fill(null).map(() => []);
+        let submittedAnswers = new Array(questions.length).fill(null);
+        let currentFilter = 'all'; // 'all', 'pending', 'correct', 'incorrect'
+        let currentAxis = 'all';
+
         function initApp() {
-            setViewMode('all');
             renderQuestionGrid();
             renderAllQuestions();
             updateStats();
@@ -1037,56 +1934,6 @@
             document.addEventListener('DOMContentLoaded', initApp);
         } else {
             initApp();
-        }
-
-        // Estado de la aplicación
-        let userSelections = new Array(questions.length).fill(null).map(() => []);
-        let submittedAnswers = new Array(questions.length).fill(null);
-        let viewMode = 'all'; // Siempre vista simultánea
-        let currentSingleIndex = 0;
-        let currentFilter = 'all'; // 'all', 'pending', 'submitted'
-
-        function startQuiz(mode = 'all') {
-            shuffleQuestions();
-            const startScreen = document.getElementById('start-screen');
-            if (startScreen) startScreen.classList.add('hidden');
-            
-            const quizScreen = document.getElementById('quiz-screen');
-            quizScreen.classList.remove('hidden');
-            quizScreen.classList.add('fade-in');
-
-            document.getElementById('header-stats').classList.remove('hidden');
-            document.getElementById('header-stats').classList.add('flex');
-            document.getElementById('header-actions').classList.remove('hidden');
-            document.getElementById('header-actions').classList.add('flex');
-
-            setViewMode(mode);
-            renderQuestionGrid();
-            renderAllQuestions();
-            updateStats();
-        }
-
-        function setViewMode(mode) {
-            viewMode = mode;
-            const btnAll = document.getElementById('view-all-btn');
-            const btnSingle = document.getElementById('view-single-btn');
-            const allContainer = document.getElementById('questions-all-container');
-            const singleContainer = document.getElementById('question-single-container');
-
-            if (mode === 'all') {
-                btnAll.className = 'px-2.5 py-1.5 rounded-md transition-all bg-white text-blue-700 shadow-sm font-semibold';
-                btnSingle.className = 'px-2.5 py-1.5 rounded-md transition-all text-slate-600 hover:text-slate-900';
-                allContainer.classList.remove('hidden');
-                singleContainer.classList.add('hidden');
-                renderAllQuestions();
-            } else {
-                btnSingle.className = 'px-2.5 py-1.5 rounded-md transition-all bg-white text-blue-700 shadow-sm font-semibold';
-                btnAll.className = 'px-2.5 py-1.5 rounded-md transition-all text-slate-600 hover:text-slate-900';
-                allContainer.classList.add('hidden');
-                singleContainer.classList.remove('hidden');
-                renderSingleQuestion();
-            }
-            renderQuestionGrid();
         }
 
         function setFilter(filter) {
@@ -1110,6 +1957,11 @@
             renderAllQuestions();
         }
 
+        function setAxisFilter(axis) {
+            currentAxis = axis;
+            renderAllQuestions();
+        }
+
         function calculateScore() {
             let totalScore = 0;
             let answeredCount = 0;
@@ -1117,7 +1969,7 @@
             let partialCount = 0;
             let wrongCount = 0;
 
-            submittedAnswers.forEach((ans, idx) => {
+            submittedAnswers.forEach((ans) => {
                 if (ans !== null) {
                     answeredCount++;
                     totalScore += ans.score;
@@ -1141,16 +1993,18 @@
             const stats = calculateScore();
 
             document.getElementById('stat-answered').innerText = `${stats.answeredCount}/${questions.length}`;
-            const fabCounter = document.getElementById('fab-answered'); if(fabCounter) fabCounter.innerText = stats.answeredCount;
+            const fab = document.getElementById('fab-answered');
+            if (fab) fab.innerText = stats.answeredCount;
             document.getElementById('stat-correct').innerText = stats.perfectCount;
-            const pElem = document.getElementById('stat-partial'); if(pElem) pElem.innerText = stats.partialCount;
+            document.getElementById('stat-partial').innerText = stats.partialCount;
             document.getElementById('stat-incorrect').innerText = stats.wrongCount;
 
+            document.getElementById('count-all').innerText = questions.length;
             document.getElementById('count-pending').innerText = stats.pendingCount;
             document.getElementById('count-correct').innerText = stats.perfectCount;
             document.getElementById('count-incorrect').innerText = stats.wrongCount;
 
-            document.getElementById('score-badge').innerText = `${stats.totalScore.toFixed(1)} / ${questions.length} pts`;
+            document.getElementById('score-badge').innerText = `${stats.totalScore.toFixed(0)} / ${questions.length} pts`;
 
             const percentage = (stats.answeredCount / questions.length) * 100;
             document.getElementById('global-progress').style.width = `${percentage}%`;
@@ -1182,10 +2036,6 @@
                     baseClass += 'bg-rose-500 border-rose-600 text-white shadow-sm';
                 }
 
-                if (viewMode === 'single' && currentSingleIndex === idx) {
-                    baseClass += ' ring-2 ring-blue-600 ring-offset-2 scale-105';
-                }
-
                 btn.className = baseClass;
                 btn.innerHTML = `<span>${idx + 1}</span>`;
                 btn.title = `Pregunta ${idx + 1}: ${ans === null ? 'Pendiente' : ans.status}`;
@@ -1196,7 +2046,10 @@
         }
 
         function handleGridClick(idx) {
-            if (currentFilter !== 'all') {
+            if (currentFilter !== 'all' || currentAxis !== 'all') {
+                currentFilter = 'all';
+                currentAxis = 'all';
+                document.getElementById('axis-select').value = 'all';
                 setFilter('all');
             }
             const card = document.getElementById(`question-card-${idx}`);
@@ -1221,14 +2074,19 @@
             if (submittedAnswers[qIdx] !== null) return; // Ya enviada
 
             const q = questions[qIdx];
-            const current = userSelections[qIdx] || [];
+            let current = userSelections[qIdx] || [];
 
-            // Permite marcar una o más opciones libremente en cualquier pregunta
-            const pos = current.indexOf(optIdx);
-            if (pos > -1) {
-                current.splice(pos, 1);
+            if (q.type === 'single') {
+                // Comportamiento de Radio: selecciona solo la opción elegida
+                current = [optIdx];
             } else {
-                current.push(optIdx);
+                // Comportamiento de Checkbox: permite tildar/destildar múltiples
+                const pos = current.indexOf(optIdx);
+                if (pos > -1) {
+                    current.splice(pos, 1);
+                } else {
+                    current.push(optIdx);
+                }
             }
             userSelections[qIdx] = current;
 
@@ -1241,7 +2099,7 @@
 
             const selected = userSelections[qIdx] || [];
             if (selected.length === 0) {
-                alert('Por favor seleccioná al menos una opción (A, B, C o D) antes de enviar.');
+                alert('Por favor seleccioná al menos una opción antes de enviar tu respuesta.');
                 return;
             }
 
@@ -1249,7 +2107,6 @@
             const correctSet = new Set(q.correctAnswers);
             const selectedSet = new Set(selected);
 
-            // Calcular aciertos y fallos
             let correctHits = 0;
             let wrongHits = 0;
 
@@ -1264,17 +2121,19 @@
             let score = 0;
             let status = 'wrong';
 
-            // Regla estricta: Solo suma 1 si le pega a TODAS las correctas sin errores.
-            // Si no le pega a todas (o tuvo algún acierto parcial), suma 0 pts pero la casilla va en amarillo.
+            // Evaluación Estricta según la cátedra:
+            // +1 punto si acierta el 100% de las respuestas correctas sin marcar errores
+            // 0 puntos pero amarillo (partial) si acertó alguna pero le faltó o cometió error
+            // 0 puntos y rojo si no acertó ninguna
             if (correctHits === totalCorrect && wrongHits === 0) {
                 score = 1;
-                status = 'perfect'; // Verde en el mapa
+                status = 'perfect';
             } else if (correctHits > 0) {
-                score = 0; // 0 de puntaje si no acertó el 100%
-                status = 'partial'; // Casilla en AMARILLO en el mapa
+                score = 0;
+                status = 'partial';
             } else {
                 score = 0;
-                status = 'wrong'; // Rojo en el mapa (0 aciertos)
+                status = 'wrong';
             }
 
             submittedAnswers[qIdx] = {
@@ -1306,7 +2165,6 @@
             const isSubmitted = submittedAnswers[idx] !== null;
             const submission = submittedAnswers[idx];
             const selected = userSelections[idx] || [];
-            const letters = ['A', 'B', 'C', 'D'];
 
             let statusBadge = '';
             if (!isSubmitted) {
@@ -1314,28 +2172,42 @@
             } else if (submission.status === 'perfect') {
                 statusBadge = '<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-800 border border-emerald-300">✓ Perfecta (+1.0 pt)</span>';
             } else if (submission.status === 'partial') {
-                statusBadge = `<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-amber-100 text-amber-800 border border-amber-300">⚡ Parcial (+${submission.score} pts)</span>`;
+                statusBadge = `<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-amber-100 text-amber-800 border border-amber-300">⚡ Parcial (0 pts)</span>`;
             } else {
                 statusBadge = '<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-rose-100 text-rose-800 border border-rose-300">✗ Incorrecta (0 pts)</span>';
             }
+
+            const typeBadge = q.type === 'single'
+                ? '<span class="inline-flex items-center px-2 py-0.5 rounded-md text-[11px] font-bold bg-sky-50 text-sky-700 border border-sky-200">🔘 Opción Única</span>'
+                : '<span class="inline-flex items-center px-2 py-0.5 rounded-md text-[11px] font-bold bg-purple-50 text-purple-700 border border-purple-200">☑️ Múltiples Opciones (Marcar todas las válidas)</span>';
+
+            const axisBadge = `<span class="inline-flex items-center px-2 py-0.5 rounded-md text-[11px] font-bold bg-indigo-50 text-indigo-700 border border-indigo-200">${q.eje || 'ISW'}</span>`;
 
             // Opciones HTML
             let optionsHTML = '';
             q.options.forEach((optText, optIdx) => {
                 const isSelected = selected.includes(optIdx);
                 const isCorrect = q.correctAnswers.includes(optIdx);
+                const letter = String.fromCharCode(65 + optIdx);
 
                 let rowClass = 'w-full text-left p-3.5 sm:p-4 rounded-xl border-2 font-medium text-xs sm:text-sm flex items-start gap-3 transition-all ';
                 let letterBadgeClass = 'w-7 h-7 rounded-lg text-xs font-bold border flex items-center justify-center shrink-0 ';
+                let indicatorHTML = '';
                 let tagHTML = '';
 
                 if (!isSubmitted) {
                     if (isSelected) {
                         rowClass += 'border-blue-600 bg-blue-50/70 text-slate-900 shadow-sm cursor-pointer';
                         letterBadgeClass += 'bg-blue-600 border-blue-600 text-white';
+                        indicatorHTML = q.type === 'single'
+                            ? '<span class="w-4 h-4 rounded-full border-2 border-blue-600 bg-blue-600 flex items-center justify-center shrink-0 mt-0.5"><span class="w-1.5 h-1.5 rounded-full bg-white"></span></span>'
+                            : '<span class="w-4 h-4 rounded border-2 border-blue-600 bg-blue-600 flex items-center justify-center shrink-0 mt-0.5 text-white text-[10px] leading-none font-black">✓</span>';
                     } else {
                         rowClass += 'border-slate-200 bg-white hover:border-blue-300 hover:bg-slate-50 text-slate-700 cursor-pointer';
                         letterBadgeClass += 'bg-slate-100 border-slate-300 text-slate-600';
+                        indicatorHTML = q.type === 'single'
+                            ? '<span class="w-4 h-4 rounded-full border-2 border-slate-300 shrink-0 mt-0.5"></span>'
+                            : '<span class="w-4 h-4 rounded border-2 border-slate-300 shrink-0 mt-0.5"></span>';
                     }
                 } else {
                     // Estados post-envío
@@ -1354,7 +2226,7 @@
                     } else {
                         rowClass += 'bg-slate-50 border-slate-200 text-slate-400 opacity-60';
                         letterBadgeClass += 'bg-slate-100 border-slate-300 text-slate-400';
-                        tagHTML = '<span class="ml-auto shrink-0 text-[11px] text-slate-400">✓ Falsa (no marcada)</span>';
+                        tagHTML = '<span class="ml-auto shrink-0 text-[11px] text-slate-400">✓ No aplicaba</span>';
                     }
                 }
 
@@ -1363,11 +2235,12 @@
                 optionsHTML += `
                     <div ${clickAction} class="${rowClass}">
                         <div class="${letterBadgeClass}">
-                            ${letters[optIdx]}
+                            ${letter}
                         </div>
                         <div class="flex-1 leading-snug pt-0.5">
                             ${optText}
                         </div>
+                        ${indicatorHTML}
                         ${tagHTML}
                     </div>
                 `;
@@ -1380,11 +2253,11 @@
                 footerHTML = `
                     <div class="mt-5 pt-4 border-t border-slate-100 flex flex-wrap items-center justify-between gap-3">
                         <div class="text-xs text-slate-500 font-medium">
-                            <span>Has seleccionado: </span>
+                            <span>Seleccionadas: </span>
                             <span class="font-bold text-slate-800">${selectedCount} opción(es)</span>
                         </div>
                         <button onclick="submitAnswer(${idx})" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-5 rounded-xl text-xs sm:text-sm shadow-md shadow-blue-500/20 transition-all flex items-center gap-2">
-                            <span>Enviar respuestas</span>
+                            <span>Enviar respuesta</span>
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                         </button>
                     </div>
@@ -1396,7 +2269,7 @@
 
                 if (submission.status === 'partial') {
                     bannerColor = 'bg-amber-50 border-amber-300 text-amber-950';
-                    bannerTitle = `⚠️ Respuesta Incompleta: Acertaste ${submission.correctHits} de ${submission.totalCorrect} opciones correctas${submission.wrongHits > 0 ? ` (y marcaste ${submission.wrongHits} incorrecta)` : ''} · Puntaje: 0 pts`;
+                    bannerTitle = `⚠️ Respuesta Incompleta: Acertaste ${submission.correctHits} de ${submission.totalCorrect} opciones correctas${submission.wrongHits > 0 ? ` (y marcaste ${submission.wrongHits} errónea)` : ''} · Puntaje: 0 pts`;
                     bannerIcon = '🟡';
                 } else if (submission.status === 'wrong') {
                     bannerColor = 'bg-rose-50 border-rose-300 text-rose-950';
@@ -1411,7 +2284,7 @@
                                 <span class="text-lg">${bannerIcon}</span>
                                 <div class="flex-1">
                                     <div class="font-bold">${bannerTitle}</div>
-                                    <div class="mt-1 text-slate-700 leading-relaxed"><strong class="text-slate-900">Explicación oficial:</strong> ${q.exp}</div>
+                                    <div class="mt-1 text-slate-700 leading-relaxed"><strong class="text-slate-900">Justificación Técnica:</strong> ${q.exp}</div>
                                 </div>
                             </div>
                         </div>
@@ -1420,13 +2293,17 @@
             }
 
             return `
-                <div id="question-card-${idx}" class="bg-white rounded-2xl border border-slate-200/90 shadow-sm hover:shadow transition-all p-5 sm:p-7 relative">
+                <div id="question-card-${idx}" class="question-card bg-white rounded-2xl border border-slate-200/90 shadow-sm hover:shadow transition-all p-5 sm:p-7 relative">
                     <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
-                        <span class="text-xs font-bold uppercase tracking-wider text-blue-600">Pregunta ${idx + 1} de ${questions.length}</span>
+                        <div class="flex flex-wrap items-center gap-1.5">
+                            <span class="text-xs font-extrabold uppercase tracking-wider text-blue-600">Pregunta ${idx + 1} de ${questions.length}</span>
+                            ${axisBadge}
+                            ${typeBadge}
+                        </div>
                         ${statusBadge}
                     </div>
 
-                    <h3 class="text-base sm:text-lg font-bold text-slate-800 mb-4 leading-snug">
+                    <h3 class="question-title text-base sm:text-lg font-bold text-slate-800 mb-4 leading-snug">
                         ${q.q}
                     </h3>
 
@@ -1448,9 +2325,13 @@
                 const ans = submittedAnswers[idx];
                 let isMatch = true;
 
+                // Filtro por Estado
                 if (currentFilter === 'pending' && ans !== null) isMatch = false;
                 if (currentFilter === 'correct' && (!ans || ans.status !== 'perfect')) isMatch = false;
                 if (currentFilter === 'incorrect' && (!ans || ans.status === 'perfect')) isMatch = false;
+
+                // Filtro por Eje Temático
+                if (currentAxis !== 'all' && q.eje !== currentAxis) isMatch = false;
 
                 if (isMatch) {
                     visibleCount++;
@@ -1461,8 +2342,8 @@
             if (visibleCount === 0) {
                 html = `
                     <div class="bg-white rounded-2xl border border-slate-200 p-8 text-center text-slate-500">
-                        <p class="font-medium text-sm">No hay preguntas que coincidan con el filtro seleccionado.</p>
-                        <button onclick="setFilter('all')" class="mt-3 text-xs font-bold text-blue-600 hover:underline">Ver todas las preguntas</button>
+                        <p class="font-medium text-sm">No hay preguntas que coincidan con los filtros seleccionados.</p>
+                        <button onclick="resetFilters()" class="mt-3 text-xs font-bold text-blue-600 hover:underline">Restablecer todos los filtros</button>
                     </div>
                 `;
             }
@@ -1470,69 +2351,38 @@
             container.innerHTML = html;
         }
 
-        function renderSingleQuestion() {
-            const container = document.getElementById('question-single-container');
-            const q = questions[currentSingleIndex];
-            const hasPrev = currentSingleIndex > 0;
-            const hasNext = currentSingleIndex < questions.length - 1;
-
-            const cardHTML = buildQuestionCardHTML(q, currentSingleIndex);
-
-            container.innerHTML = `
-                <div class="space-y-4">
-                    ${cardHTML}
-                    
-                    <div class="flex items-center justify-between gap-3 pt-2">
-                        <button onclick="navigateSingle(-1)" ${!hasPrev ? 'disabled' : ''} class="px-4 py-2.5 rounded-xl border border-slate-200 bg-white font-bold text-xs sm:text-sm text-slate-700 hover:bg-slate-50 disabled:opacity-40 disabled:cursor-not-allowed transition-all shadow-sm flex items-center gap-2">
-                            <span>← Anterior</span>
-                        </button>
-                        
-                        <button onclick="jumpToNextPending()" class="text-xs font-bold text-blue-600 hover:text-blue-800">
-                            Saltar a no respondida
-                        </button>
-
-                        <button onclick="navigateSingle(1)" ${!hasNext ? 'disabled' : ''} class="px-4 py-2.5 rounded-xl border border-slate-200 bg-white font-bold text-xs sm:text-sm text-slate-700 hover:bg-slate-50 disabled:opacity-40 disabled:cursor-not-allowed transition-all shadow-sm flex items-center gap-2">
-                            <span>Siguiente →</span>
-                        </button>
-                    </div>
-                </div>
-            `;
-        }
-
-        function navigateSingle(delta) {
-            const newIndex = currentSingleIndex + delta;
-            if (newIndex >= 0 && newIndex < questions.length) {
-                currentSingleIndex = newIndex;
-                renderSingleQuestion();
-                renderQuestionGrid();
-            }
+        function resetFilters() {
+            currentFilter = 'all';
+            currentAxis = 'all';
+            document.getElementById('axis-select').value = 'all';
+            setFilter('all');
         }
 
         function showResults() {
             const stats = calculateScore();
             const percentage = (stats.totalScore / questions.length) * 100;
 
-            document.getElementById('modal-final-score').innerText = `${stats.totalScore.toFixed(1)} / ${questions.length}`;
-            document.getElementById('modal-percentage').innerText = `${percentage.toFixed(0)}% de aciertos (${stats.totalScore.toFixed(1)} de ${questions.length} puntos)`;
+            document.getElementById('modal-final-score').innerText = `${stats.totalScore.toFixed(0)} / ${questions.length}`;
+            document.getElementById('modal-percentage').innerText = `${percentage.toFixed(1)}% de aciertos (${stats.totalScore.toFixed(0)} de ${questions.length} puntos)`;
             
             document.getElementById('modal-correct-count').innerText = stats.perfectCount;
-            document.getElementById('modal-incorrect-count').innerText = stats.wrongCount;
+            document.getElementById('modal-incorrect-count').innerText = stats.wrongCount + stats.partialCount;
             document.getElementById('modal-unanswered-count').innerText = stats.pendingCount;
 
             const message = document.getElementById('modal-result-message');
             const icon = document.getElementById('modal-result-icon');
 
-            if (percentage >= 90) {
-                message.innerText = "¡Excelente! Tienes un dominio total de los conceptos de SIG (Geodesia, Proyecciones, IDE y Formatos). Estás más que listo para el parcial.";
+            if (percentage >= 85) {
+                message.innerText = "¡Excelente desempeño! Demuestras un dominio profundo y consistente de los conceptos de Ingeniería de Software (CMMI, PPQA, SCM, Métricas PSM, VER/VAL, Planificación y Caja Negra). ¡Estás listo para promocionar el parcial!";
                 icon.innerHTML = '<span class="text-6xl">🏆</span>';
             } else if (percentage >= 70) {
-                message.innerText = "¡Muy bien! Tienes bases sólidas. Repasa un poco los detalles sobre metadatos o servicios OGC para asegurar la máxima nota.";
+                message.innerText = "¡Muy buen rendimiento! Tienes bases muy sólidas. Repasa los casos prácticos finos de precedencias en la EDT, cálculo de esfuerzo y las trampas de redacción en prácticas CMMI para asegurar la máxima nota.";
                 icon.innerHTML = '<span class="text-6xl">👏</span>';
             } else if (percentage >= 50) {
-                message.innerText = "Aprobado justo. Hay varios conceptos que se mezclan (probablemente datum vs proyecciones, o WMS vs WFS). Te sugiero dar otra lectura profunda al resumen.";
+                message.innerText = "Aprobado justo. Hay temas en los que aún surgen confusiones (distinción VER vs VAL, métricas de proceso vs proyecto o tablas de decisión). Te recomendamos revisar las justificaciones técnicas de tus errores.";
                 icon.innerHTML = '<span class="text-6xl">📚</span>';
             } else {
-                message.innerText = "Te falta un poco de estudio. Concéntrate en diferenciar bien Raster vs Vectorial y los conceptos fundamentales de Geodesia.";
+                message.innerText = "Nivel insuficiente para aprobar el parcial de ISW. Es necesario profundizar el estudio en los 8 ejes: Arquitectura CMMI, PPQA, Requisitos, SCM, Estimación/EDT, V&V y Pruebas de Caja Negra.";
                 icon.innerHTML = '<span class="text-6xl">⚠️</span>';
             }
 
@@ -1548,8 +2398,9 @@
                 shuffleQuestions();
                 userSelections = new Array(questions.length).fill(null).map(() => []);
                 submittedAnswers = new Array(questions.length).fill(null);
-                currentSingleIndex = 0;
                 currentFilter = 'all';
+                currentAxis = 'all';
+                document.getElementById('axis-select').value = 'all';
                 updateStats();
                 renderQuestionGrid();
                 renderAllQuestions();
@@ -1569,17 +2420,14 @@
                 shuffleQuestions();
                 userSelections = new Array(questions.length).fill(null).map(() => []);
                 submittedAnswers = new Array(questions.length).fill(null);
-                currentSingleIndex = 0;
                 currentFilter = 'all';
+                currentAxis = 'all';
+                document.getElementById('axis-select').value = 'all';
                 closeResultModal();
                 updateStats();
                 renderQuestionGrid();
-                if (viewMode === 'all') {
-                    renderAllQuestions();
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                } else {
-                    renderSingleQuestion();
-                }
+                renderAllQuestions();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             }
         }
 
