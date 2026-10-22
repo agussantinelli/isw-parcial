@@ -32,7 +32,7 @@
 </p>
 
 <p>
-    La plataforma integra un banco curado de <strong>81 preguntas reales</strong> extraídas de parciales y exámenes finales históricos (2012 - 2026), simulando con fidelidad absoluta las condiciones reales de evaluación. Cada enunciado reproduce las afirmaciones múltiples, casos de estudio organizacionales y cálculos de ingeniería sin pistas previas sobre la cantidad de opciones válidas.
+    La plataforma integra un banco curado de <strong>100 preguntas reales</strong> extraídas de parciales y exámenes finales históricos (2012 - 2026), simulando con fidelidad absoluta las condiciones reales de evaluación. Cada enunciado reproduce las afirmaciones múltiples, casos de estudio organizacionales y cálculos de ingeniería sin pistas previas sobre la cantidad de opciones válidas.
 </p>
 
 <h3>📚 Ejes Temáticos Cubiertos</h3>
@@ -77,7 +77,7 @@
     <tr>
       <td><strong>Algoritmo de Aleatorización</strong></td>
       <td>Fisher-Yates Shuffle + Web Crypto API</td>
-      <td>Mezcla aleatoria criptográficamente segura de las 81 preguntas en cada sesión para evitar la memorización por posición.</td>
+      <td>Mezcla aleatoria criptográficamente segura de las 100 preguntas en cada sesión para evitar la memorización por posición.</td>
     </tr>
     <tr>
       <td><strong>Motor de Evaluación</strong></td>
@@ -101,7 +101,7 @@
 <ul>
     <li><strong>Capa de Presentación e Interacción:</strong>
         <ul>
-            <li>Carga fluida de las 81 preguntas en simultáneo con scroll suave y vista libre.</li>
+            <li>Carga fluida de las 100 preguntas en simultáneo con scroll suave y vista libre.</li>
             <li>Inclusión de badges de eje temático por pregunta para contextualizar de inmediato el área de conocimiento.</li>
             <li>Filtrado dinámico doble: por estado de resolución (Todas, Pendientes, Correctas, Incorrectas) y por <strong>Eje Temático</strong> (dropdown interactivo).</li>
             <li>Casillas interactivas A, B, C, D, etc., con soporte nativo para selección múltiple o individual y botón explícito <strong>"Enviar respuesta"</strong>.</li>
@@ -117,7 +117,7 @@
     </li>
     <li><strong>Capa de Navegación y Mapa Visual (Sidebar):</strong>
         <ul>
-            <li>Matriz visual interactiva de 81 casillas con sincronización bidireccional en tiempo real.</li>
+            <li>Matriz visual interactiva de 100 casillas con sincronización bidireccional en tiempo real.</li>
             <li>Código de estados por color: <strong>Gris</strong> (Pendiente), <strong>Verde</strong> (Perfecta +1 pt), <strong>Amarillo</strong> (Parcial 0 pts) y <strong>Rojo</strong> (Incorrecta 0 pts).</li>
             <li>Barra de estadísticas en vivo (Respondidas, Perfectas, Parciales, Incorrectas, Progreso global).</li>
             <li>Navegación asistida con botón de salto directo a la <strong>"Siguiente pendiente"</strong>.</li>
@@ -134,7 +134,7 @@
 ├── .github/
 │   └── workflows/
 │       └── deploy.yml       # Pipeline automatizado de CI/CD para GitHub Pages
-├── index.html               # Aplicación principal SPA (Punto de entrada con 81 preguntas)
+├── index.html               # Aplicación principal SPA (Punto de entrada con 100 preguntas)
 ├── parciales_1              # Banco de preguntas y exámenes recopilados (Parte 1)
 ├── parciales_2              # Compendio maestro de parciales y finales históricos (Parte 2)
 └── README.md                # Documentación técnica y académica del repositorio
@@ -160,7 +160,7 @@
             <li>Permite estudiar temas puntuales (ej: concentrarse únicamente en Caja Negra o en Arquitectura CMMI).</li>
         </ul>
     </li>
-    <li><strong>Mapa Interactivo de 81 Preguntas</strong>
+    <li><strong>Mapa Interactivo de 100 Preguntas</strong>
         <ul>
             <li>Navegación instantánea a cualquier tarjeta mediante scroll suave y resaltado visual con efecto glow.</li>
         </ul>
