@@ -170,6 +170,13 @@
             <li>Visualización clara en el mapa de las preguntas resueltas a la perfección (verde) frente a las incompletas (amarillo).</li>
         </ul>
     </li>
+    <li><strong>Diagnóstico Inteligente y Análisis de Estudio</strong>
+        <ul>
+            <li>Detección automática de ejes temáticos débiles con consejos pedagógicos sobre qué conceptos repasar.</li>
+            <li>Lista interactiva de preguntas falladas con justificaciones técnicas oficiales y botón de navegación directa.</li>
+            <li>Apertura automática al finalizar el cuestionario o a demanda en cualquier momento mediante <strong>"Ver Análisis"</strong>.</li>
+        </ul>
+    </li>
     <li><strong>Orden 100% Aleatorio</strong>
         <ul>
             <li>Mezcla matemática con Fisher-Yates al abrir la app o mediante el botón de reordenamiento rápido.</li>

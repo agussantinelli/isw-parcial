@@ -133,7 +133,11 @@
 
             <!-- Action Buttons -->
             <div id="header-actions" class="flex items-center gap-2">
-                <button onclick="showResults()" class="bg-blue-600 hover:bg-blue-700 text-white text-xs sm:text-sm font-bold py-1.5 px-3.5 sm:px-4 rounded-lg shadow-sm transition-all flex items-center gap-1.5">
+                <button onclick="showAnalysisModal()" class="bg-indigo-600 hover:bg-indigo-700 text-white text-xs sm:text-sm font-bold py-1.5 px-3 sm:px-3.5 rounded-lg shadow-sm transition-all flex items-center gap-1.5" title="Ver análisis de respuestas y diagnóstico de estudio">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+                    <span>Ver Análisis</span>
+                </button>
+                <button onclick="showAnalysisModal(true)" class="bg-blue-600 hover:bg-blue-700 text-white text-xs sm:text-sm font-bold py-1.5 px-3.5 sm:px-4 rounded-lg shadow-sm transition-all flex items-center gap-1.5" title="Finalizar simulación y ver resultados">
                     <span>Finalizar</span>
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                 </button>
@@ -243,9 +247,9 @@
 
                         <!-- Botones de Acción en Sidebar -->
                         <div class="mt-5 space-y-2">
-                            <button onclick="showResults()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2.5 px-4 rounded-xl shadow-sm text-sm transition-all flex items-center justify-center gap-2">
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                                <span>Ver Resultados Finales</span>
+                            <button onclick="showAnalysisModal()" class="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold py-2.5 px-4 rounded-xl shadow-sm text-sm transition-all flex items-center justify-center gap-2">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+                                <span>Ver Análisis de Respuestas</span>
                             </button>
                             <div class="grid grid-cols-2 gap-2">
                                 <button onclick="reshuffleQuiz()" class="bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold py-2 px-3 rounded-xl text-xs transition-all flex items-center justify-center gap-1.5" title="Reordenar las preguntas de forma 100% aleatoria">
@@ -267,43 +271,140 @@
             <span>🗺️ Mapa (<span id="fab-answered">0</span>/81)</span>
         </button>
 
-        <!-- Modal de Resultados Finales -->
-        <div id="result-modal" class="hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
-            <div class="bg-white rounded-3xl shadow-2xl max-w-lg w-full p-8 text-center fade-in border border-slate-100">
-                <div id="modal-result-icon" class="mb-4"></div>
-                <h3 class="text-2xl font-black text-slate-900 mb-1">Simulación Finalizada</h3>
-                <p class="text-xs text-slate-500 font-medium mb-6">Ingeniería de Software · UTN Facultad Regional Rosario</p>
+        <!-- Modal de Resultados y Análisis de Desempeño -->
+        <div id="result-modal" class="hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4">
+            <div class="bg-white rounded-3xl shadow-2xl max-w-3xl w-full max-h-[92vh] flex flex-col fade-in border border-slate-100 overflow-hidden">
+                
+                <!-- Encabezado del Modal -->
+                <div class="p-5 sm:p-6 pb-4 border-b border-slate-100 flex items-center justify-between bg-white shrink-0">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-blue-600 to-indigo-600 text-white flex items-center justify-center text-lg font-black shadow-md shadow-blue-500/20">
+                            📊
+                        </div>
+                        <div>
+                            <h3 class="text-lg sm:text-xl font-extrabold text-slate-900 leading-tight">Análisis de Desempeño y Estudio</h3>
+                            <p class="text-xs text-slate-500 font-medium">Diagnóstico inteligente · Áreas a mejorar · ISW UTN FRRO</p>
+                        </div>
+                    </div>
+                    <button onclick="closeResultModal()" class="w-8 h-8 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-600 font-bold flex items-center justify-center transition-all text-sm" title="Cerrar ventana">
+                        ✕
+                    </button>
+                </div>
 
-                <div class="bg-slate-50 border border-slate-200/80 rounded-2xl p-5 mb-6">
-                    <div class="text-4xl font-black text-blue-600 mb-1" id="modal-final-score">0 / 81</div>
-                    <div class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-4" id="modal-percentage">0% de aciertos</div>
+                <!-- Cuerpo Deslizable con Análisis Detallado -->
+                <div class="p-5 sm:p-6 overflow-y-auto custom-scroll space-y-6 flex-1">
                     
-                    <div class="grid grid-cols-3 gap-2 pt-3 border-t border-slate-200 text-xs">
-                        <div>
-                            <div class="text-emerald-600 font-bold text-lg" id="modal-correct-count">0</div>
-                            <div class="text-slate-500">Perfectas</div>
+                    <!-- Banner de Estado de la Simulación -->
+                    <div id="modal-completion-banner" class="rounded-2xl p-4 text-xs sm:text-sm font-semibold flex items-center gap-3">
+                        <!-- Generado dinámicamente -->
+                    </div>
+
+                    <!-- Métricas Principales -->
+                    <div class="bg-slate-50 border border-slate-200/80 rounded-2xl p-5">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-200">
+                            <div>
+                                <span class="text-xs font-bold text-slate-400 uppercase tracking-wider block mb-1">Puntuación Obtenida</span>
+                                <div class="text-3xl sm:text-4xl font-black text-blue-600" id="modal-final-score">0 / 81</div>
+                            </div>
+                            <div class="text-left sm:text-right">
+                                <span class="text-xs font-bold text-slate-400 uppercase tracking-wider block mb-1">Efectividad Global</span>
+                                <div class="text-base sm:text-lg font-extrabold text-slate-800" id="modal-percentage">0%</div>
+                            </div>
                         </div>
-                        <div>
-                            <div class="text-rose-600 font-bold text-lg" id="modal-incorrect-count">0</div>
-                            <div class="text-slate-500">Incorrectas</div>
+
+                        <!-- Grid de Estadísticas -->
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-4 text-xs">
+                            <div class="bg-white p-3 rounded-xl border border-slate-200/60 shadow-sm">
+                                <div class="text-slate-500 font-medium mb-1">Respondidas</div>
+                                <div class="text-blue-600 font-bold text-base" id="modal-answered-count">0 / 81</div>
+                            </div>
+                            <div class="bg-white p-3 rounded-xl border border-slate-200/60 shadow-sm">
+                                <div class="text-emerald-600 font-medium mb-1">Perfectas (+1)</div>
+                                <div class="text-emerald-600 font-bold text-base" id="modal-correct-count">0</div>
+                            </div>
+                            <div class="bg-white p-3 rounded-xl border border-slate-200/60 shadow-sm">
+                                <div class="text-amber-600 font-medium mb-1">Parciales (0)</div>
+                                <div class="text-amber-600 font-bold text-base" id="modal-partial-count">0</div>
+                            </div>
+                            <div class="bg-white p-3 rounded-xl border border-slate-200/60 shadow-sm">
+                                <div class="text-rose-600 font-medium mb-1">Incorrectas</div>
+                                <div class="text-rose-600 font-bold text-base" id="modal-incorrect-count">0</div>
+                            </div>
                         </div>
-                        <div>
-                            <div class="text-amber-600 font-bold text-lg" id="modal-unanswered-count">0</div>
-                            <div class="text-slate-500">Pendientes</div>
+                    </div>
+
+                    <!-- Mensaje de Diagnóstico de Aprobación -->
+                    <div class="p-4 rounded-2xl bg-blue-50/70 border border-blue-200/80 flex items-start gap-3">
+                        <div id="modal-result-icon" class="text-3xl shrink-0"></div>
+                        <p id="modal-result-message" class="text-xs sm:text-sm text-slate-700 font-medium leading-relaxed self-center"></p>
+                    </div>
+
+                    <!-- 1. Sección: Diagnóstico de Temas a Mejorar (Dónde falta estudio) -->
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between">
+                            <h4 class="text-sm font-extrabold text-slate-900 flex items-center gap-2">
+                                <span>🎯</span>
+                                <span>Diagnóstico Pedagógico: Temas a Mejorar</span>
+                            </h4>
+                            <span class="text-[11px] font-semibold text-slate-400">Prioridad de repaso</span>
                         </div>
+                        <div id="modal-study-recommendations" class="space-y-3">
+                            <!-- Tarjetas generadas dinámicamente -->
+                        </div>
+                    </div>
+
+                    <!-- 2. Sección: Rendimiento Detallado por Eje Temático -->
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between">
+                            <h4 class="text-sm font-extrabold text-slate-900 flex items-center gap-2">
+                                <span>📚</span>
+                                <span>Rendimiento por Eje Temático</span>
+                            </h4>
+                            <span class="text-[11px] font-semibold text-slate-400">Progreso por unidad</span>
+                        </div>
+                        <div id="modal-axis-breakdown" class="space-y-2.5">
+                            <!-- Barras de progreso por eje generadas dinámicamente -->
+                        </div>
+                    </div>
+
+                    <!-- 3. Sección: Lista Interactiva de Preguntas a Repasar -->
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between">
+                            <h4 class="text-sm font-extrabold text-slate-900 flex items-center gap-2">
+                                <span>🔍</span>
+                                <span>Preguntas para Repasar con Justificación</span>
+                            </h4>
+                            <span id="modal-failed-count-badge" class="text-[11px] font-bold px-2 py-0.5 rounded-full bg-rose-50 text-rose-700 border border-rose-200">
+                                0 fallos
+                            </span>
+                        </div>
+                        <p class="text-xs text-slate-500">
+                            Revisá aquí el motivo de tus fallos y las respuestas correctas. Hacé clic en <strong>"Ir a la pregunta"</strong> para navegar directamente a ella en el cuestionario.
+                        </p>
+                        <div id="modal-review-questions-list" class="space-y-3 max-h-[320px] overflow-y-auto custom-scroll pr-1">
+                            <!-- Lista interactiva de tarjetas generada dinámicamente -->
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Footer de Acciones Rápidas -->
+                <div class="p-4 sm:p-5 border-t border-slate-100 bg-slate-50/80 flex flex-wrap items-center justify-between gap-3 shrink-0">
+                    <div class="flex items-center gap-2">
+                        <button onclick="filterFailedQuestions()" class="bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200 text-xs font-bold py-2 px-3.5 rounded-xl transition-all flex items-center gap-1.5" title="Ver únicamente las preguntas respondidas incorrectamente">
+                            <span>🔴 Ver solo falladas en el simulador</span>
+                        </button>
+                    </div>
+                    <div class="flex items-center gap-2 ml-auto">
+                        <button onclick="closeResultModal()" class="bg-white hover:bg-slate-100 border border-slate-200 text-slate-700 text-xs font-bold py-2 px-4 rounded-xl transition-all shadow-sm">
+                            Volver al Examen
+                        </button>
+                        <button onclick="resetQuiz()" class="bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold py-2 px-4 rounded-xl transition-all shadow-sm">
+                            Reiniciar Simulación
+                        </button>
                     </div>
                 </div>
 
-                <p id="modal-result-message" class="text-slate-700 text-sm font-medium mb-6 px-2 leading-relaxed"></p>
-
-                <div class="flex flex-col sm:flex-row gap-2.5">
-                    <button onclick="closeResultModal()" class="flex-1 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold py-2.5 px-4 rounded-xl text-sm transition-all">
-                        Revisar Examen
-                    </button>
-                    <button onclick="resetQuiz()" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2.5 px-4 rounded-xl text-sm transition-all shadow-sm">
-                        Intentar de Nuevo
-                    </button>
-                </div>
             </div>
         </div>
 
@@ -1913,6 +2014,14 @@
             updateStats();
             renderQuestionGrid();
             renderQuestionCardElement(qIdx);
+
+            // Si se completaron todas las preguntas del examen, abrir automáticamente el análisis
+            const currentStats = calculateScore();
+            if (currentStats.answeredCount === questions.length) {
+                setTimeout(() => {
+                    showAnalysisModal(true);
+                }, 500);
+            }
         }
 
         function renderQuestionCardElement(qIdx) {
@@ -2109,35 +2218,385 @@
             setFilter('all');
         }
 
+        // Consejos pedagógicos y temas clave a repasar por Eje
+        const topicAdvice = {
+            'Eje 1: Arquitectura CMMI': {
+                icon: '🏛️',
+                shortName: 'Arquitectura CMMI',
+                tips: [
+                    'Diferenciar componentes Requeridos (Metas SG/GG) vs. Esperados (Prácticas SP/GP) vs. Informativos (Notas, Ejemplos).',
+                    'Acumulación estricta de niveles por etapas: el Nivel 2 es base obligatoria e indispensable para el Nivel 3.',
+                    'Distinguir Activos de Proceso (guías, plantillas institucionales reutilizables) vs. Productos de Trabajo (entregables de un proyecto concreto).',
+                    'Propósito de áreas base: OPF (mejora y benchmarking), OPD (procesos estándar y repositorio organizacional), OT (capacitación continua).'
+                ]
+            },
+            'Eje 4: Requisitos (RD / REQM)': {
+                icon: '📋',
+                shortName: 'Requisitos (RD y REQM)',
+                tips: [
+                    'Diagrama de Venn: (B - A) representa sobre-ingeniería / gold plating (desperdicio); la intersección (A ∩ B) se garantiza mediante Validación formal con stakeholders.',
+                    'Involucrar obligatoriamente a usuarios operativos en el relevamiento de requisitos, no solo directivos o gerentes.',
+                    'Especificar métricas cuantitativas para requisitos no funcionales (facilidad de uso y tiempos de carga).',
+                    'Trazabilidad bidireccional obligatoria y rol del Comité de Control de Cambios (CCB) ante nuevas solicitudes.'
+                ]
+            },
+            'Eje 5: Configuración (SCM) y Versiones': {
+                icon: '📦',
+                shortName: 'Gestión de Configuración (SCM)',
+                tips: [
+                    'Líneas base (Baseline) y retención: jamás eliminar versiones ni artefactos históricos del repositorio.',
+                    'Rollback a releases estables utilizando el grafo de versiones (SUN).',
+                    'Nomenclatura <x>.<y> y cálculo de vida útil esperada.',
+                    'Generación de releases mínimos requeridos según ciclos de vida cascada vs. incremental.'
+                ]
+            },
+            'Eje 6: Planificación y Estimación (PP/PMC)': {
+                icon: '⏱️',
+                shortName: 'Planificación (PP) y Control (PMC)',
+                tips: [
+                    'Unidades de estimación: Planning Poker en Puntos de Historia (PH); Delphi y PERT en Horas.',
+                    'Ley de Brooks: agregar más desarrolladores a un proyecto atrasado genera mayor retraso.',
+                    'Regla empírica 40-20-40 (40% análisis y diseño, 20% codificación, 40% pruebas y depuración).',
+                    'EDT jerárquica de entregables vs. Cronograma Gantt temporal.',
+                    'Cálculo de esfuerzo: tareas en paralelo vs Pair Programming (duplica horas-hombre consumidas).',
+                    'Cálculo de calendario considerando días laborables, fines de semana y feriados.'
+                ]
+            },
+            'Eje 7: Verificación y Validación (VER/VAL)': {
+                icon: '🧪',
+                shortName: 'Verificación (VER) y Validación (VAL)',
+                tips: [
+                    'Principio de Boehm: Verificación (¿producto correctamente construido?) vs. Validación (¿producto correcto para el cliente?).',
+                    'Revisiones de pares (inspecciones/walkthroughs): aplicables tempranamente pero NO sustituyen pruebas funcionales de sistema.',
+                    'Psicología del testing (Myers): el objetivo del testeo es encontrar defectos, no justificar adecuación.',
+                    'Ambientes de validación operativa en el sitio del cliente y pruebas de regresión.'
+                ]
+            },
+            'Eje 8: Testing de Caja Negra': {
+                icon: '🎯',
+                shortName: 'Testing de Caja Negra',
+                tips: [
+                    'Particiones de equivalencia: 1 partición válida representativa y múltiples clases inválidas mutuamente excluyentes.',
+                    'Análisis de valores límite: testeo riguroso de 2 valores por frontera (inmediatamente interior y exterior).',
+                    'Tablas de decisión: combinatoria booleana o condiciones compuestas; consolidación y casos de prueba necesarios.',
+                    'Filtrar datos distractores en enunciados de examen (edades jubilatorias, plazos de prueba).'
+                ]
+            }
+        };
+
         function showResults() {
+            showAnalysisModal();
+        }
+
+        function showAnalysisModal(isFinishedAuto = false) {
             const stats = calculateScore();
-            const percentage = (stats.totalScore / questions.length) * 100;
+            const isCompleted = stats.answeredCount === questions.length;
+            const accuracyOnAnswered = stats.answeredCount > 0 ? (stats.totalScore / stats.answeredCount) * 100 : 0;
+            const globalPercentage = (stats.totalScore / questions.length) * 100;
 
-            document.getElementById('modal-final-score').innerText = `${stats.totalScore.toFixed(0)} / ${questions.length}`;
-            document.getElementById('modal-percentage').innerText = `${percentage.toFixed(1)}% de aciertos (${stats.totalScore.toFixed(0)} de ${questions.length} puntos)`;
+            // Métricas numéricas
+            document.getElementById('modal-final-score').innerText = `${stats.totalScore.toFixed(0)} / ${questions.length} pts`;
+            document.getElementById('modal-percentage').innerText = stats.answeredCount > 0
+                ? `${globalPercentage.toFixed(1)}% global (${accuracyOnAnswered.toFixed(1)}% precisión)`
+                : '0% (Sin respuestas aún)';
             
+            document.getElementById('modal-answered-count').innerText = `${stats.answeredCount} / ${questions.length}`;
             document.getElementById('modal-correct-count').innerText = stats.perfectCount;
-            document.getElementById('modal-incorrect-count').innerText = stats.wrongCount + stats.partialCount;
-            document.getElementById('modal-unanswered-count').innerText = stats.pendingCount;
+            document.getElementById('modal-partial-count').innerText = stats.partialCount;
+            document.getElementById('modal-incorrect-count').innerText = stats.wrongCount;
 
+            // Banner superior de estado
+            const banner = document.getElementById('modal-completion-banner');
+            if (isCompleted) {
+                banner.className = 'rounded-2xl p-4 text-xs sm:text-sm font-semibold flex items-center gap-3 bg-emerald-50 text-emerald-900 border border-emerald-200';
+                banner.innerHTML = `
+                    <span class="text-2xl">🎉</span>
+                    <div>
+                        <strong class="block text-emerald-950 font-bold">¡Simulación completada al 100%!</strong>
+                        <span>Has respondido las ${questions.length} preguntas del examen. Aquí tienes tu diagnóstico pedagógico final.</span>
+                    </div>
+                `;
+            } else if (stats.answeredCount === 0) {
+                banner.className = 'rounded-2xl p-4 text-xs sm:text-sm font-semibold flex items-center gap-3 bg-slate-100 text-slate-800 border border-slate-200';
+                banner.innerHTML = `
+                    <span class="text-2xl">💡</span>
+                    <div>
+                        <strong class="block font-bold">Diagnóstico en tiempo real</strong>
+                        <span>Aún no respondiste preguntas. Comienza a responder para ver tu progreso y temas a reforzar.</span>
+                    </div>
+                `;
+            } else {
+                banner.className = 'rounded-2xl p-4 text-xs sm:text-sm font-semibold flex items-center gap-3 bg-indigo-50 text-indigo-900 border border-indigo-200';
+                banner.innerHTML = `
+                    <span class="text-2xl">⏱️</span>
+                    <div>
+                        <strong class="block text-indigo-950 font-bold">Diagnóstico en tiempo real (${stats.answeredCount}/${questions.length})</strong>
+                        <span>Llevas ${stats.answeredCount} respondidas y ${stats.pendingCount} pendientes. Puedes abrir este análisis cuando desees.</span>
+                    </div>
+                `;
+            }
+
+            // Mensaje e ícono de diagnóstico global
             const message = document.getElementById('modal-result-message');
             const icon = document.getElementById('modal-result-icon');
+            const eff = stats.answeredCount > 0 ? accuracyOnAnswered : 0;
 
-            if (percentage >= 85) {
-                message.innerText = "¡Excelente desempeño! Demuestras un dominio profundo y consistente de los conceptos de Ingeniería de Software (CMMI, Requisitos, SCM, Planificación, VER/VAL y Caja Negra). ¡Estás listo para promocionar el parcial!";
-                icon.innerHTML = '<span class="text-6xl">🏆</span>';
-            } else if (percentage >= 70) {
+            if (stats.answeredCount === 0) {
+                message.innerText = "Empieza a responder el cuestionario para obtener tu diagnóstico de fortalezas y debilidades.";
+                icon.innerHTML = '<span class="text-4xl">📝</span>';
+            } else if (eff >= 85) {
+                message.innerText = "¡Excelente desempeño! Demuestras un dominio profundo y consistente de los conceptos de Ingeniería de Software (CMMI, Requisitos, SCM, Planificación, VER/VAL y Caja Negra). ¡Estás en nivel de promoción directa!";
+                icon.innerHTML = '<span class="text-4xl">🏆</span>';
+            } else if (eff >= 70) {
                 message.innerText = "¡Muy buen rendimiento! Tienes bases muy sólidas. Repasa los casos prácticos finos de precedencias en la EDT, cálculo de esfuerzo y las trampas de redacción en prácticas CMMI para asegurar la máxima nota.";
-                icon.innerHTML = '<span class="text-6xl">👏</span>';
-            } else if (percentage >= 50) {
+                icon.innerHTML = '<span class="text-4xl">👏</span>';
+            } else if (eff >= 50) {
                 message.innerText = "Aprobado justo. Hay temas en los que aún surgen confusiones (distinción VER vs VAL, estimación/EDT o tablas de decisión). Te recomendamos revisar las justificaciones técnicas de tus errores.";
-                icon.innerHTML = '<span class="text-6xl">📚</span>';
+                icon.innerHTML = '<span class="text-4xl">📚</span>';
             } else {
                 message.innerText = "Nivel insuficiente para aprobar el parcial de ISW. Es necesario profundizar el estudio en los 6 ejes evaluados: Arquitectura CMMI, Requisitos, SCM, Estimación/EDT, V&V y Pruebas de Caja Negra.";
-                icon.innerHTML = '<span class="text-6xl">⚠️</span>';
+                icon.innerHTML = '<span class="text-4xl">⚠️</span>';
+            }
+
+            // Estadísticas agrupadas por Eje y Fallos
+            const axisStats = {};
+            const failedQuestions = [];
+
+            questions.forEach((q, idx) => {
+                const eje = q.eje || 'General';
+                if (!axisStats[eje]) {
+                    axisStats[eje] = {
+                        name: eje,
+                        total: 0,
+                        answered: 0,
+                        perfect: 0,
+                        partial: 0,
+                        wrong: 0,
+                        score: 0
+                    };
+                }
+                axisStats[eje].total++;
+                const ans = submittedAnswers[idx];
+                if (ans !== null) {
+                    axisStats[eje].answered++;
+                    axisStats[eje].score += ans.score;
+                    if (ans.status === 'perfect') {
+                        axisStats[eje].perfect++;
+                    } else {
+                        if (ans.status === 'partial') axisStats[eje].partial++;
+                        else axisStats[eje].wrong++;
+                        failedQuestions.push({ q, idx, ans });
+                    }
+                }
+            });
+
+            // 1. Renderizar recomendaciones pedagógicas de estudio
+            const recoContainer = document.getElementById('modal-study-recommendations');
+            const weakAxes = [];
+
+            Object.keys(axisStats).forEach(eje => {
+                const item = axisStats[eje];
+                const failCount = item.partial + item.wrong;
+                const axisAccuracy = item.answered > 0 ? (item.score / item.answered) * 100 : 0;
+                if (failCount > 0 || (item.answered > 0 && axisAccuracy < 75)) {
+                    weakAxes.push({
+                        ...item,
+                        failCount,
+                        accuracy: axisAccuracy,
+                        advice: topicAdvice[eje] || { icon: '📌', shortName: eje, tips: ['Repasar conceptos clave de la unidad.'] }
+                    });
+                }
+            });
+
+            if (stats.answeredCount === 0) {
+                recoContainer.innerHTML = `
+                    <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 text-slate-500 text-xs">
+                        Responde preguntas en el simulador para que el sistema identifique automáticamente en qué temas necesitas mayor preparación.
+                    </div>
+                `;
+            } else if (weakAxes.length === 0) {
+                recoContainer.innerHTML = `
+                    <div class="p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs sm:text-sm font-semibold flex items-center gap-2">
+                        <span class="text-xl">🌟</span>
+                        <span>¡Excelente precisión! No se registraron fallas críticas en los temas respondidos. Continúa respondiendo el resto del simulador con la misma solidez.</span>
+                    </div>
+                `;
+            } else {
+                weakAxes.sort((a, b) => a.accuracy - b.accuracy);
+                let recoHTML = '';
+                weakAxes.forEach(ax => {
+                    const tipsHTML = ax.advice.tips.map(t => `<li class="flex items-start gap-1.5"><span class="text-blue-500 shrink-0 font-bold">•</span><span>${t}</span></li>`).join('');
+                    recoHTML += `
+                        <div class="p-4 rounded-2xl border border-slate-200/90 bg-white shadow-sm space-y-3">
+                            <div class="flex flex-wrap items-center justify-between gap-2">
+                                <div class="flex items-center gap-2">
+                                    <span class="text-lg">${ax.advice.icon}</span>
+                                    <h5 class="text-xs sm:text-sm font-bold text-slate-900">${ax.name}</h5>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <span class="text-[11px] font-bold px-2.5 py-0.5 rounded-full ${ax.accuracy < 50 ? 'bg-rose-100 text-rose-800 border border-rose-300' : 'bg-amber-100 text-amber-800 border border-amber-300'}">
+                                        ${ax.accuracy.toFixed(0)}% precisión · ${ax.failCount} a repasar
+                                    </span>
+                                    <button onclick="filterByAxisFromModal('${ax.name}')" class="text-[11px] font-bold text-blue-600 hover:text-blue-800 bg-blue-50 hover:bg-blue-100 px-2.5 py-1 rounded-lg border border-blue-200 transition-all">
+                                        Filtrar este eje
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="p-3 bg-slate-50/80 rounded-xl border border-slate-100 text-xs text-slate-700">
+                                <span class="font-extrabold text-slate-800 block mb-1.5 text-[11px] uppercase tracking-wide">💡 Conceptos clave que debes reforzar:</span>
+                                <ul class="space-y-1 text-slate-600 text-xs">
+                                    ${tipsHTML}
+                                </ul>
+                            </div>
+                        </div>
+                    `;
+                });
+                recoContainer.innerHTML = recoHTML;
+            }
+
+            // 2. Desglose detallado por Eje con barras de progreso
+            const axisContainer = document.getElementById('modal-axis-breakdown');
+            let axisHTML = '';
+            Object.keys(axisStats).forEach(eje => {
+                const item = axisStats[eje];
+                const adv = topicAdvice[eje] || { icon: '📚' };
+                const percent = item.answered > 0 ? (item.score / item.answered) * 100 : 0;
+                let barColor = 'bg-slate-300';
+                let badgeColor = 'bg-slate-100 text-slate-600';
+                if (item.answered > 0) {
+                    if (percent >= 80) { barColor = 'bg-emerald-500'; badgeColor = 'bg-emerald-100 text-emerald-800'; }
+                    else if (percent >= 50) { barColor = 'bg-amber-400'; badgeColor = 'bg-amber-100 text-amber-800'; }
+                    else { barColor = 'bg-rose-500'; badgeColor = 'bg-rose-100 text-rose-800'; }
+                }
+
+                axisHTML += `
+                    <div class="p-3 rounded-xl border border-slate-200/80 bg-white hover:border-slate-300 transition-all">
+                        <div class="flex flex-wrap items-center justify-between gap-1 mb-1.5 text-xs">
+                            <span class="font-bold text-slate-800 flex items-center gap-1.5">
+                                <span>${adv.icon}</span>
+                                <span>${item.name}</span>
+                            </span>
+                            <div class="flex items-center gap-2">
+                                <span class="font-extrabold text-[11px] px-2 py-0.5 rounded-md ${badgeColor}">
+                                    ${item.answered > 0 ? `${percent.toFixed(0)}% (${item.perfect}/${item.answered})` : '0 respondidas'}
+                                </span>
+                                <button onclick="filterByAxisFromModal('${item.name}')" class="text-[11px] text-blue-600 hover:underline font-semibold" title="Ver preguntas de este eje">
+                                    Ver
+                                </button>
+                            </div>
+                        </div>
+                        <div class="w-full bg-slate-100 rounded-full h-2 overflow-hidden">
+                            <div class="${barColor} h-2 transition-all duration-300" style="width: ${item.answered > 0 ? percent : 0}%"></div>
+                        </div>
+                        <div class="flex justify-between text-[10px] text-slate-400 mt-1 font-medium">
+                            <span>${item.answered} de ${item.total} respondidas</span>
+                            <span>${item.partial} parciales · ${item.wrong} incorrectas</span>
+                        </div>
+                    </div>
+                `;
+            });
+            axisContainer.innerHTML = axisHTML;
+
+            // 3. Renderizar lista interactiva de preguntas a repasar
+            const failedListContainer = document.getElementById('modal-review-questions-list');
+            const failedBadge = document.getElementById('modal-failed-count-badge');
+            failedBadge.innerText = `${failedQuestions.length} para repasar`;
+            failedBadge.className = failedQuestions.length > 0
+                ? 'text-[11px] font-bold px-2 py-0.5 rounded-full bg-rose-50 text-rose-700 border border-rose-200'
+                : 'text-[11px] font-bold px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200';
+
+            if (failedQuestions.length === 0) {
+                failedListContainer.innerHTML = `
+                    <div class="p-6 rounded-2xl bg-emerald-50/70 border border-emerald-200 text-center text-xs sm:text-sm text-emerald-800 font-semibold">
+                        ✨ ¡No tienes preguntas falladas registradas! Todas tus respuestas enviadas son 100% correctas.
+                    </div>
+                `;
+            } else {
+                let listHTML = '';
+                failedQuestions.forEach(({ q, idx, ans }) => {
+                    const isPartial = ans.status === 'partial';
+                    const statusLabel = isPartial
+                        ? '<span class="px-2 py-0.5 text-[10px] font-extrabold rounded-full bg-amber-100 text-amber-900 border border-amber-300">⚡ Parcial (0 pts)</span>'
+                        : '<span class="px-2 py-0.5 text-[10px] font-extrabold rounded-full bg-rose-100 text-rose-900 border border-rose-300">✗ Incorrecta (0 pts)</span>';
+
+                    const userSelectedLetters = (ans.selected || []).map(optIdx => String.fromCharCode(65 + optIdx)).join(', ') || 'Ninguna';
+                    const correctLetters = (q.correctAnswers || []).map(optIdx => String.fromCharCode(65 + optIdx)).join(', ');
+
+                    listHTML += `
+                        <div class="p-4 rounded-2xl border ${isPartial ? 'border-amber-200 bg-amber-50/20' : 'border-rose-200 bg-rose-50/20'} space-y-2.5 transition-all">
+                            <div class="flex items-center justify-between gap-2">
+                                <div class="flex items-center gap-2">
+                                    <span class="font-extrabold text-xs text-slate-800">Pregunta ${idx + 1}</span>
+                                    <span class="text-[11px] text-slate-500 font-medium truncate max-w-[200px] sm:max-w-xs">(${q.eje})</span>
+                                </div>
+                                ${statusLabel}
+                            </div>
+
+                            <p class="text-xs font-semibold text-slate-800 leading-snug">
+                                ${q.q}
+                            </p>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[11px] pt-1">
+                                <div class="p-2 rounded-lg bg-white border border-slate-200">
+                                    <span class="text-slate-500 block">Tu selección:</span>
+                                    <span class="font-bold ${isPartial ? 'text-amber-800' : 'text-rose-700'}">${userSelectedLetters}</span>
+                                </div>
+                                <div class="p-2 rounded-lg bg-white border border-emerald-200">
+                                    <span class="text-emerald-700 block">Opciones correctas:</span>
+                                    <span class="font-bold text-emerald-800">${correctLetters}</span>
+                                </div>
+                            </div>
+
+                            <div class="p-2.5 rounded-xl bg-white border border-slate-200 text-xs text-slate-600">
+                                <strong class="text-slate-700 block mb-0.5 text-[11px]">Justificación técnica oficial:</strong>
+                                <span>${q.exp}</span>
+                            </div>
+
+                            <div class="pt-1 flex justify-end">
+                                <button onclick="jumpToQuestion(${idx})" class="text-xs font-bold text-blue-600 hover:text-blue-800 flex items-center gap-1 bg-blue-50 hover:bg-blue-100 px-3 py-1.5 rounded-lg border border-blue-200 transition-all">
+                                    <span>🔍 Ir a la pregunta</span>
+                                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                });
+                failedListContainer.innerHTML = listHTML;
             }
 
             document.getElementById('result-modal').classList.remove('hidden');
+        }
+
+        function jumpToQuestion(idx) {
+            closeResultModal();
+            if (currentFilter !== 'all' || currentAxis !== 'all') {
+                resetFilters();
+            }
+            setTimeout(() => {
+                const card = document.getElementById(`question-card-${idx}`);
+                if (card) {
+                    card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    card.classList.remove('highlight-card');
+                    card.getBoundingClientRect();
+                    card.classList.add('highlight-card');
+                }
+            }, 120);
+        }
+
+        function filterFailedQuestions() {
+            closeResultModal();
+            currentAxis = 'all';
+            document.getElementById('axis-select').value = 'all';
+            setFilter('incorrect');
+            window.scrollTo({ top: 100, behavior: 'smooth' });
+        }
+
+        function filterByAxisFromModal(axis) {
+            closeResultModal();
+            setAxisFilter(axis);
+            document.getElementById('axis-select').value = axis;
+            setFilter('all');
+            window.scrollTo({ top: 100, behavior: 'smooth' });
         }
 
         function closeResultModal() {
