@@ -107,7 +107,7 @@
                 </div>
                 <div>
                     <h1 class="header-title text-base sm:text-lg font-extrabold text-slate-900 leading-tight">Simulador de Examen</h1>
-                    <p id="header-subtitle" class="header-subtitle text-xs text-slate-500 font-medium">81 Preguntas · Ingeniería de Software (UTN FRRO)</p>
+                    <p id="header-subtitle" class="header-subtitle text-xs text-slate-500 font-medium">100 Preguntas · Ingeniería de Software (UTN FRRO)</p>
                 </div>
             </div>
 
@@ -115,7 +115,7 @@
             <div id="header-stats" class="flex items-center gap-2 sm:gap-4 text-xs sm:text-sm font-semibold">
                 <div class="flex items-center gap-1.5 px-3 py-1.5 bg-slate-100 rounded-lg text-slate-700">
                     <span>Respondidas:</span>
-                    <span id="stat-answered" class="text-blue-600 font-bold">0/81</span>
+                    <span id="stat-answered" class="text-blue-600 font-bold">0/100</span>
                 </div>
                 <div class="flex items-center gap-1.5 px-3 py-1.5 bg-emerald-50 rounded-lg text-emerald-700">
                     <span>Perfectas:</span>
@@ -165,10 +165,10 @@
                             <div class="flex items-center gap-1.5 text-xs font-semibold overflow-x-auto pb-1 sm:pb-0 filter-bar">
                                 <span class="text-slate-500 mr-1 shrink-0">Estado:</span>
                                 <button id="filter-all" onclick="setFilter('all')" class="px-2.5 py-1.5 rounded-lg bg-blue-600 text-white font-bold transition-all shadow-sm">
-                                    Todas (<span id="count-all">81</span>)
+                                    Todas (<span id="count-all">100</span>)
                                 </button>
                                 <button id="filter-pending" onclick="setFilter('pending')" class="px-2.5 py-1.5 rounded-lg bg-slate-100 text-slate-600 hover:bg-slate-200 transition-all font-medium">
-                                    Pendientes (<span id="count-pending">81</span>)
+                                    Pendientes (<span id="count-pending">100</span>)
                                 </button>
                                 <button id="filter-correct" onclick="setFilter('correct')" class="px-2.5 py-1.5 rounded-lg bg-emerald-50 text-emerald-700 hover:bg-emerald-100 transition-all font-medium">
                                     Correctas (<span id="count-correct">0</span>)
@@ -188,7 +188,7 @@
                         <div class="pt-2 border-t border-slate-100 flex flex-wrap items-center gap-2">
                             <span class="text-xs font-semibold text-slate-500 shrink-0">Filtrar por Eje:</span>
                             <select id="axis-select" onchange="setAxisFilter(this.value)" class="text-xs font-semibold bg-slate-50 border border-slate-200 text-slate-700 rounded-lg px-2.5 py-1.5 focus:ring-2 focus:ring-blue-500 focus:outline-none flex-1 max-w-md">
-                                <option value="all">📚 Todos los Ejes (81 preguntas)</option>
+                                <option value="all">📚 Todos los Ejes (100 preguntas)</option>
                                 <option value="Eje 1: Arquitectura CMMI">🏛️ Eje 1: Arquitectura CMMI y Niveles de Madurez</option>
                                 <option value="Eje 4: Requisitos (RD / REQM)">📋 Eje 4: Requisitos (RD y REQM)</option>
                                 <option value="Eje 5: Configuración (SCM) y Versiones">📦 Eje 5: Gestión de Configuración (SCM) y Versiones</option>
@@ -216,7 +216,7 @@
                                 <span>Mapa de Preguntas</span>
                             </h3>
                             <span id="score-badge" class="text-xs font-bold px-2 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">
-                                0 / 81 pts
+                                0 / 100 pts
                             </span>
                         </div>
 
@@ -268,7 +268,7 @@
 
         <!-- Botón flotante móvil para mapa -->
         <button onclick="scrollToMap()" class="mobile-fab">
-            <span>🗺️ Mapa (<span id="fab-answered">0</span>/81)</span>
+            <span>🗺️ Mapa (<span id="fab-answered">0</span>/100)</span>
         </button>
 
         <!-- Modal de Resultados y Análisis de Desempeño -->
@@ -304,7 +304,7 @@
                         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-200">
                             <div>
                                 <span class="text-xs font-bold text-slate-400 uppercase tracking-wider block mb-1">Puntuación Obtenida</span>
-                                <div class="text-3xl sm:text-4xl font-black text-blue-600" id="modal-final-score">0 / 81</div>
+                                <div class="text-3xl sm:text-4xl font-black text-blue-600" id="modal-final-score">0 / 100</div>
                             </div>
                             <div class="text-left sm:text-right">
                                 <span class="text-xs font-bold text-slate-400 uppercase tracking-wider block mb-1">Efectividad Global</span>
@@ -316,7 +316,7 @@
                         <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-4 text-xs">
                             <div class="bg-white p-3 rounded-xl border border-slate-200/60 shadow-sm">
                                 <div class="text-slate-500 font-medium mb-1">Respondidas</div>
-                                <div class="text-blue-600 font-bold text-base" id="modal-answered-count">0 / 81</div>
+                                <div class="text-blue-600 font-bold text-base" id="modal-answered-count">0 / 100</div>
                             </div>
                             <div class="bg-white p-3 rounded-xl border border-slate-200/60 shadow-sm">
                                 <div class="text-emerald-600 font-medium mb-1">Perfectas (+1)</div>
@@ -1768,6 +1768,317 @@
             0
         ],
         "exp": "La regla de negocio estipula que la advertencia solo se dispara con la combinación de Consulta = ESPECIALISTA junto con Asignación = OBRA_SOCIAL (o PREPAGA)."
+    },
+    {
+        "id": 82,
+        "eje": "Eje 6: Planificación y Estimación (PP/PMC)",
+        "q": "¿Cuál es el ciclo de vida genérico de desarrollo de software más eficaz y apropiado cuando los requerimientos del cliente no están estabilizados y presentan alta incertidumbre?",
+        "type": "single",
+        "options": [
+            "Ciclo Iterativo",
+            "Ciclo en Cascada (Secuencial)",
+            "Ciclo Incremental lineal"
+        ],
+        "correctAnswers": [
+            0
+        ],
+        "exp": "El modelo Iterativo es el más eficaz cuando no hay claridad en los requisitos o son inestables, ya que no exige conocer todos los requerimientos al inicio; se construyen prototipos y versiones sucesivas que el cliente evalúa y ajusta hasta estabilizar las especificaciones."
+    },
+    {
+        "id": 83,
+        "eje": "Eje 6: Planificación y Estimación (PP/PMC)",
+        "q": "¿Cuál es el ciclo de vida de desarrollo de software que mejora y maximiza las posibilidades de salir antes al mercado (time-to-market) con un producto operativo para el cliente?",
+        "type": "single",
+        "options": [
+            "Ciclo Incremental",
+            "Ciclo en Cascada",
+            "Ciclo Iterativo puro sin entregas intermedias"
+        ],
+        "correctAnswers": [
+            0
+        ],
+        "exp": "El modelo Incremental permite poner en producción software operativo de forma temprana y escalonada. El primer incremento entrega la funcionalidad esencial más básica para que el cliente comience a operar antes de finalizar el producto completo."
+    },
+    {
+        "id": 84,
+        "eje": "Eje 6: Planificación y Estimación (PP/PMC)",
+        "q": "¿Cuáles de las siguientes variables tienen una incidencia determinante sobre la elección del ciclo de vida genérico de desarrollo como base para un proyecto de software?",
+        "type": "multi",
+        "options": [
+            "Estabilidad y claridad de los requerimientos desde el inicio del proyecto.",
+            "Necesidad del negocio de poner en producción funcionalidad operativa antes de finalizar el producto completo.",
+            "El tipo de lenguaje de programación específico que se utilizará.",
+            "La cantidad de memoria RAM y almacenamiento del servidor del cliente."
+        ],
+        "correctAnswers": [
+            0,
+            1
+        ],
+        "exp": "La elección del ciclo de vida depende primordialmente de dos variables clave: la estabilidad de los requerimientos (estables orientan a Cascada; cambiantes a Iterativo) y la urgencia de entrega y puesta en producción de software funcional antes de concluir el proyecto (que orienta a Incremental)."
+    },
+    {
+        "id": 85,
+        "eje": "Eje 6: Planificación y Estimación (PP/PMC)",
+        "q": "En un proyecto de desarrollo basado en el ciclo de vida en cascada, ¿en qué fase se confecciona el manual de usuario y cuáles de los siguientes artefactos son técnicamente indispensables para su redacción?",
+        "type": "single",
+        "options": [
+            "Se confecciona en la fase de Prueba/Testing, siendo indispensables la Interfaz Gráfica (GUI) y los Casos de Uso.",
+            "Se confecciona en la fase de Análisis, siendo indispensables el modelo de dominio y el diccionario de datos.",
+            "Se confecciona en la fase de Codificación, siendo indispensables el código fuente y las pruebas unitarias.",
+            "Se confecciona en la fase de Inicio, antes de relevar los requerimientos del cliente."
+        ],
+        "correctAnswers": [
+            0
+        ],
+        "exp": "El manual de usuario describe cómo interactúa el usuario con el sistema terminado. En cascada se redacta en la fase de Prueba (cuando pantallas y flujos están integrados y estabilizados), siendo indispensables la GUI y los Casos de Uso. El código fuente y los tests unitarios son artefactos internos de construcción que no aportan al manual."
+    },
+    {
+        "id": 86,
+        "eje": "Eje 7: Verificación y Validación (VER/VAL)",
+        "q": "En un proyecto de desarrollo de software estructurado bajo un ciclo de vida incremental con X incrementos, ¿en cuáles de los incrementos se deben disponer y ejecutar pruebas de sistema?",
+        "type": "single",
+        "options": [
+            "En todos y cada uno de los incrementos",
+            "Únicamente en el último incremento",
+            "En los incrementos pares",
+            "Solo en el primer incremento para probar la infraestructura base"
+        ],
+        "correctAnswers": [
+            0
+        ],
+        "exp": "En el modelo incremental, cada entrega es un subproducto operativo utilizable. Por lo tanto, se deben realizar pruebas de sistema completas en TODOS los incrementos para garantizar tanto la operatividad de la nueva funcionalidad como la no regresión de las funciones ya integradas."
+    },
+    {
+        "id": 87,
+        "eje": "Eje 1: Arquitectura CMMI",
+        "q": "¿Cuál es el área de proceso de CMMI encargada de evaluar formalmente los procesos de la organización comparándolos contra modelos de referencia, estándares y prácticas de otras organizaciones (benchmarking)?",
+        "type": "single",
+        "options": [
+            "OPF (Enfoque de Procesos de la Organización)",
+            "OPD (Definición de Procesos de la Organización)",
+            "OT (Formación Organizativa)",
+            "VER (Verificación)"
+        ],
+        "correctAnswers": [
+            0
+        ],
+        "exp": "En CMMI Nivel 3, OPF (práctica específica SP 1.2 'Evaluar los procesos de la organización') es responsable de contrastar los procesos organizacionales frente a estándares externos y benchmarking de la industria para identificar fortalezas, debilidades y oportunidades de mejora."
+    },
+    {
+        "id": 88,
+        "eje": "Eje 1: Arquitectura CMMI",
+        "q": "La gerencia técnica decide documentar el procedimiento formal mediante el cual un proyecto puede solicitar una excepción justificada para apartarse del proceso estándar (por ejemplo, omitir el Modelado de Negocio o no incluir pruebas automatizadas). ¿A qué área y práctica de CMMI corresponde?",
+        "type": "single",
+        "options": [
+            "OPD / SP 1.3 (Establecer los criterios y las guías de adaptación)",
+            "OPF / SP 1.2 (Evaluar los procesos de la organización)",
+            "PP / SP 1.3 (Definir el ciclo de vida del proyecto)",
+            "PMC / SP 2.3 (Gestionar las acciones correctivas)"
+        ],
+        "correctAnswers": [
+            0
+        ],
+        "exp": "Establecer y mantener los criterios, pautas y mecanismos autorizados para que los proyectos adapten (tailoring) el conjunto de procesos estándar de la organización a sus características particulares es la responsabilidad explícita de OPD SP 1.3."
+    },
+    {
+        "id": 89,
+        "eje": "Eje 6: Planificación y Estimación (PP/PMC)",
+        "q": "Durante la ejecución del proyecto, el cliente comunica que el servidor destinado a pruebas de producción estará disponible con 20 días de retraso respecto a lo pactado. El equipo evalúa el impacto y analiza qué medidas adoptar. ¿Qué práctica específica de CMMI se está aplicando?",
+        "type": "single",
+        "options": [
+            "PMC / SP 2.1 (Analizar problemas)",
+            "PP / SP 2.4 (Planificar los recursos del proyecto)",
+            "CM / SP 2.1 (Seguir las peticiones de cambio)",
+            "VAL / SP 1.2 (Establecer el entorno de validación)"
+        ],
+        "correctAnswers": [
+            0
+        ],
+        "exp": "Dado que el proyecto ya está en ejecución (hitos de inicio concluidos), la gestión de un desvío o retraso en la entrega de equipamiento crítico es una actividad de seguimiento operativo enmarcada en PMC SP 2.1: 'Analizar problemas detectados durante la monitorización para determinar su impacto'."
+    },
+    {
+        "id": 90,
+        "eje": "Eje 4: Requisitos (RD / REQM)",
+        "q": "El Gerente de Ventas solicita incorporar un nuevo esquema de comisiones. El equipo de proyecto se reúne con el Sponsor para acordar fehacientemente que la fecha de entrega debe posponerse 3 semanas en el plan para absorber el cambio, siendo su aprobación condición indispensable para aceptarlo. ¿A qué área y práctica de CMMI corresponde?",
+        "type": "single",
+        "options": [
+            "REQM / SP 1.2 (Obtener el compromiso sobre los requerimientos)",
+            "RD / SP 3.4 (Analizar los requerimientos para alcanzar el equilibrio)",
+            "PMC / SP 1.2 (Monitorizar los compromisos)",
+            "CM / SP 2.1 (Seguir las peticiones de cambio)"
+        ],
+        "correctAnswers": [
+            0
+        ],
+        "exp": "Pactar fehacientemente con los interesados con poder de decisión el ajuste en plazos y recursos como condición indispensable para aceptar los cambios solicitados es la aplicación directa de REQM SP 1.2: 'Obtener el compromiso de los participantes del proyecto sobre los requerimientos'."
+    },
+    {
+        "id": 91,
+        "eje": "Eje 4: Requisitos (RD / REQM)",
+        "q": "En una reunión de avance, el cliente solicita incorporar una nueva variante de cálculo de descuentos no contemplada originalmente. Si el equipo actualmente se encuentra evaluando el impacto con el especialista impositivo para ver su viabilidad, corresponde a REQM SP 1.3. Pero si ya se decidió formalmente aceptar la variante y se ingresa la solicitud técnica de modificación, ¿a qué práctica corresponde?",
+        "type": "single",
+        "options": [
+            "CM / SP 2.1 (Seguir las peticiones de cambio)",
+            "REQM / SP 1.1 (Obtener una comprensión de los requerimientos)",
+            "RD / SP 1.1 (Obtener las necesidades)",
+            "VER / SP 2.2 (Llevar a cabo las revisiones entre pares)"
+        ],
+        "correctAnswers": [
+            0
+        ],
+        "exp": "Mientras el cambio está siendo evaluado funcionalmente para ver cómo impacta en las reglas de negocio, aplica REQM SP 1.3 ('Gestionar los cambios de los requerimientos'). Una vez que el cambio fue formalmente aceptado e ingresa al flujo de modificación de artefactos bajo control, su seguimiento se rige por CM SP 2.1 ('Seguir las peticiones de cambio')."
+    },
+    {
+        "id": 92,
+        "eje": "Eje 5: Configuración (SCM) y Versiones",
+        "q": "En el marco de un proyecto, se realiza un control sistemático para comprobar si los nombres de los archivos de los artefactos generados cumplen estrictamente con las reglas de nomenclatura y estructura definidas para dicho proyecto. ¿A qué área de proceso y práctica específica de CMMI corresponde?",
+        "type": "single",
+        "options": [
+            "CM / SP 3.2 (Realizar auditorías de configuración)",
+            "VER / SP 3.1 (Realizar la verificación)",
+            "REQM / SP 1.5 (Identificar inconsistencias)",
+            "RD / SP 3.4 (Analizar los requerimientos para alcanzar el equilibrio)"
+        ],
+        "correctAnswers": [
+            0
+        ],
+        "exp": "Comprobar la integridad física, ubicación, formato y cumplimiento de convenciones de nombres de los archivos de un proyecto constituye una Auditoría Física de Configuración (PCA), normada en CM SP 3.2 ('Realizar auditorías de configuración')."
+    },
+    {
+        "id": 93,
+        "eje": "Eje 5: Configuración (SCM) y Versiones",
+        "q": "En un proyecto se establece que un conjunto de especificaciones y planes aprobados formalmente constituyen a partir de ese momento el basamento oficial inmutable sobre el cual se desarrollará el resto del sistema, requiriendo control formal de cambios para cualquier modificación posterior. ¿Qué práctica específica de CMMI se ejecuta?",
+        "type": "single",
+        "options": [
+            "CM / SP 1.3 (Crear o liberar líneas base)",
+            "REQM / SP 1.1 (Obtener una comprensión de los requerimientos)",
+            "PMC / SP 2.1 (Analizar problemas)",
+            "RD / SP 3.4 (Analizar requerimientos para alcanzar el equilibrio)"
+        ],
+        "correctAnswers": [
+            0
+        ],
+        "exp": "Congelar y publicar formalmente un conjunto de artefactos aprobados para que sirvan de punto de partida oficial e inmutable sin una solicitud de cambio formal es la definición exacta de CM SP 1.3 ('Crear o liberar líneas base')."
+    },
+    {
+        "id": 94,
+        "eje": "Eje 5: Configuración (SCM) y Versiones",
+        "q": "En un proyecto, cada vez que se genera una nueva compilación del programa ejecutable (sea por nueva funcionalidad, corrección de defectos o diseño), se produce un documento donde se detallan las modificaciones realizadas respecto a la compilación previa para saber exactamente qué cambió. ¿Qué práctica de CMMI representa?",
+        "type": "single",
+        "options": [
+            "CM / SP 3.1 (Establecer registros de gestión de configuración)",
+            "VER / SP 2.2 (Llevar a cabo las revisiones entre pares)",
+            "PMC / SP 1.2 (Monitorizar los compromisos)",
+            "REQM / SP 1.5 (Identificar inconsistencias)"
+        ],
+        "correctAnswers": [
+            0
+        ],
+        "exp": "Mantener el registro histórico detallado de qué cambió, cuándo, por qué y en qué versión/build se incorporó cada elemento corresponde a la Contabilidad de Estado de la Configuración (CSA), instrumentada en CM SP 3.1 ('Establecer registros de gestión de configuración')."
+    },
+    {
+        "id": 95,
+        "eje": "Eje 5: Configuración (SCM) y Versiones",
+        "q": "Desde la perspectiva específica del área de Testing y Aseguramiento de Calidad, ¿cuáles son los propósitos principales de aplicar Gestión de la Configuración (SCM)?",
+        "type": "multi",
+        "options": [
+            "Controlar las versiones de los casos de prueba y suites de prueba.",
+            "Identificar con precisión la versión y build exacta del software que se está probando.",
+            "Realizar el seguimiento formal de los cambios y modificaciones en los casos de prueba.",
+            "Generar automáticamente casos de prueba sintéticos sin intervención de testers.",
+            "Eliminar la necesidad de ejecutar pruebas de regresión."
+        ],
+        "correctAnswers": [
+            0,
+            1,
+            2
+        ],
+        "exp": "Para testing, SCM garantiza: 1) controlar la versión de los casos de prueba; 2) identificar inequívocamente qué build/versión de código se prueba; y 3) registrar los cambios en los casos de prueba cuando evolucionan las especificaciones. No genera casos automáticos ni elimina pruebas de regresión."
+    },
+    {
+        "id": 96,
+        "eje": "Eje 6: Planificación y Estimación (PP/PMC)",
+        "q": "En la planificación de proyectos de software y redes de precedencia (Gantt/CPM), ¿cuándo se establece formalmente que una tarea A es PREDECESORA directa de una tarea B?",
+        "type": "single",
+        "options": [
+            "Cuando al menos parte de lo que produce o entrega la tarea A es utilizado o consumido por la tarea B como insumo necesario.",
+            "Cuando la tarea A consume mayor cantidad de horas-persona de esfuerzo que la tarea B.",
+            "Cuando la tarea A y la tarea B son asignadas obligatoriamente al mismo profesional técnico.",
+            "Cuando la tarea A debe comenzar en el mismo mes calendario en que finaliza la tarea B."
+        ],
+        "correctAnswers": [
+            0
+        ],
+        "exp": "Una tarea A precede lógicamente a B cuando B requiere como precondición obligatoria algún producto de trabajo, información o artefacto generado por A, impidiendo su inicio hasta que dicho insumo se encuentre disponible."
+    },
+    {
+        "id": 97,
+        "eje": "Eje 6: Planificación y Estimación (PP/PMC)",
+        "q": "Considerando una jornada laboral estándar de 8 horas a dedicación completa, ¿en cuáles de los siguientes casos la DURACIÓN (en días) y el ESFUERZO (en días-persona) de las tareas resultan numéricamente IGUALES?",
+        "type": "multi",
+        "options": [
+            "Una tarea consume 3 jornadas laborales y la lleva a cabo un único profesional a dedicación completa.",
+            "La tarea 'Análisis A' (2 jornadas) y 'Análisis B' (2 jornadas) son independientes y las realiza el mismo analista en forma secuencial.",
+            "Una tarea programada en 3 jornadas laborales es realizada simultáneamente por tres analistas trabajando de a par o en equipo.",
+            "Dos tareas de 2 jornadas cada una son independientes y son ejecutadas en paralelo por dos analistas distintos."
+        ],
+        "correctAnswers": [
+            0,
+            1
+        ],
+        "exp": "Duración y esfuerzo coinciden cuando un único recurso trabaja sin solapamientos a tiempo completo: 1 profesional durante 3 días = 3 días duración y 3 días-persona esfuerzo; 1 analista haciendo 2 tareas de 2 días en serie = 4 días duración y 4 días-persona esfuerzo. Con múltiples recursos en paralelo o de a par, el esfuerzo es la sumatoria de horas pero la duración se acorta o se computa por concurrencia."
+    },
+    {
+        "id": 98,
+        "eje": "Eje 6: Planificación y Estimación (PP/PMC)",
+        "q": "En relación a la Gestión de Riesgos en proyectos de software (área RSKM en CMMI), seleccione cuáles de las siguientes afirmaciones son VERDADERAS:",
+        "type": "multi",
+        "options": [
+            "La identificación de riesgos es una actividad cronológicamente previa a su análisis y priorización.",
+            "La probabilidad de ocurrencia y la consecuencia (impacto) son parámetros indispensables para categorizar y evaluar los riesgos.",
+            "Los riesgos del proyecto deben comenzar a identificarse formalmente desde la etapa de planificación.",
+            "Cualquier desvío o variación en un riesgo, por pequeño que sea, obliga inmediatamente a disparar acciones de mitigación sin considerar umbrales de tolerancia."
+        ],
+        "correctAnswers": [
+            0,
+            1,
+            2
+        ],
+        "exp": "Primero se identifican los riesgos y luego se analizan probabilística y cualitativamente. Se gestionan desde la planificación inicial. No todo desvío menor dispara contingencias; las actividades de tratamiento solo se activan cuando se superan los umbrales de tolerancia predefinidos."
+    },
+    {
+        "id": 99,
+        "eje": "Eje 7: Verificación y Validación (VER/VAL)",
+        "q": "En el marco de una Revisión Formal Técnica (Inspección de Fagan), ¿cuáles de las siguientes responsabilidades corresponden formalmente al rol de MODERADOR?",
+        "type": "multi",
+        "options": [
+            "Liderar la reunión de revisión del documento y marcar el ritmo de la sesión.",
+            "Almacenar y consolidar los datos de defectos recopilados.",
+            "Decidir formalmente la ejecución de la revisión y determinar si se cumplieron sus objetivos generales.",
+            "Corregir y depurar el código fuente defectuoso durante la misma reunión.",
+            "Defender los defectos ante el autor para justificar el rechazo del artefacto."
+        ],
+        "correctAnswers": [
+            0,
+            1
+        ],
+        "exp": "El Moderador es el facilitador neutral que lidera la reunión técnica, marca el ritmo para evitar estancamientos y registra los datos de defectos detectados. Decidir si se ejecuta la revisión y evaluar sus metas corresponde al Supervisor/Líder. Corregir código en la sesión está prohibido (el objetivo es descubrir defectos, no resolverlos)."
+    },
+    {
+        "id": 100,
+        "eje": "Eje 8: Testing de Caja Negra",
+        "q": "Un sistema de correo internacional calcula costos de envío según el peso con los siguientes tramos: $2.5 hasta 10 g; $3.5 de más de 10 g hasta 50 g; $4.5 de más de 50 g hasta 75 g; $5.5 de más de 75 g hasta 100 g. ¿Cuáles de los siguientes valores en gramos representan los valores límite exactos para evaluar las particiones válidas e inválidas mediante Análisis de Valores Límite (BVA)?",
+        "type": "single",
+        "options": [
+            "0, 1, 10, 11, 50, 51, 75, 76, 100 y 101 g",
+            "10, 50, 75 y 100 g únicamente",
+            "5, 25, 60 y 85 g",
+            "0, 9, 19, 49, 74 y 99 g"
+        ],
+        "correctAnswers": [
+            0
+        ],
+        "exp": "El Análisis de Valores Límite (BVA) evalúa los valores extremos a ambos lados de cada salto tarifario: 0 (límite inferior inválido), 1 (mínimo entero válido), 10 y 11 (transición tramo 1 a 2), 50 y 51 (transición tramo 2 a 3), 75 y 76 (transición tramo 3 a 4), y 100 y 101 (transición tramo 4 a sobrepeso/inválido)."
     }
 ];
 
