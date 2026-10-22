@@ -107,7 +107,7 @@
                 </div>
                 <div>
                     <h1 class="header-title text-base sm:text-lg font-extrabold text-slate-900 leading-tight">Simulador de Examen</h1>
-                    <p id="header-subtitle" class="header-subtitle text-xs text-slate-500 font-medium">95 Preguntas · Ingeniería de Software (UTN FRRO)</p>
+                    <p id="header-subtitle" class="header-subtitle text-xs text-slate-500 font-medium">81 Preguntas · Ingeniería de Software (UTN FRRO)</p>
                 </div>
             </div>
 
@@ -115,7 +115,7 @@
             <div id="header-stats" class="flex items-center gap-2 sm:gap-4 text-xs sm:text-sm font-semibold">
                 <div class="flex items-center gap-1.5 px-3 py-1.5 bg-slate-100 rounded-lg text-slate-700">
                     <span>Respondidas:</span>
-                    <span id="stat-answered" class="text-blue-600 font-bold">0/95</span>
+                    <span id="stat-answered" class="text-blue-600 font-bold">0/81</span>
                 </div>
                 <div class="flex items-center gap-1.5 px-3 py-1.5 bg-emerald-50 rounded-lg text-emerald-700">
                     <span>Perfectas:</span>
@@ -161,10 +161,10 @@
                             <div class="flex items-center gap-1.5 text-xs font-semibold overflow-x-auto pb-1 sm:pb-0 filter-bar">
                                 <span class="text-slate-500 mr-1 shrink-0">Estado:</span>
                                 <button id="filter-all" onclick="setFilter('all')" class="px-2.5 py-1.5 rounded-lg bg-blue-600 text-white font-bold transition-all shadow-sm">
-                                    Todas (<span id="count-all">95</span>)
+                                    Todas (<span id="count-all">81</span>)
                                 </button>
                                 <button id="filter-pending" onclick="setFilter('pending')" class="px-2.5 py-1.5 rounded-lg bg-slate-100 text-slate-600 hover:bg-slate-200 transition-all font-medium">
-                                    Pendientes (<span id="count-pending">95</span>)
+                                    Pendientes (<span id="count-pending">81</span>)
                                 </button>
                                 <button id="filter-correct" onclick="setFilter('correct')" class="px-2.5 py-1.5 rounded-lg bg-emerald-50 text-emerald-700 hover:bg-emerald-100 transition-all font-medium">
                                     Correctas (<span id="count-correct">0</span>)
@@ -184,10 +184,8 @@
                         <div class="pt-2 border-t border-slate-100 flex flex-wrap items-center gap-2">
                             <span class="text-xs font-semibold text-slate-500 shrink-0">Filtrar por Eje:</span>
                             <select id="axis-select" onchange="setAxisFilter(this.value)" class="text-xs font-semibold bg-slate-50 border border-slate-200 text-slate-700 rounded-lg px-2.5 py-1.5 focus:ring-2 focus:ring-blue-500 focus:outline-none flex-1 max-w-md">
-                                <option value="all">📚 Todos los Ejes (95 preguntas)</option>
+                                <option value="all">📚 Todos los Ejes (81 preguntas)</option>
                                 <option value="Eje 1: Arquitectura CMMI">🏛️ Eje 1: Arquitectura CMMI y Niveles de Madurez</option>
-                                <option value="Eje 2: Aseguramiento de Calidad (PPQA)">🔍 Eje 2: Aseguramiento de Calidad (PPQA) y Auditorías</option>
-                                <option value="Eje 3: Medición y Análisis (MA)">📊 Eje 3: Medición y Análisis (MA) y Método PSM</option>
                                 <option value="Eje 4: Requisitos (RD / REQM)">📋 Eje 4: Requisitos (RD y REQM)</option>
                                 <option value="Eje 5: Configuración (SCM) y Versiones">📦 Eje 5: Gestión de Configuración (SCM) y Versiones</option>
                                 <option value="Eje 6: Planificación y Estimación (PP/PMC)">⏱️ Eje 6: Planificación (PP), Estimación y Control (PMC)</option>
@@ -214,7 +212,7 @@
                                 <span>Mapa de Preguntas</span>
                             </h3>
                             <span id="score-badge" class="text-xs font-bold px-2 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">
-                                0 / 95 pts
+                                0 / 81 pts
                             </span>
                         </div>
 
@@ -266,7 +264,7 @@
 
         <!-- Botón flotante móvil para mapa -->
         <button onclick="scrollToMap()" class="mobile-fab">
-            <span>🗺️ Mapa (<span id="fab-answered">0</span>/95)</span>
+            <span>🗺️ Mapa (<span id="fab-answered">0</span>/81)</span>
         </button>
 
         <!-- Modal de Resultados Finales -->
@@ -277,7 +275,7 @@
                 <p class="text-xs text-slate-500 font-medium mb-6">Ingeniería de Software · UTN Facultad Regional Rosario</p>
 
                 <div class="bg-slate-50 border border-slate-200/80 rounded-2xl p-5 mb-6">
-                    <div class="text-4xl font-black text-blue-600 mb-1" id="modal-final-score">0 / 95</div>
+                    <div class="text-4xl font-black text-blue-600 mb-1" id="modal-final-score">0 / 81</div>
                     <div class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-4" id="modal-percentage">0% de aciertos</div>
                     
                     <div class="grid grid-cols-3 gap-2 pt-3 border-t border-slate-200 text-xs">
@@ -606,232 +604,6 @@
     },
     {
         "id": 18,
-        "eje": "Eje 2: Aseguramiento de Calidad (PPQA)",
-        "q": "Una auditoría en Aseguramiento de la Calidad del Proceso y del Producto (PPQA) termina cuando:",
-        "type": "single",
-        "options": [
-            "Se lleva a cabo la auditoría en las oficinas del proyecto.",
-            "Se presenta formalmente el informe de resultados al Líder de Proyecto.",
-            "Se realiza el registro de la auditoría en la base de datos.",
-            "Se resuelven las no conformidades detectadas."
-        ],
-        "correctAnswers": [
-            3
-        ],
-        "exp": "En PPQA (SP 2.1), la auditoría no termina con la emisión o presentación del informe, sino únicamente cuando se verifica el seguimiento y la resolución efectiva de las no conformidades encontradas."
-    },
-    {
-        "id": 19,
-        "eje": "Eje 2: Aseguramiento de Calidad (PPQA)",
-        "q": "¿Cuáles de las siguientes afirmaciones sobre auditorías de calidad (PPQA) son VERDADERAS?",
-        "type": "multi",
-        "options": [
-            "Las no conformidades se intentan resolver en primer lugar a nivel de proyecto con el responsable.",
-            "El trabajo de auditoría termina en el instante en que se presentan las no conformidades.",
-            "El escalamiento es un aviso que certifica que no hay no conformidades en el proyecto.",
-            "Las no conformidades recurrentes podrían motivar cambios en la descripción o definición de un proceso estándar de la organización."
-        ],
-        "correctAnswers": [
-            0,
-            3
-        ],
-        "exp": "Las no conformidades se resuelven primero a nivel de proyecto (con el PM); si persisten, se escalan a niveles superiores. Además, fallas sistemáticas retroalimentan la mejora de procesos (OPF/OPD). La auditoría NO termina al presentar el informe ni el escalamiento significa ausencia de fallas."
-    },
-    {
-        "id": 20,
-        "eje": "Eje 2: Aseguramiento de Calidad (PPQA)",
-        "q": "El área SQA emite un informe de no conformidades. Es responsabilidad exclusiva del líder subsanarlas, y el área SQA ya no vuelve a intervenir en ningún aspecto sobre dicho proyecto. ¿Genera problemas de calidad?",
-        "type": "single",
-        "options": [
-            "No genera problemas, es la implementación completa del área SQA.",
-            "Sí podría generar problemas de calidad, porque no contempla un mecanismo para controlar, por parte de un grupo externo al desarrollo, que se resuelvan las no conformidades.",
-            "No genera problemas, el PM es quien tiene el control operativo.",
-            "Sí podría generar problemas, SQA debe hacer la corrección técnica del código directamente."
-        ],
-        "correctAnswers": [
-            1
-        ],
-        "exp": "PPQA SP 2.1 ('Comunicar y asegurar la resolución de las no conformidades') exige que el grupo de aseguramiento de calidad realice un seguimiento activo hasta comprobar que los desvíos fueron resueltos."
-    },
-    {
-        "id": 21,
-        "eje": "Eje 2: Aseguramiento de Calidad (PPQA)",
-        "q": "El área SQA inspecciona a los 15 y 30 días. Si la no conformidad sigue pendiente, el informe de SQA se archiva en 'proyectos incumplidores' y queda asentada una sanción en el legajo del Líder de Proyecto. ¿Genera problemas de calidad?",
-        "type": "single",
-        "options": [
-            "No genera problemas, sancionar al líder en su legajo garantiza que no vuelva a ocurrir.",
-            "No genera problemas, se cumple con auditar a los 15 y 30 días.",
-            "Sí podría generar problemas de calidad, porque no contempla un mecanismo para controlar, por parte de un grupo externo al desarrollo, que se resuelvan las no conformidades hasta su fin escalándolas si fuera necesario.",
-            "Sí podría generar problemas, SQA solo puede realizar controles a nivel de requisitos."
-        ],
-        "correctAnswers": [
-            2
-        ],
-        "exp": "Archivar la no conformidad y castigar administrativamente al PM no soluciona el defecto del producto. PPQA exige que si a nivel de proyecto no se resuelve, se escale a niveles jerárquicos superiores (Gerencia General) hasta lograr la corrección real."
-    },
-    {
-        "id": 22,
-        "eje": "Eje 2: Aseguramiento de Calidad (PPQA)",
-        "q": "SQA inspecciona a los 15 y 30 días. Si no se corrigen las no conformidades, SQA reporta el problema al Gerente de Desarrollo con quien tiene excelente comunicación, ya que tanto los PMs como los auditores de SQA dependen jerárquicamente de esa misma gerencia. ¿Genera problemas de calidad?",
-        "type": "single",
-        "options": [
-            "No genera problemas, depender de la misma gerencia mejora la fluidez de la comunicación.",
-            "Sí podría generar problemas de calidad, porque el área de SQA debería depender de otra gerencia para evitar conflicto de intereses al escalar.",
-            "No genera problemas, el Gerente de Desarrollo es la máxima autoridad técnica.",
-            "Sí podría generar problemas, SQA nunca debe escalar informes a ninguna gerencia."
-        ],
-        "correctAnswers": [
-            1
-        ],
-        "exp": "CMMI PPQA exige independencia objetiva para el aseguramiento de la calidad. Si SQA depende de la misma Gerencia de Desarrollo que los PMs auditados, existe un claro conflicto de intereses donde los plazos de entrega subordinan a la calidad."
-    },
-    {
-        "id": 23,
-        "eje": "Eje 2: Aseguramiento de Calidad (PPQA)",
-        "q": "En el proyecto 'Despacho automatizado de Combustible' se introdujeron cambios sin ejecutar el workflow formal de requisitos. Tras tres informes de SQA observando la práctica sin cambios por parte del equipo, se eleva un informe al Gerente General. ¿A qué área y práctica específica de CMMI corresponde?",
-        "type": "single",
-        "options": [
-            "REQM / SP 1.3 Gestionar los cambios de los requerimientos",
-            "PPQA / SP 2.1 Comunicar y asegurar la resolución de las no conformidades",
-            "PMC / SP 1.7 Realizar revisiones de hitos",
-            "CM / SP 2.2 Realizar auditorías de configuración"
-        ],
-        "correctAnswers": [
-            1
-        ],
-        "exp": "Elevar una no conformidad no resuelta a niveles directivos superiores fuera del proyecto para forzar su resolución es exactamente la práctica PPQA SP 2.1 ('Comunicar y asegurar la resolución de las no conformidades')."
-    },
-    {
-        "id": 24,
-        "eje": "Eje 2: Aseguramiento de Calidad (PPQA)",
-        "q": "Personal de la Software Factory externo al equipo de proyecto realiza un control para verificar si el contenido de los Casos de Uso (o Casos de Prueba) cumple con las directrices definidas en el estándar de la organización. ¿A qué práctica de CMMI corresponde?",
-        "type": "single",
-        "options": [
-            "PPQA / SP 1.2 Evaluar objetivamente los productos de trabajo y los servicios",
-            "VER / SP 2.2 Llevar a cabo las revisiones entre pares",
-            "VAL / SP 1.2 Seleccionar productos para validación",
-            "RD / SP 3.5 Validar los requisitos"
-        ],
-        "correctAnswers": [
-            0
-        ],
-        "exp": "PPQA SP 1.2 ('Evaluar objetivamente los productos de trabajo y los servicios') consiste en que evaluadores independientes al proyecto revisen artefactos contra las descripciones y estándares organizacionales de proceso aplicables."
-    },
-    {
-        "id": 25,
-        "eje": "Eje 2: Aseguramiento de Calidad (PPQA)",
-        "q": "Personal externo al proyecto controla si los Casos de Uso cumplen con directrices de escritura. En la lista de opciones del examen aparecen escritas: 'PPQA / SP 1.2 Evaluar objetivamente la verificación', 'REQM / SP 1.1', 'CM / SP 1.1' y 'Ninguna de las otras opciones'. ¿Cuál es la respuesta correcta?",
-        "type": "single",
-        "options": [
-            "PPQA / SP 1.2 Evaluar objetivamente la verificación",
-            "REQM / SP 1.1 Comprender los requerimientos",
-            "CM / SP 1.1 Identificar elementos de configuración",
-            "Ninguna de las otras opciones"
-        ],
-        "correctAnswers": [
-            3
-        ],
-        "exp": "¡Clásica trampa de examen en UTN FRRO! El nombre oficial de CMMI es 'Evaluar objetivamente los productos de trabajo y los servicios'. Como en las opciones alteraron deliberadamente el nombre escribiendo 'la verificación' (práctica inexistente), la opción correcta a marcar es 'Ninguna de las otras opciones'."
-    },
-    {
-        "id": 26,
-        "eje": "Eje 2: Aseguramiento de Calidad (PPQA)",
-        "q": "Se auditan 30 Casos de Uso (CU). Regla organizacional: si no hay caminos alternativos se escribe '<vacío>'. El historial tiene formato: 1{nro-version + fecha + responsable + descripción}. El checklist contiene: 1.1 ¿Se ha expresado la meta? [Si|No], 1.2 ¿La sección camino alternativo tiene contenido? [Si|No], 2.1 ¿El historial posee descripción en cada línea? [Si|No], 2.2 ¿El historial indica responsable? [Si|No]. ¿Cuál de los siguientes indicadores PUEDE obtenerse con este checklist?",
-        "type": "single",
-        "options": [
-            "Cantidad de CU sin caminos alternativos",
-            "Cantidad de CU sin metas",
-            "Cantidad de CU sin historial de versiones",
-            "Cantidad de CU aprobados por el cliente"
-        ],
-        "correctAnswers": [
-            1
-        ],
-        "exp": "Solo 'Cantidad de CU sin metas' puede obtenerse (contando las respuestas 'No' de la pregunta 1.1). La pregunta 1.2 no permite saber si faltan caminos alternativos reales porque la etiqueta '<vacío>' cuenta como contenido. Y las preguntas 2.1 y 2.2 auditan campos internos de las filas existentes, no la ausencia total de la tabla de historial."
-    },
-    {
-        "id": 27,
-        "eje": "Eje 3: Medición y Análisis (MA)",
-        "q": "Una empresa analiza 4 afirmaciones sobre medición: 1) Alinear métricas con objetivos de negocio. 2) Recopilar datos inmediatamente sin definir procedimientos formales. 3) Documentar cómo, cuándo y quién tomará los datos. 4) Obtener evidencia objetiva para tomar decisiones. ¿Cuáles afirmaciones son coherentes con el área MA?",
-        "type": "single",
-        "options": [
-            "Solo las afirmaciones 1, 3 y 4 son coherentes con MA.",
-            "Todas las afirmaciones (1, 2, 3 y 4) son coherentes.",
-            "Solo las afirmaciones 2 y 4 son coherentes.",
-            "Solo la afirmación 1 es coherente."
-        ],
-        "correctAnswers": [
-            0
-        ],
-        "exp": "La afirmación 2 viola directamente MA SP 1.3 ('Especificar los procedimientos de recogida y almacenamiento de datos'). CMMI prohíbe recolectar métricas 'en crudo' sin procedimientos documentados que garanticen su validez y consistencia."
-    },
-    {
-        "id": 28,
-        "eje": "Eje 3: Medición y Análisis (MA)",
-        "q": "Clasifique las siguientes métricas: 1) % Cumplimiento de plazos por fase, 2) Nº de Defectos identificados por fase, 3) Horas planificadas vs horas reales, 4) % Tareas completadas a tiempo en cada iteración, 5) Tiempo promedio de aprobación en revisiones de código.",
-        "type": "single",
-        "options": [
-            "Métricas de proceso: 1, 3, 5; Métricas de proyecto: 2, 4",
-            "Métricas de proceso: 2, 5; Métricas de proyecto: 1, 3, 4",
-            "Métricas de proceso: 3, 4; Métricas de proyecto: 1, 2, 5",
-            "Todas corresponden a métricas de proyecto"
-        ],
-        "correctAnswers": [
-            1
-        ],
-        "exp": "Las métricas 1, 3 y 4 controlan el avance táctico de cronograma y costo de un proyecto específico (PMC). Las métricas 2 (densidad de defectos por fase) y 5 (eficiencia de revisiones) evalúan el rendimiento del proceso de ingeniería general."
-    },
-    {
-        "id": 29,
-        "eje": "Eje 3: Medición y Análisis (MA)",
-        "q": "¿Cuáles de las siguientes afirmaciones sobre la teoría de métricas de software son VERDADERAS?",
-        "type": "multi",
-        "options": [
-            "No se obsesione con una sola métrica ni excluya otras métricas importantes.",
-            "Se deben usar las métricas para valorar, premiar o castigar a los individuos del equipo.",
-            "Las medidas de proyecto son tácticas, mientras que las métricas de proceso de software son estratégicas.",
-            "Si un dato se puede medir en el sistema, necesariamente debe implementarse y recopilarse."
-        ],
-        "correctAnswers": [
-            0,
-            2
-        ],
-        "exp": "Las métricas miden productos y procesos, jamás individuos (B es falsa). Solo se mide aquello que aporta valor a los objetivos de negocio (D es falsa). Es fundamental usar un cuadro balanceado de métricas (A es verdadera) y entender que las de proyecto son tácticas y las de proceso estratégicas (C es verdadera)."
-    },
-    {
-        "id": 30,
-        "eje": "Eje 3: Medición y Análisis (MA)",
-        "q": "En el marco del método PSM (Practical Software Measurement), relacione cada actividad con su fase correspondiente (Planificar, Ejecutar, Evaluar la medición):",
-        "type": "single",
-        "options": [
-            "Seleccionar medidas (Planificar), Comprar software de apoyo (Planificar), Informar resultados (Ejecutar), Identificar puntos débiles a mejorar (Evaluar), Construir histograma con resultados (Ejecutar).",
-            "Seleccionar medidas (Ejecutar), Comprar software de apoyo (Planificar), Informar resultados (Evaluar).",
-            "Construir histogramas (Planificar), Informar resultados (Evaluar), Comprar software de apoyo (Ejecutar).",
-            "Todas las actividades pertenecen a la fase de Planificación de PSM."
-        ],
-        "correctAnswers": [
-            0
-        ],
-        "exp": "En PSM: Planificar incluye definir objetivos, seleccionar medidas y adquirir software de soporte; Ejecutar incluye recolectar datos, elaborar gráficos/histogramas y comunicar informes; Evaluar comprende revisar periódicamente el proceso de medición para optimizarlo."
-    },
-    {
-        "id": 31,
-        "eje": "Eje 3: Medición y Análisis (MA)",
-        "q": "En los atributos de calidad de software (ISO 25010 / McCall), ¿cómo se denominan respectivamente: 1) El esfuerzo requerido para aprender, operar y usar un programa? y 2) La facilidad con la que un software puede modificarse o corregirse ante un fallo?",
-        "type": "single",
-        "options": [
-            "1: Eficiencia, 2: Portabilidad",
-            "1: Usabilidad, 2: Mantenibilidad",
-            "1: Fiabilidad, 2: Reusabilidad",
-            "1: Funcionalidad, 2: Flexibilidad"
-        ],
-        "correctAnswers": [
-            1
-        ],
-        "exp": "Usabilidad (Usability) mide la facilidad de aprendizaje y operación por parte del usuario. Mantenibilidad (Maintainability) mide el esfuerzo necesario para diagnosticar y corregir errores o introducir cambios en el software."
-    },
-    {
-        "id": 32,
         "eje": "Eje 4: Requisitos (RD / REQM)",
         "q": "Dado un diagrama de Venn donde el conjunto A representa 'Expectativas y necesidades reales del cliente' y el conjunto B representa 'Requerimientos documentados del sistema', ¿qué representa la región (B - A)?",
         "type": "single",
@@ -847,7 +619,7 @@
         "exp": "(B - A) corresponde a lo que el equipo especificó o desarrolló pero que el cliente jamás necesitó ni solicitó (gold plating / desperdicio). La región (A - B) representa necesidades insatisfechas del cliente."
     },
     {
-        "id": 33,
+        "id": 19,
         "eje": "Eje 4: Requisitos (RD / REQM)",
         "q": "En el mismo diagrama de Venn, ¿cómo se puede evidenciar y asegurar que se ha conseguido la intersección (A ∩ B), es decir, que los requisitos del sistema coinciden con las necesidades del cliente?",
         "type": "single",
@@ -863,7 +635,7 @@
         "exp": "La coincidencia entre lo especificado y lo que el cliente realmente necesita se valida mediante Validación (VAL y RD SP 3.5): pruebas de aceptación con usuarios (UAT), prototipos navegables y revisiones de alcance con firma de Línea Base."
     },
     {
-        "id": 34,
+        "id": 20,
         "eje": "Eje 4: Requisitos (RD / REQM)",
         "q": "¿Cuál de los siguientes elementos corresponde fundamentalmente al propósito de RD (Desarrollo de Requisitos) en CMMI?",
         "type": "single",
@@ -879,7 +651,7 @@
         "exp": "RD (SP 1.1 y 1.2) se enfoca en elicitar y transformar las necesidades de los interesados en requisitos del cliente y del producto. Validar rangos o constraints de campos son controles de diseño o implementación."
     },
     {
-        "id": 35,
+        "id": 21,
         "eje": "Eje 4: Requisitos (RD / REQM)",
         "q": "Como los gerentes rechazaban aprobaciones en el 70% de las ocasiones, se decidió que a partir de ahora solo los gerentes formarán parte de las reuniones de relevamiento de requerimientos, sin consultar jamás a usuarios operativos. ¿Podría generar problemas de calidad?",
         "type": "single",
@@ -895,7 +667,7 @@
         "exp": "RD SP 1.1 exige obtener las necesidades de todas las partes interesadas relevantes. Excluir a los usuarios finales operativos provoca que el sistema omita escenarios reales del trabajo diario y sea rechazado en la operación real."
     },
     {
-        "id": 36,
+        "id": 22,
         "eje": "Eje 4: Requisitos (RD / REQM)",
         "q": "El cliente solicita que la plataforma permita acceso desde dispositivos móviles, pero no especifica cuáles dispositivos, pantallas o sistemas operativos deben ser compatibles. Según mejores prácticas de RD, ¿cómo debe proceder el equipo?",
         "type": "single",
@@ -911,7 +683,7 @@
         "exp": "En RD SP 3.1 / 3.3, los requisitos ambiguos o incompletos deben clarificarse definiendo alternativas concretas y validándolas con el cliente antes del diseño para establecer un alcance técnico verificable."
     },
     {
-        "id": 37,
+        "id": 23,
         "eje": "Eje 4: Requisitos (RD / REQM)",
         "q": "En un sistema de educación en línea se detecta que los requisitos de usabilidad son vagos, sin métricas sobre tiempos de carga ni facilidad de navegación. Según RD, ¿cuál es el siguiente paso correcto?",
         "type": "single",
@@ -927,7 +699,7 @@
         "exp": "Los atributos no funcionales de calidad deben ser cuantitativos y comprobables. RD exige consensuar con el cliente métricas objetivas (ej: tiempo máximo de respuesta < 2s) y plasmarlas en la especificación de requisitos."
     },
     {
-        "id": 38,
+        "id": 24,
         "eje": "Eje 4: Requisitos (RD / REQM)",
         "q": "En la fase de pruebas de un e-commerce, el cliente pide registrar automáticamente la navegación de los usuarios, lo cual implica normativas legales de privacidad de datos. Según REQM, ¿cuál es el primer paso a seguir?",
         "type": "single",
@@ -943,7 +715,7 @@
         "exp": "REQM SP 1.3 exige evaluar el impacto integral de los cambios antes de aceptarlos (incluyendo restricciones legales) y mantener actualizada la trazabilidad bidireccional (REQM SP 1.4)."
     },
     {
-        "id": 39,
+        "id": 25,
         "eje": "Eje 4: Requisitos (RD / REQM)",
         "q": "Durante la implementación de un sistema de control de acceso, el cliente necesita añadir restricciones horarias para personal externo que impactan en varios subsistemas. ¿Qué proceso debe seguirse según REQM?",
         "type": "single",
@@ -959,7 +731,7 @@
         "exp": "El análisis de impacto y la actualización de la trazabilidad bidireccional son obligatorios en REQM (SP 1.3 y 1.4) antes de autorizar cualquier modificación que afecte múltiples componentes del sistema."
     },
     {
-        "id": 40,
+        "id": 26,
         "eje": "Eje 4: Requisitos (RD / REQM)",
         "q": "Se detecta en las pruebas con el usuario que el sistema valida de manera errónea la cantidad de consultas mensuales permitidas. ¿Qué área de CMMI brinda la información para rastrear el origen de la falla y gestionar la discrepancia?",
         "type": "single",
@@ -975,7 +747,7 @@
         "exp": "REQM SP 1.4 mantiene la trazabilidad bidireccional entre casos de prueba, código y requisitos. REQM SP 1.5 identifica y gestiona las inconsistencias entre el producto de trabajo y los requisitos aprobados."
     },
     {
-        "id": 41,
+        "id": 27,
         "eje": "Eje 4: Requisitos (RD / REQM)",
         "q": "¿Cuáles de los siguientes aspectos del proyecto se pueden gestionar y optimizar mediante una correcta PRIORIZACIÓN de requerimientos?",
         "type": "multi",
@@ -992,7 +764,7 @@
         "exp": "La priorización de requisitos optimiza la asignación de recursos limitados (tiempo y presupuesto) y permite gestionar las altas expectativas del cliente asegurando que lo de mayor valor de negocio se entregue primero."
     },
     {
-        "id": 42,
+        "id": 28,
         "eje": "Eje 4: Requisitos (RD / REQM)",
         "q": "¿Cuáles de los siguientes factores ayudan formalmente a PRIORIZAR los requisitos en un proyecto de software?",
         "type": "multi",
@@ -1011,7 +783,7 @@
         "exp": "Todos los factores mencionados intervienen formalmente en la priorización: costo, valor, tiempo, factibilidad técnica/organizacional, alineación estratégica con el negocio y restricciones regulatorias."
     },
     {
-        "id": 43,
+        "id": 29,
         "eje": "Eje 4: Requisitos (RD / REQM)",
         "q": "¿Cuáles de los siguientes roles participan formalmente en las decisiones y comités de Gestión de Cambios a los requisitos (CCB)?",
         "type": "multi",
@@ -1029,7 +801,7 @@
         "exp": "El control de cambios convoca al Jefe de Proyecto, al Arquitecto de Software y a los responsables de Control de Configuración (CM) y Calidad, evaluando viabilidad técnica, cronograma e impacto."
     },
     {
-        "id": 44,
+        "id": 30,
         "eje": "Eje 5: Configuración (SCM) y Versiones",
         "q": "Una Software Factory guarda los artefactos en el repositorio. Solo cuando el último cliente que usa una versión migra a una nueva, se eliminan del repositorio los artefactos y líneas base de la versión vieja para ahorrar espacio. ¿Genera problemas de calidad?",
         "type": "single",
@@ -1045,7 +817,7 @@
         "exp": "En CMMI CM SP 1.2 y 1.3, las líneas base históricas deben preservarse íntegras. Borrar versiones antiguas impide reconstruir el entorno ante incidentes de soporte, reproducir errores heredados o auditar la evolución del software."
     },
     {
-        "id": 45,
+        "id": 31,
         "eje": "Eje 5: Configuración (SCM) y Versiones",
         "q": "Cada artefacto de la Software Factory tiene un número de versión independiente, y no se guarda ninguna relación entre las versiones de los diferentes artefactos. No se borra nada del repositorio. ¿Genera problemas de calidad?",
         "type": "single",
@@ -1061,7 +833,7 @@
         "exp": "Tener artefactos versionados sin una Línea Base (Baseline) que defina qué versión de requerimiento corresponde a qué versión de diseño, código y pruebas impide ensamblar y verificar un sistema consistente y reproducible."
     },
     {
-        "id": 46,
+        "id": 32,
         "eje": "Eje 5: Configuración (SCM) y Versiones",
         "q": "Tenemos el producto SUN. Ha pasado por las versiones: 1.0 (Release) -> 1.1 (Release) -> 1.2 (Versión Beta) -> 1.3 (Release). Recientemente se implementó la versión 1.3 y surgieron fallas críticas que impiden continuar en línea. ¿Qué versión debe ser repuesta en el cliente para garantizar continuidad operacional?",
         "type": "single",
@@ -1077,7 +849,7 @@
         "exp": "Se debe realizar rollback a la versión 1.1. No se puede desplegar la versión 1.2 en el cliente porque fue una versión Beta (de prueba interna e inestable). La 1.1 es la última versión Release formalmente estable previa a la falla."
     },
     {
-        "id": 47,
+        "id": 33,
         "eje": "Eje 5: Configuración (SCM) y Versiones",
         "q": "Se encuentran dos carpetas de versiones de un producto con formato <cambio-menor>.<cambio-mayor>: Carpeta A = {Altas 1.1, Bajas 0.1, Compras 0.1, Pagos 1.2}; Carpeta B = {Compras 0.1, Altas 1.1, Bajas 1.1, Cheques 0.1, Efectivo 2.1}. Regla: cambio menor incrementa 1 sin alterar mayor; cambio mayor incrementa 1 y menor reinicia a 0. ¿Cuál corresponde a la última versión?",
         "type": "single",
@@ -1093,7 +865,7 @@
         "exp": "La Carpeta B es la más reciente. Analizando el componente común 'Bajas': pasó de 0.1 (en A) a 1.1 (en B), evidenciando un avance evolutivo con un cambio menor acumulado sobre el mismo cambio mayor."
     },
     {
-        "id": 48,
+        "id": 34,
         "eje": "Eje 5: Configuración (SCM) y Versiones",
         "q": "Estructura de versión <x>.<y>, donde <x> es cambio trimestral de funcionalidad (2 dígitos numéricos, primera versión 01) e <y> correcciones quincenales de error (2 dígitos, inicia en 00 y se reinicia al cambiar <x>). ¿Cuál es el plazo aproximado de supervivencia de esta nomenclatura en años?",
         "type": "single",
@@ -1110,7 +882,7 @@
         "exp": "Los errores quincenales suman 6 por trimestre y se reinician a 00 con cada nueva funcionalidad, por lo que <y> nunca se desborda. El límite lo marca <x> (2 dígitos = de 01 a 99 trimestres). Con 4 trimestres por año: 96 / 4 = 24 años de vida útil."
     },
     {
-        "id": 49,
+        "id": 35,
         "eje": "Eje 5: Configuración (SCM) y Versiones",
         "q": "Considerando que una versión 'Release' es una versión de lanzamiento público del software al cliente: ¿Cuántos releases mínimos se generan en un proyecto basado en Ciclo Incremental (con 4 incrementos) y en un Ciclo en Cascada?",
         "type": "single",
@@ -1126,7 +898,7 @@
         "exp": "En el modelo incremental, cada incremento produce una versión operativa y entregable al usuario (4 incrementos = 4 releases). En el modelo en cascada, el software se desarrolla secuencialmente y se lanza al finalizar todo el proyecto (1 release)."
     },
     {
-        "id": 50,
+        "id": 36,
         "eje": "Eje 5: Configuración (SCM) y Versiones",
         "q": "Ubicados en el año 2002: la empresa usaba el Lenguaje A para desarrollo de escritorio y manuales creados con MS-Word 2002. En 2010 aplicó estándar de interfaces, en 2014 manuales on-line y en 2022 apps móviles con Lenguaje B. En el 2002, ¿cuáles elementos debían estar formalmente bajo SCM?",
         "type": "multi",
@@ -1147,7 +919,7 @@
         "exp": "Bajo SCM deben incluirse tanto los artefactos (código, manuales, documentación) como las herramientas del entorno de compilación y edición vigentes en el 2002 (Lenguaje A, Word 2002). Las tecnologías surgidas en 2010, 2014 y 2022 son cronológicamente posteriores."
     },
     {
-        "id": 51,
+        "id": 37,
         "eje": "Eje 5: Configuración (SCM) y Versiones",
         "q": "En el repositorio, la carpeta de Definiciones tiene: AltaCli (1.0, 1.1, 2.0), NuevoCli (1.0, 1.1, 1.2, 1.3), AltaZona (1.0, 1.1) y AsignZonaCli (1.0, 1.1, 1.2). En la carpeta de Casos de Prueba están: AltaCli-D2.0, NuevoCli-D1.2 y AltaZona-D1.1. ¿Para cuáles definiciones vigentes faltan diseñar casos de prueba?",
         "type": "single",
@@ -1163,7 +935,7 @@
         "exp": "Los casos de prueba deben cubrir la última versión vigente de cada definición. AltaCli-2.0 ya tiene D2.0 y AltaZona-1.1 tiene D1.1. Pero NuevoCli avanzó a la 1.3 (solo hay pruebas hasta la 1.2) y AsignZonaCli-1.2 carece totalmente de casos de prueba."
     },
     {
-        "id": 52,
+        "id": 38,
         "eje": "Eje 6: Planificación y Estimación (PP/PMC)",
         "q": "Indique qué unidad de estimación utiliza principalmente cada uno de los siguientes métodos: Planning Poker, Método Delphi, y Estimación por Tres Puntos (Valor Esperado PERT):",
         "type": "single",
@@ -1179,7 +951,7 @@
         "exp": "Planning Poker estima tamaño relativo en Puntos de Historia (secuencia Fibonacci); el Método Delphi recopila estimaciones anónimas de expertos en Horas o Días de esfuerzo; y el Valor Esperado PERT pondera duraciones o esfuerzo en Horas/Días."
     },
     {
-        "id": 53,
+        "id": 39,
         "eje": "Eje 6: Planificación y Estimación (PP/PMC)",
         "q": "Si un equipo de desarrollo tiene una capacidad de entrega de 12 Puntos de Función (PF) al mes y la gerencia duplica el número de personas en el equipo, ¿la capacidad resultante pasará a ser de 24 PF al mes?",
         "type": "single",
@@ -1195,7 +967,7 @@
         "exp": "Ley de Brooks: Las personas y el tiempo no son intercambiables. Agregar personal duplica canales de comunicación (n*(n-1)/2) y genera overhead de inducción e integración, rindiendo sustancialmente menos del doble."
     },
     {
-        "id": 54,
+        "id": 40,
         "eje": "Eje 6: Planificación y Estimación (PP/PMC)",
         "q": "¿Qué postula la regla clásica 40-20-40 de distribución del esfuerzo en proyectos de desarrollo de software?",
         "type": "single",
@@ -1211,7 +983,7 @@
         "exp": "La regla empírica clásica 40-20-40 distribuye el esfuerzo total en: 40% para las fases iniciales de Análisis y Diseño, 20% para la Codificación propiamente dicha, y 40% para Verificación, Testing y Corrección de fallos."
     },
     {
-        "id": 55,
+        "id": 41,
         "eje": "Eje 6: Planificación y Estimación (PP/PMC)",
         "q": "¿Cuáles de las siguientes afirmaciones representan principios genuinos de la buena práctica en Ingeniería de Software?",
         "type": "multi",
@@ -1228,7 +1000,7 @@
         "exp": "La calidad no se 'agrega' al final, se diseña desde el inicio, y las pruebas deben ser continuas. Hacerlo rápido y mal acumula deuda técnica destructiva, y personas y tiempo no son intercambiables."
     },
     {
-        "id": 56,
+        "id": 42,
         "eje": "Eje 6: Planificación y Estimación (PP/PMC)",
         "q": "¿Cuáles de las siguientes actividades forman parte central del alcance del área Planificación del Proyecto (PP) en CMMI?",
         "type": "multi",
@@ -1247,7 +1019,7 @@
         "exp": "PP abarca estimar parámetros del proyecto (esfuerzo, tamaño, costo), determinar recursos, confeccionar el cronograma, planificar la gestión de datos y recursos, e identificar riesgos del proyecto."
     },
     {
-        "id": 57,
+        "id": 43,
         "eje": "Eje 6: Planificación y Estimación (PP/PMC)",
         "q": "¿Cuáles de las siguientes afirmaciones sobre la EDT (Estructura de Desglose de Trabajo / WBS) son VERDADERAS?",
         "type": "multi",
@@ -1265,7 +1037,7 @@
         "exp": "La EDT es una descomposición jerárquica de entregables, base indispensable para el cronograma (A y C son verdaderas). NO define orden cronológico (B es falsa), NO es un Gantt (D es falsa) y el esfuerzo se calcula en una etapa posterior (E es falsa)."
     },
     {
-        "id": 58,
+        "id": 44,
         "eje": "Eje 6: Planificación y Estimación (PP/PMC)",
         "q": "¿En qué momento del ciclo de vida de una tarea de desarrollo se tiene certeza absoluta de que el costo incurrido es el costo real?",
         "type": "single",
@@ -1281,7 +1053,7 @@
         "exp": "Toda cifra previa a la finalización es una estimación sujeta a variabilidad. Solo cuando la tarea ha concluido totalmente se tiene certeza real del costo exacto y horas insumidas."
     },
     {
-        "id": 59,
+        "id": 45,
         "eje": "Eje 6: Planificación y Estimación (PP/PMC)",
         "q": "El esfuerzo consumido de una tarea como único parámetro no permite establecer su avance real. ¿Cuáles parámetros, junto con el esfuerzo consumido, permiten determinar el avance objetivo?",
         "type": "multi",
@@ -1298,7 +1070,7 @@
         "exp": "Para calcular el valor ganado (Earned Value) y conocer el avance real se requiere constatar el estado concreto de los productos entregables y la estimación del esfuerzo que aún falta por realizar para completarla."
     },
     {
-        "id": 60,
+        "id": 46,
         "eje": "Eje 6: Planificación y Estimación (PP/PMC)",
         "q": "Una organización nos solicita presupuesto para desarrollar un software cuyos requerimientos son iniciales y no están estabilizados. ¿Cuál proceso genérico de desarrollo es el que más se ajusta?",
         "type": "single",
@@ -1314,7 +1086,7 @@
         "exp": "Cuando los requerimientos tienen alta incertidumbre o inestabilidad, los ciclos iterativos e incrementales son los adecuados, permitiendo refinar y adaptar el alcance a través de entregas sucesivas y retroalimentación."
     },
     {
-        "id": 61,
+        "id": 47,
         "eje": "Eje 6: Planificación y Estimación (PP/PMC)",
         "q": "Análisis módulos A, B y C estimados para 1 recurso en 20h, 30h y 50h. En C trabajarán 2 recursos repartiéndose el análisis en paralelo (suma ~10% de coordinación = 55h). En B se hará Pair Programming (2 analistas juntos = 30h × 2 = 60h). Determine el rango de esfuerzo total:",
         "type": "single",
@@ -1331,7 +1103,7 @@
         "exp": "Esfuerzo total: Módulo A = 20 hs. Módulo B en Pair Programming = 30 × 2 = 60 hs persona. Módulo C en paralelo = 50 + 5 (10% overhead) = 55 hs. Total = 20 + 60 + 55 = 135 horas-persona. Al superar el tope de 120 hs, la respuesta es 'Ninguno de los rangos enunciados'."
     },
     {
-        "id": 62,
+        "id": 48,
         "eje": "Eje 6: Planificación y Estimación (PP/PMC)",
         "q": "Jornada de 8 hs. Tarea Cod A: 6 días con 1 recurso full time. Tarea Cod B: 10 días con 1 recurso a medio tiempo (4 hs/día). Tarea C: 20 días con dos recursos full time, pero la mitad del tiempo 1 y la otra mitad el otro (equivale a 1 recurso full time por 20 días). Determine el esfuerzo total:",
         "type": "single",
@@ -1348,7 +1120,7 @@
         "exp": "Cod A: 6 días × 8 hs = 48 hs. Cod B: 10 días × 4 hs = 40 hs. Tarea C: (10 días × 8 hs) + (10 días × 8 hs) = 160 hs. Total = 48 + 40 + 160 = 248 horas-persona."
     },
     {
-        "id": 63,
+        "id": 49,
         "eje": "Eje 6: Planificación y Estimación (PP/PMC)",
         "q": "Tareas A (30 hs), B (20 hs) y C (15 hs). A y B son independientes entre sí. C tiene como predecesora a B (B -> C). A las tareas A y B se asignó el Recurso 1 (no puede hacer ambas a la vez). A la tarea C se asignó el Recurso 2. Determine la duración viable y menor del proyecto:",
         "type": "single",
@@ -1364,7 +1136,7 @@
         "exp": "El Recurso 1 debe hacer B y luego A (o viceversa) demorando 20 + 30 = 50 hs en total. Para minimizar la espera, hace primero B (termina en la hora 20) y luego A (termina en la hora 50). El Recurso 2 arranca C en la hora 20 y termina en la 35. Pero el proyecto finaliza cuando concluyen todas las tareas, es decir, a las 50 horas."
     },
     {
-        "id": 64,
+        "id": 50,
         "eje": "Eje 6: Planificación y Estimación (PP/PMC)",
         "q": "¿Cuál es la fecha de fin de una tarea que comienza el jueves 05/09/2024, tiene una duración de 10 días laborales (no se trabaja fines de semana) y los días 20/09 y 21/09 son no laborales?",
         "type": "single",
@@ -1381,7 +1153,7 @@
         "exp": "Contando 10 días hábiles desde el jueves 05/09 inclusive: Jue 05 (1), Vie 06 (2), [Salta Sáb 07 y Dom 08], Lun 09 (3), Mar 10 (4), Mié 11 (5), Jue 12 (6), Vie 13 (7), [Salta Sáb 14 y Dom 15], Lun 16 (8), Mar 17 (9), Mié 18/09 (Día 10). Los días no laborales 20 y 21 son distractores porque ocurren después de concluida la tarea."
     },
     {
-        "id": 65,
+        "id": 51,
         "eje": "Eje 6: Planificación y Estimación (PP/PMC)",
         "q": "En el desglose de tareas de un sistema modular compuesto por análisis, diseño y codificación, ¿cuál representa la tarea PREDECESORA DIRECTA obligatoria para la tarea 'Codificar Módulo C'?",
         "type": "single",
@@ -1397,7 +1169,7 @@
         "exp": "La predecesora directa de codificar un módulo específico es 'Diseñar Módulo C'. La tarea 'Analizar Módulo C' precede a Diseñar, por lo que respecto a la codificación es una predecesora indirecta."
     },
     {
-        "id": 66,
+        "id": 52,
         "eje": "Eje 6: Planificación y Estimación (PP/PMC)",
         "q": "'Cualquier desvío encontrado dentro del control y monitoreo de un proyecto (PMC) debe ser resuelto adoptando de inmediato una acción correctiva formal.'",
         "type": "single",
@@ -1411,7 +1183,7 @@
         "exp": "Falso. En CMMI PMC SP 2.1 ('Analizar las cuestiones de gestión'), solo se adoptan acciones correctivas cuando los desvíos superan los umbrales de tolerancia preestablecidos y amenazan los objetivos del plan."
     },
     {
-        "id": 67,
+        "id": 53,
         "eje": "Eje 6: Planificación y Estimación (PP/PMC)",
         "q": "Un proyecto en cascada sufre retrasos en Análisis y Diseño (estamos a fin de semana 6). La gerencia autoriza contratar recursos solo si la tarea no comenzó o tiene < 20% de avance. Contratar demora 2 semanas. Codificación inicia semana 12 y Pruebas en semana 16. ¿Cuáles acciones correctivas son viables?",
         "type": "multi",
@@ -1428,7 +1200,7 @@
         "exp": "Análisis ya concluyó y Diseño ya comenzó (con las 2 semanas de demora de contratación ingresarían en la semana 8, superando el 20% de Diseño). En cambio, Codificación (semana 12) y Pruebas (semana 16) aún no iniciaron, permitiendo contratar y capacitar a tiempo."
     },
     {
-        "id": 68,
+        "id": 54,
         "eje": "Eje 6: Planificación y Estimación (PP/PMC)",
         "q": "En el ciclo de vida del software, ¿qué caracteriza fundamentalmente al Mantenimiento Evolutivo (o Perfectivo)?",
         "type": "single",
@@ -1444,7 +1216,7 @@
         "exp": "El Mantenimiento Evolutivo adapta el software a lo largo del tiempo agregando nuevas capacidades, modificando funcionalidades o retirando opciones en desuso para satisfacer la evolución de las necesidades del negocio."
     },
     {
-        "id": 69,
+        "id": 55,
         "eje": "Eje 7: Verificación y Validación (VER/VAL)",
         "q": "Según los estándares de Ingeniería de Software (CMMI e IEEE), ¿cuál es la diferencia fundamental entre Verificación (VER) y Validación (VAL)?",
         "type": "single",
@@ -1460,7 +1232,7 @@
         "exp": "Distinción clásica de Boehm: Verificación responde a '¿Estamos construyendo el producto correctamente?' (contra especificación técnica). Validación responde a '¿Estamos construyendo el producto correcto?' (contra las necesidades reales del usuario en su entorno operacional)."
     },
     {
-        "id": 70,
+        "id": 56,
         "eje": "Eje 7: Verificación y Validación (VER/VAL)",
         "q": "Considerando los conjuntos S (Especificación), P (Producto implementado) y Test (Pruebas ejecutadas): Si el conjunto Test está contenido estrictamente dentro de S (evaluando contra la especificación documentada), ¿a qué proceso corresponde? Y si Test se ejecuta sobre P evaluando el comportamiento en un entorno operacional / edificio piloto, ¿a qué corresponde?",
         "type": "single",
@@ -1476,7 +1248,7 @@
         "exp": "Probar contra la especificación (S) es Verificación (VER). Probar el producto implementado (P) en el entorno operacional del cliente para verificar que satisface su necesidad de uso es Validación (VAL)."
     },
     {
-        "id": 71,
+        "id": 57,
         "eje": "Eje 7: Verificación y Validación (VER/VAL)",
         "q": "Indique cuáles de los siguientes elementos o artefactos deben ser objeto de evaluación tanto en VERIFICACIÓN como en VALIDACIÓN:",
         "type": "multi",
@@ -1493,7 +1265,7 @@
         "exp": "Tanto el software desarrollado como los requerimientos no funcionales se verifican (contra estándares y especificaciones) y se validan (contra el entorno real y el propósito del cliente)."
     },
     {
-        "id": 72,
+        "id": 58,
         "eje": "Eje 7: Verificación y Validación (VER/VAL)",
         "q": "En un proyecto se realizan revisiones de pares obligatorias para todos los artefactos y una prueba de aceptación al final de cada iteración con el cliente. Con esto consideran cumplidos los objetivos de calidad y prescinden de pruebas funcionales internas de sistema en la Factory. ¿Podría generar problemas de calidad?",
         "type": "single",
@@ -1509,7 +1281,7 @@
         "exp": "La Software Factory no puede delegar la detección de defectos funcionales en la prueba de aceptación del cliente (Validación). La factory debe verificar internamente (VER) que el software ensamblado cumple con las especificaciones antes de entregarlo."
     },
     {
-        "id": 73,
+        "id": 59,
         "eje": "Eje 7: Verificación y Validación (VER/VAL)",
         "q": "¿En cuáles etapas del ciclo de vida del proyecto es apropiado y recomendable realizar Revisiones Estáticas de calidad (inspecciones / walkthroughs)?",
         "type": "multi",
@@ -1527,7 +1299,7 @@
         "exp": "Las revisiones estáticas se realizan sobre artefactos ya elaborados: especificaciones de requisitos (Análisis), diagramas arquitectónicos (Diseño) y código fuente (Programación). En la primera entrevista aún no existe ningún documento para revisar."
     },
     {
-        "id": 74,
+        "id": 60,
         "eje": "Eje 7: Verificación y Validación (VER/VAL)",
         "q": "Dado un bucle de código: `while (N > 10) { ... M[K] = J / N; ... N = 1 - N; }` que contiene un potencial error lógico de división por cero cuando N toma valor 0. ¿Qué técnica es la más efectiva para descubrir este defecto antes de llegar a producción?",
         "type": "single",
@@ -1543,7 +1315,7 @@
         "exp": "¡Atención a la trampa de examen! El compilador solo revisa la sintaxis del lenguaje y no detecta divisiones por cero dinámicas en variables. Una revisión estática de código (o inspección entre pares) identifica inmediatamente la trayectoria que lleva a N=0 en el denominador."
     },
     {
-        "id": 75,
+        "id": 61,
         "eje": "Eje 7: Verificación y Validación (VER/VAL)",
         "q": "Dos programadores elegidos para la reunión chequean la última clase de código fuente recién terminada por otro par, planteando las observaciones pertinentes. En las opciones de examen aparecen: 'VER / SP 2.1 Preparar revisiones', 'VER / SP 2.3 Analizar datos', 'REQM / SP 1.1' y 'NINGUNA de las otras opciones'. ¿Cuál debe marcarse?",
         "type": "single",
@@ -1559,7 +1331,7 @@
         "exp": "¡Trampa de examen recurrente en UTN FRRO! La práctica que describe realizar la revisión es VER / SP 2.2 'Llevar a cabo las revisiones entre pares'. Como la cátedra omitió intencionalmente la SP 2.2 de la lista de opciones, la respuesta correcta es 'NINGUNA de las otras opciones'."
     },
     {
-        "id": 76,
+        "id": 62,
         "eje": "Eje 7: Verificación y Validación (VER/VAL)",
         "q": "¿Cuáles de las siguientes afirmaciones sobre principios de pruebas de software son VERDADERAS?",
         "type": "multi",
@@ -1580,7 +1352,7 @@
         "exp": "Son verdaderas: A, C, D y F. B es falsa (probar en producción pone en riesgo crítico al negocio; se prueba en entornos controlados). E es falsa (se requieren múltiples casos para probar flujos válidos, alternativos e inválidos)."
     },
     {
-        "id": 77,
+        "id": 63,
         "eje": "Eje 7: Verificación y Validación (VER/VAL)",
         "q": "Doble variante de examen: 'El objetivo final de los procesos de V&V es establecer confianza de que el sistema de software realiza las funciones correctamente'. ¿Es Verdadero o Falso según Myers?",
         "type": "single",
@@ -1594,7 +1366,7 @@
         "exp": "Falso. En exámenes de la cátedra: si la afirmación dice 'establecer confianza de que es adecuado' es VERDADERO; pero si dice 'establecer confianza de que realiza las funciones correctamente' se considera FALSO según la psicología del test de Myers (probar para encontrar defectos, no para demostrar que anda bien)."
     },
     {
-        "id": 78,
+        "id": 64,
         "eje": "Eje 7: Verificación y Validación (VER/VAL)",
         "q": "¿En cuáles circunstancias es imprescindible planificar y ejecutar Pruebas de Regresión?",
         "type": "multi",
@@ -1611,7 +1383,7 @@
         "exp": "Las pruebas de regresión se ejecutan tras cualquier modificación en el software o cuando cambia el entorno operativo/plataforma, para garantizar que los cambios no introdujeron efectos colaterales ni rompieron funcionalidades preexistentes."
     },
     {
-        "id": 79,
+        "id": 65,
         "eje": "Eje 7: Verificación y Validación (VER/VAL)",
         "q": "Para validar (VAL) un sistema de facturación y comandas que operará en sucursales físicas, ¿cuáles de las siguientes condiciones deben reproducirse en el entorno de validación?",
         "type": "multi",
@@ -1631,7 +1403,7 @@
         "exp": "La Validación evalúa el software en su entorno operacional real o simulado fielmente (hardware, periféricos, latencia de red, volumen de datos y perfiles de usuarios reales)."
     },
     {
-        "id": 80,
+        "id": 66,
         "eje": "Eje 8: Testing de Caja Negra",
         "q": "Al definir los casos de prueba a partir de particiones de equivalencia ya identificadas, ¿cuáles de los siguientes aspectos se deben tener en cuenta obligatoriamente?",
         "type": "multi",
@@ -1652,7 +1424,7 @@
         "exp": "Se consideran entradas, salidas, restricciones del negocio y la técnica a emplear (partición o valores límite para elegir los valores concretos). Si es alfa/beta o quién ejecuta la prueba es irrelevante para el diseño de la prueba."
     },
     {
-        "id": 81,
+        "id": 67,
         "eje": "Eje 8: Testing de Caja Negra",
         "q": "En el ejercicio 'Archivo Alumnos': La nota final se calcula si la Teoría (rango 0 a 10) es mayor que 4; si es <= 4 la nota es 0. ¿Cuáles de las siguientes particiones propuestas son INCORRECTAS (mal formuladas)?",
         "type": "multi",
@@ -1669,7 +1441,7 @@
         "exp": "Ambas son incorrectas: 1) '0 <= Teoria <= 10' agrupa valores tratados de forma distinta por el negocio (de 0 a 4 da 0, y de >4 a 10 calcula fórmula; deben ser 2 particiones separadas). 2) 'Teoria > 4' no tiene cota superior e incluiría números absurdos como 50 o 100 (debe ser 4 < Teoria <= 10)."
     },
     {
-        "id": 82,
+        "id": 68,
         "eje": "Eje 8: Testing de Caja Negra",
         "q": "Un sistema de alquiler fija tarifa según Edad (< 25, 25 a 65, > 65) y Días (1 a 3, 4 a 7, 8 a 15, > 15). Ya se definieron: CP1 (Edad 22, Días 2), CP2 (Edad 40, Días 10) y CP3 (Edad 23, Días 3). ¿Cuál es el mínimo de casos de prueba adicionales para cubrir todas las particiones válidas restantes?",
         "type": "single",
@@ -1685,7 +1457,7 @@
         "exp": "Están cubiertas: Edad < 25 (CP1, CP3), Edad 25-65 (CP2), Días 1-3 (CP1, CP3) y Días 8-15 (CP2). Faltan: Edad > 65, Días 4-7 y Días > 15. Diseñando CP4 (Edad 70, Días 5) y CP5 (Edad 30, Días 20), con solo 2 casos adicionales se cubren todas las particiones restantes."
     },
     {
-        "id": 83,
+        "id": 69,
         "eje": "Eje 8: Testing de Caja Negra",
         "q": "Una aplicación de pedidos evalúa combinaciones de plazo de pago (<= 30 días o > 30 días), stock suficiente (Sí / No) y condición de cliente nuevo o recurrente, determinando descuentos y envíos parciales. ¿Qué técnica de diseño de pruebas de caja negra es la más adecuada?",
         "type": "single",
@@ -1701,7 +1473,7 @@
         "exp": "Las Tablas de Decisión son la técnica ideal para modelar y probar combinaciones complejas de condiciones y reglas de negocio interdependientes que disparan diferentes acciones del sistema."
     },
     {
-        "id": 84,
+        "id": 70,
         "eje": "Eje 8: Testing de Caja Negra",
         "q": "Sistema de Préstamos: 1) Estudiante: no recibe préstamo, tenga deudas o no. 2) Trabajador registrado: recibe préstamo, tenga deudas o no. 3) Jubilado: recibe préstamo solo si NO tiene deudas. ¿Cuántas condiciones y columnas tiene la tabla extendida, y cuántos casos de prueba resultan en la tabla simplificada?",
         "type": "single",
@@ -1717,7 +1489,7 @@
         "exp": "Condiciones: 2 (C1: Tipo solicitante [Estudiante / Trabajador / Jubilado - 3 estados]; C2: Tiene deudas [Sí / No - 2 estados]). Tabla extendida: 3 × 2 = 6 columnas. Tabla simplificada: 4 casos (Estudiante con deuda '-', Trabajador con deuda '-', Jubilado con deuda Sí, Jubilado con deuda No)."
     },
     {
-        "id": 85,
+        "id": 71,
         "eje": "Eje 8: Testing de Caja Negra",
         "q": "En el ejercicio 'La Farmacia X21', se evalúan 4 condiciones binarias: 1) Presenta carnet de Obra Social, 2) O.S. en Lista de Descuentos, 3) Descuento de lista > 30%, 4) Cliente en Lista de Inhabilitados. ¿Cuántas combinaciones posibles genera la tabla de decisión extendida completa?",
         "type": "single",
@@ -1733,7 +1505,7 @@
         "exp": "Con 4 condiciones binarias (Verdadero / Falso), la cantidad total de columnas o combinaciones de la tabla extendida es 2^4 = 16 combinaciones."
     },
     {
-        "id": 86,
+        "id": 72,
         "eje": "Eje 8: Testing de Caja Negra",
         "q": "En un sistema de turnos médicos que valida la Edad del paciente como un entero entre 0 y 120 años, ¿cuáles de las siguientes representan PARTICIONES INVÁLIDAS de entrada?",
         "type": "multi",
@@ -1753,7 +1525,7 @@
         "exp": "La única partición válida es el rango entero [0, 120]. Números negativos, mayores a 120, valores decimales, letras, símbolos y campo vacío son todas particiones de equivalencia inválidas."
     },
     {
-        "id": 87,
+        "id": 73,
         "eje": "Eje 8: Testing de Caja Negra",
         "q": "En un sitio de compras web la regla es: 'Edad >= 18 y Residencia = Argentina pueden comprar'. ¿Cómo debe formularse la condición de edad en la tabla de decisión para permitir una reducción y consolidación óptima?",
         "type": "single",
@@ -1769,7 +1541,7 @@
         "exp": "Al formular la condición como 'Edad < 18 [V/F]', cuando es Verdadero la acción es 'Rechazar compra' independientemente del país de residencia, permitiendo consolidar inmediatamente los casos en la tabla simplificada."
     },
     {
-        "id": 88,
+        "id": 74,
         "eje": "Eje 8: Testing de Caja Negra",
         "q": "Termómetro Digital: Rango operacional de 0 a 53 °C. Regla: Si temperatura < 20 se apaga el ventilador; si está entre 20 y 25 se mantiene; si es > 25 se enciende el enfriamiento. ¿Cuál es la selección óptima de 3 valores para cubrir todas las particiones válidas?",
         "type": "single",
@@ -1785,7 +1557,7 @@
         "exp": "Las 3 particiones válidas son: [0, 20) (apaga), [20, 25] (mantiene) y (25, 53] (enfría). Los valores 3 (cae en la primera), 23 (cae en la segunda) y 33 (cae en la tercera) prueban de forma representativa las tres particiones válidas."
     },
     {
-        "id": 89,
+        "id": 75,
         "eje": "Eje 8: Testing de Caja Negra",
         "q": "Para un campo 'Año de Nacimiento' que acepta valores entre 1900 y 2004 inclusive, ¿cuál es el conjunto de valores frontera a testear según la técnica de Análisis de Valores Límite?",
         "type": "single",
@@ -1801,7 +1573,7 @@
         "exp": "El análisis de valores límite (2 valores por frontera) prueba el valor inmediatamente exterior e interior de cada límite: para 1900 -> 1899 (inválido) y 1900 (válido); para 2004 -> 2004 (válido) y 2005 (inválido)."
     },
     {
-        "id": 90,
+        "id": 76,
         "eje": "Eje 8: Testing de Caja Negra",
         "q": "En un sistema de aseguradora, personas con edad entre 18 y 30 años inclusive reciben un 20% de descuento. ¿Cuáles de los siguientes grupos de edades pertenecen estrictamente a la MISMA partición de equivalencia válida?",
         "type": "single",
@@ -1817,7 +1589,7 @@
         "exp": "Los valores 18, 29 y 30 caen todos dentro del rango cerrado [18, 30] donde aplica la misma regla de negocio (20% de descuento), por lo que pertenecen a la misma clase de equivalencia."
     },
     {
-        "id": 91,
+        "id": 77,
         "eje": "Eje 8: Testing de Caja Negra",
         "q": "Para un campo de 'Código de Operación' que solo acepta números enteros entre 200 y 900 inclusive, ¿cuál es el conjunto mínimo de casos de prueba según Valores Límite?",
         "type": "single",
@@ -1833,7 +1605,7 @@
         "exp": "Se prueban los límites inferiores (199 inválido y 200 válido) y superiores (900 válido y 901 inválido) para verificar la robustez de los operadores relacionales en el código."
     },
     {
-        "id": 92,
+        "id": 78,
         "eje": "Eje 8: Testing de Caja Negra",
         "q": "Relacione cada necesidad de prueba con la técnica de diseño de caja negra que mejor aplica: 1) Validar un campo legajo numérico de 8 dígitos; 2) Matriz de reglas lógicas complejas para calificar un examen; 3) Ciclo de vida de una inscripción que avanza por estados sucesivos.",
         "type": "single",
@@ -1849,7 +1621,7 @@
         "exp": "Campos acotados numéricos se prueban con Valores Límite; combinatorias booleanas de reglas de negocio con Tablas de Decisión; y entidades con ciclo de vida y eventos con Transición de Estados."
     },
     {
-        "id": 93,
+        "id": 79,
         "eje": "Eje 8: Testing de Caja Negra",
         "q": "Un gimnasio tiene 3 categorías de membresía mutuamente excluyentes (Coulson, IronMan, Hulk) y el estado de Cuota al día (Sí / No). ¿Cuántas columnas y casos de prueba válidos genera la tabla de decisión extendida?",
         "type": "single",
@@ -1865,7 +1637,7 @@
         "exp": "La condición Categoría tiene 3 valores excluyentes y la condición Cuota al día tiene 2 valores (Sí / No). La combinatoria total es 3 × 2 = 6 columnas y 6 casos de prueba válidos."
     },
     {
-        "id": 94,
+        "id": 80,
         "eje": "Eje 8: Testing de Caja Negra",
         "q": "En el cálculo de un adicional salarial por antigüedad, se contemplan 4 tramos de años trabajados, y el enunciado menciona como datos distractores que la jubilación es a los 65 años y el periodo de prueba dura 6 meses. ¿Cuántos casos de prueba son necesarios para cubrir los tramos de antigüedad?",
         "type": "single",
@@ -1881,7 +1653,7 @@
         "exp": "Los datos sobre jubilación (65 años) y periodo de prueba (6 meses) son distractores contextuales que no alteran la tabla de antigüedad. Se requiere un caso representativo por cada uno de los 4 tramos válidos de antigüedad."
     },
     {
-        "id": 95,
+        "id": 81,
         "eje": "Eje 8: Testing de Caja Negra",
         "q": "En el ejercicio de la consola de turnos médicos, si un paciente solicita 'ESPECIALISTA' y su cobertura es 'OBRA_SOCIAL' o 'PREPAGA', el sistema emite la advertencia 'Recuerde traer la derivación médica autorizada'. En cualquier otro caso procesa sin advertencia. ¿Cuál es el caso de prueba que valida la emisión de la advertencia?",
         "type": "single",
@@ -2352,16 +2124,16 @@
             const icon = document.getElementById('modal-result-icon');
 
             if (percentage >= 85) {
-                message.innerText = "¡Excelente desempeño! Demuestras un dominio profundo y consistente de los conceptos de Ingeniería de Software (CMMI, PPQA, SCM, Métricas PSM, VER/VAL, Planificación y Caja Negra). ¡Estás listo para promocionar el parcial!";
+                message.innerText = "¡Excelente desempeño! Demuestras un dominio profundo y consistente de los conceptos de Ingeniería de Software (CMMI, Requisitos, SCM, Planificación, VER/VAL y Caja Negra). ¡Estás listo para promocionar el parcial!";
                 icon.innerHTML = '<span class="text-6xl">🏆</span>';
             } else if (percentage >= 70) {
                 message.innerText = "¡Muy buen rendimiento! Tienes bases muy sólidas. Repasa los casos prácticos finos de precedencias en la EDT, cálculo de esfuerzo y las trampas de redacción en prácticas CMMI para asegurar la máxima nota.";
                 icon.innerHTML = '<span class="text-6xl">👏</span>';
             } else if (percentage >= 50) {
-                message.innerText = "Aprobado justo. Hay temas en los que aún surgen confusiones (distinción VER vs VAL, métricas de proceso vs proyecto o tablas de decisión). Te recomendamos revisar las justificaciones técnicas de tus errores.";
+                message.innerText = "Aprobado justo. Hay temas en los que aún surgen confusiones (distinción VER vs VAL, estimación/EDT o tablas de decisión). Te recomendamos revisar las justificaciones técnicas de tus errores.";
                 icon.innerHTML = '<span class="text-6xl">📚</span>';
             } else {
-                message.innerText = "Nivel insuficiente para aprobar el parcial de ISW. Es necesario profundizar el estudio en los 8 ejes: Arquitectura CMMI, PPQA, Requisitos, SCM, Estimación/EDT, V&V y Pruebas de Caja Negra.";
+                message.innerText = "Nivel insuficiente para aprobar el parcial de ISW. Es necesario profundizar el estudio en los 6 ejes evaluados: Arquitectura CMMI, Requisitos, SCM, Estimación/EDT, V&V y Pruebas de Caja Negra.";
                 icon.innerHTML = '<span class="text-6xl">⚠️</span>';
             }
 
